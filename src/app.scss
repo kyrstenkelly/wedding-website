@@ -1,0 +1,23 @@
+.app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: url('./j-and-k.jpg');
+  background-size: cover;
+}
+
+.app-title {
+  color: white;
+  margin-top: 1rem;
+  font-size: 4rem;
+  font-family: 'Lobster Two', cursive;
+}
+
+.app-intro {
+  font-size: large;
+}
+
+@keyframes app-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
