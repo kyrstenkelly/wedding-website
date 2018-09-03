@@ -1,49 +1,61 @@
-@import './styles/_variables';
+@import './styles/common';
 
 .app {
   height: 100vh;
-  // background: url('./j-and-k.jpg');
-  // background-size: cover;
+  width: 100vw;
+  position: absolute;
+  background: url('./images/j-and-k.jpg');
+  background-size: cover;
+  background-position: center;
+
+  .overlay {
+    position: absolute;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.3);
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+  }
 }
 
 .header {
-  margin: 2rem;
+  margin: 2rem 3rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
 
   .title {
-    color: $green;
-    margin-left: 2rem;
-    font-size: 4rem;
-    font-family: 'Lobster Two', cursive;
-  }
-
-  .gif {
-    display: block;
-    background-image: url('./images/us.gif');
-    background-size: cover;
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    @extend .print-font;
+    @extend .font-48;
+    color: $white;
+    margin: 0;
   }
 }
 
 .body {
   font-family: 'Open Sans', sans-serif;
   text-align: center;
+  margin-top: 12rem;
+
+  .message {
+    @extend .cursive-font;
+    @extend .font-80;
+    color: $yellow;
+  }
 
   .date {
-    color: $green;
-    margin: 1rem;
+    @extend .print-font;
+    @extend .font-64;
+    color: $white;
+  }
+}
 
-    .date-1 {
-      font-size: 4rem;
-    }
-
-    .date-2 {
-      font-size: 7rem;
-    }
+@media only screen and (min-width: $screen-md) {
+  .header {
+    justify-content: flex-start;
   }
 }

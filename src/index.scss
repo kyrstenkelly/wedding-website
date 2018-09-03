@@ -1,6 +1,23 @@
+@import './styles/common';
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+@media only screen and (min-width: $screen-sm) {
+  body {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media only screen and (min-width: $screen-md) {
+  body {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }

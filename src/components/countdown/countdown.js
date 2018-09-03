@@ -1,11 +1,14 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import './countdown.scss';
 
-const WEDDING_DATE = moment('2020-06-20T06');
-
 class Countdown extends Component {
+  static propTypes = {
+    date: PropTypes.object.isRequired
+  }
+
   state = {
     countdown: {
       years: 0,
@@ -23,7 +26,7 @@ class Countdown extends Component {
 
   updateCountdown() {
     let {countdown} = this.state;
-    const duration = moment.duration(WEDDING_DATE.diff(moment()));
+    const duration = moment.duration(this.props.date.diff(moment()));
 
     this.setState({countdown:
       _.mapValues(countdown, (_, key) => duration[key]())});
@@ -41,7 +44,7 @@ class Countdown extends Component {
     const firstThreeVals = {};
     _.map(this.state.countdown, (val, key) => {
       const numVals = _.size(firstThreeVals);
-      if ((numVals < 3 && val > 0) || (val === 0 && numVals > 0)) {
+      if (numVals < 3 && (val > 0 || (val === 0 && numVals > 0))) {
         firstThreeVals[key] = val;
       }
     });

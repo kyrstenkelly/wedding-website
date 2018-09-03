@@ -1,27 +1,33 @@
-@import '../../styles/_variables';
+@import '../../styles/common';
 
 .countdown {
+  margin: 3rem;
   display: flex;
   justify-content: center;
 
   .unit {
     .unit-value {
+      @extend .print-font;
+      @extend .font-32;
       display: flex;
       justify-content: center;
       align-items: center;
 
-      font-size: 1.5rem;
+      background: rgba(255, 255, 255, 0.4);
+      color: $white;
+
+      font-weight: 700;
       margin: 10px;
       border-radius: 4px;
       height: 80px;
       width: 70px;
-      background: $gold;
-      color: $brown;
     }
 
     .unit-label {
-      color: $brown;
-      text-transform: uppercase;
+      @extend .cursive-font;
+      @extend .font-36;
+      color: $white;
+      font-size: 2.2rem;
     }
   }
 }
