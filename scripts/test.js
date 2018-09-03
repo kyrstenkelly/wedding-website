@@ -15,7 +15,7 @@ process.on('unhandledRejection', err => {
 // Ensure environment variables are read.
 require('../config/env');
 
-const jest = require('jest');
+var jest = require('jest');
 let argv = process.argv.slice(2);
 
 // Watch unless on CI or in coverage mode

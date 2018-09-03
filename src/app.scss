@@ -1,23 +1,49 @@
+@import './styles/_variables';
+
 .app {
   height: 100vh;
+  // background: url('./j-and-k.jpg');
+  // background-size: cover;
+}
+
+.header {
+  margin: 2rem;
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  background: url('./j-and-k.jpg');
-  background-size: cover;
+  align-items: center;
+
+  .title {
+    color: $green;
+    margin-left: 2rem;
+    font-size: 4rem;
+    font-family: 'Lobster Two', cursive;
+  }
+
+  .gif {
+    display: block;
+    background-image: url('./images/us.gif');
+    background-size: cover;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+  }
 }
 
-.app-title {
-  color: white;
-  margin-top: 1rem;
-  font-size: 4rem;
-  font-family: 'Lobster Two', cursive;
-}
+.body {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
 
-.app-intro {
-  font-size: large;
-}
+  .date {
+    color: $green;
+    margin: 1rem;
 
-@keyframes app-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    .date-1 {
+      font-size: 4rem;
+    }
+
+    .date-2 {
+      font-size: 7rem;
+    }
+  }
 }
