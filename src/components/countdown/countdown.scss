@@ -8,7 +8,7 @@
   .unit {
     .unit-value {
       @extend .print-font;
-      @extend .font-32;
+      @include font-size(32);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -25,7 +25,7 @@
 
     .unit-label {
       @extend .cursive-font;
-      @extend .font-36;
+      @include font-size(36);
       color: $white;
       font-size: 2.2rem;
     }

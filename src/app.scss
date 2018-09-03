@@ -23,14 +23,14 @@
 }
 
 .header {
-  margin: 2rem 3rem;
+  margin: 1.5rem 1rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
 
   .title {
     @extend .print-font;
-    @extend .font-48;
+    @include font-size(36);
     color: $white;
     margin: 0;
   }
@@ -39,23 +39,60 @@
 .body {
   font-family: 'Open Sans', sans-serif;
   text-align: center;
-  margin-top: 12rem;
+  margin-top: 10rem;
 
   .message {
     @extend .cursive-font;
-    @extend .font-80;
+    @include font-size(48);
     color: $yellow;
   }
 
   .date {
     @extend .print-font;
-    @extend .font-64;
+    @include font-size(38);
     color: $white;
+  }
+}
+
+@media only screen and (min-width: $screen-sm) {
+  .header {
+    margin: 1.5rem 1rem;
+
+    .title {
+      @include font-size(40);
+    }
+  }
+
+  .body {
+    margin-top: 12rem;
+
+    .message {
+      @include font-size(56);
+    }
+
+    .date {
+      @include font-size(44);
+    }
   }
 }
 
 @media only screen and (min-width: $screen-md) {
   .header {
     justify-content: flex-start;
+    margin: 2rem 3rem;
+
+    .title {
+      @include font-size(48);
+    }
+  }
+
+  .body {
+    .message {
+      @include font-size(80);
+    }
+
+    .date {
+      @include font-size(64);
+    }
   }
 }

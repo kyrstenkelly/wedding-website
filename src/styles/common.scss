@@ -19,29 +19,10 @@ $screen-md: 768px;
 $screen-lg: 1224px;
 
 // FONT SIZES
-.font-32 {
-  font-size: 2rem;
-  line-height: 2.25rem;
-}
-
-.font-36 {
-  font-size: 2.25rem;
-  line-height: 2.625rem;
-}
-
-.font-48 {
-  font-size: 3rem;
-  line-height: 3.5rem;
-}
-
-.font-64 {
-  font-size: 4rem;
-  line-height: 5rem;
-}
-
-.font-80 {
-  font-size: 5rem;
-  line-height: 6rem;
+@mixin font-size($size) {
+  $rem-size: $size / 16;
+  font-size: $rem-size + rem;
+  line-height: ($rem-size * 1.1) + rem;
 }
 
 .cursive-font {

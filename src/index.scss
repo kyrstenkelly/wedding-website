@@ -8,14 +8,14 @@ body {
   line-height: 18px;
 }
 
-@media only screen and (min-width: $screen-sm) {
+@media only screen and (min-width: $screen-md) {
   body {
     font-size: 14px;
     line-height: 20px;
   }
 }
 
-@media only screen and (min-width: $screen-md) {
+@media only screen and (min-width: $screen-lg) {
   body {
     font-size: 16px;
     line-height: 24px;
