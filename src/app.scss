@@ -28,6 +28,20 @@
   flex-direction: row;
   justify-content: center;
 
+  .logo {
+    @extend .print-font;
+    @include font-size(36);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -4px;
+    height: 100px;
+    width: 100px;
+    color: $white;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+
   .title {
     @extend .print-font;
     @include font-size(36);
@@ -39,12 +53,27 @@
 .body {
   font-family: 'Open Sans', sans-serif;
   text-align: center;
-  margin-top: 10rem;
+  margin-top: 5rem;
+
+  .names {
+    @extend .print-font;
+    @include font-size(38);
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 2rem;
+
+    .and {
+      margin: 20px;
+    }
+  }
 
   .message {
     @extend .cursive-font;
     @include font-size(48);
     color: $yellow;
+    margin-bottom: 1rem;
   }
 
   .date {
@@ -58,13 +87,19 @@
   .header {
     margin: 1.5rem 1rem;
 
+    .logo {
+      @include font-size(40);
+      height: 120px;
+      width: 120px;
+    }
+
     .title {
       @include font-size(40);
     }
   }
 
   .body {
-    margin-top: 12rem;
+    margin-top: 10rem;
 
     .message {
       @include font-size(56);
@@ -81,12 +116,22 @@
     justify-content: flex-start;
     margin: 2rem 3rem;
 
+    .logo {
+      @include font-size(48);
+    }
+
     .title {
       @include font-size(48);
     }
   }
 
   .body {
+    margin-top: 12rem;
+
+    .names {
+      @include font-size(64);
+    }
+
     .message {
       @include font-size(80);
     }

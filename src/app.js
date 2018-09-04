@@ -5,7 +5,7 @@ import './app.scss';
 
 class App extends Component {
   state = {
-    weddingDate: moment('2020-06-20T06')
+    weddingDate: moment('2020-05-30T06')
   }
 
   render() {
@@ -17,11 +17,22 @@ class App extends Component {
 
         <div className='content'>
           <header className='header'>
-            {/* <span className='gif'></span> */}
-            <h1 className='title'>James &amp; Kyrsten</h1>
+            <div className='logo'>J &amp; K</div>
           </header>
 
           <div className='body'>
+            <div className='names'>
+              <div className='name-1'>
+                Kyrsten<br/> Kelly
+              </div>
+              <div className='and'>
+                &#x2b;
+              </div>
+              <div className='name-2'>
+                James<br/>  Custer
+              </div>
+            </div>
+
             <div className='message'>
               Are tying the knot
             </div>
