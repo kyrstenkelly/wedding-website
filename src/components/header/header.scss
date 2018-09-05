@@ -1,0 +1,50 @@
+@import '../../styles/common';
+
+.header {
+  @extend .print-font;
+  color: $white;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    @include font-size(32);
+    height: 80px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -4px;
+    border-radius: 50%;
+    border: 2px solid $white;
+  }
+
+  .menu {
+    @include font-size(24);
+  }
+}
+
+@media only screen and (max-width: $screen-sm-2) {
+  .header {
+    .logo {
+      @include font-size(28);
+      height: 70px;
+      width: 70px;
+    }
+  }
+}
+
+@media only screen and (max-width: $screen-sm) {
+  .header {
+    padding: 1rem;
+
+    .logo {
+      @include font-size(24);
+      height: 60px;
+      width: 60px;
+    }
+  }
+}

@@ -1,143 +1,53 @@
 @import './styles/common';
 
 .app {
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  background: url('./images/j-and-k.jpg');
-  background-size: cover;
-  background-position: center;
-
-  .overlay {
-    position: absolute;
-    z-index: 1;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,.3);
-  }
-
-  .content {
+  .background-photo {
     position: relative;
-    z-index: 2;
+    background: url('./images/j-and-k.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,.25);
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+    }
+  }
+
+}
+
+.details {
+  @extend .print-font;
+  @include font-size(18);
+  line-height: 24px;
+  text-transform: none;
+  background: $white;
+  padding: 5em;
+}
+
+@media only screen and (max-width: $screen-md) {
+  .app .background-photo {
+    background: url('./images/j-and-k-medium.jpg');
+    background-size: cover;
+    background-position: center;
   }
 }
 
-.header {
-  margin: 1.5rem 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
-  .logo {
-    @extend .print-font;
-    @include font-size(36);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    letter-spacing: -4px;
-    height: 100px;
-    width: 100px;
-    color: $white;
-    border-radius: 50%;
-    border: 2px solid white;
-  }
-
-  .title {
-    @extend .print-font;
-    @include font-size(36);
-    color: $white;
-    margin: 0;
-  }
-}
-
-.body {
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
-  margin-top: 5rem;
-
-  .names {
-    @extend .print-font;
-    @include font-size(38);
-    color: $white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem 2rem;
-
-    .and {
-      margin: 20px;
-    }
-  }
-
-  .message {
-    @extend .cursive-font;
-    @include font-size(48);
-    color: $yellow;
-    margin-bottom: 1rem;
-  }
-
-  .date {
-    @extend .print-font;
-    @include font-size(38);
-    color: $white;
-  }
-}
-
-@media only screen and (min-width: $screen-sm) {
-  .header {
-    margin: 1.5rem 1rem;
-
-    .logo {
-      @include font-size(40);
-      height: 120px;
-      width: 120px;
-    }
-
-    .title {
-      @include font-size(40);
-    }
-  }
-
-  .body {
-    margin-top: 10rem;
-
-    .message {
-      @include font-size(56);
-    }
-
-    .date {
-      @include font-size(44);
-    }
-  }
-}
-
-@media only screen and (min-width: $screen-md) {
-  .header {
-    justify-content: flex-start;
-    margin: 2rem 3rem;
-
-    .logo {
-      @include font-size(48);
-    }
-
-    .title {
-      @include font-size(48);
-    }
-  }
-
-  .body {
-    margin-top: 12rem;
-
-    .names {
-      @include font-size(64);
-    }
-
-    .message {
-      @include font-size(80);
-    }
-
-    .date {
-      @include font-size(64);
-    }
+@media only screen and (max-width: $screen-sm-2) {
+  .app .background-photo {
+    background: url('./images/j-and-k-small.jpg');
+    background-size: cover;
+    background-position: center;
   }
 }

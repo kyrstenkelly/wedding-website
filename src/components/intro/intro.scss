@@ -1,0 +1,87 @@
+@import '../../styles/common';
+
+.intro {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  margin: 10rem 2rem;
+
+  .names {
+    @extend .print-font;
+    @include font-size(64);
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 2rem;
+
+    .and {
+      margin: 20px;
+    }
+  }
+
+  .message {
+    @extend .cursive-font;
+    @include font-size(80);
+
+    color: $yellow;
+    margin-bottom: 1rem;
+  }
+
+  .date {
+    @extend .print-font;
+    @include font-size(68);
+    color: $white;
+  }
+}
+
+@media only screen and (max-width: $screen-md) {
+  .intro {
+    .names {
+      @include font-size(52);
+    }
+
+    .message {
+      @include font-size(68);
+    }
+
+    .date {
+      @include font-size(56);
+    }
+  }
+}
+
+@media only screen and (max-width: $screen-sm-3) {
+  .intro {
+    margin: 5rem 1rem;
+
+    .names {
+      @include font-size(42);
+    }
+
+    .message {
+      @include font-size(48);
+    }
+
+    .date {
+      @include font-size(44);
+    }
+  }
+}
+
+@media only screen and (max-width: $screen-sm-2) {
+  .intro {
+    margin: 4rem 1rem;
+
+    .names {
+      @include font-size(36);
+    }
+
+    .message {
+      @include font-size(48);
+    }
+
+    .date {
+      @include font-size(40);
+    }
+  }
+}
