@@ -1,0 +1,33 @@
+@import '../../styles/common';
+
+@mixin maxContentWidth {
+  max-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.details {
+
+  .section {
+    @extend .print-font;
+    @include font-size(18);
+    line-height: 24px;
+    text-transform: none;
+    background: $white;
+    padding: 5em;
+
+    &:nth-child(even) {
+      background-color: lighten($yellow, 20%);
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+      @include maxContentWidth();
+    }
+
+    .section-body {
+      @extend .paragraph-font;
+      @include maxContentWidth();
+    }
+  }
+}

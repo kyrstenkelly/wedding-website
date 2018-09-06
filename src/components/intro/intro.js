@@ -8,31 +8,27 @@ class Intro extends Component {
 
     return (
       <div className="intro">
-        <div className='overlay'></div>
-
-        <div className='content'>
-          <div className='names'>
-            <div className='name-1'>
-              Kyrsten<br/> Kelly
-            </div>
-            <div className='and'>
-              &#x2b;
-            </div>
-            <div className='name-2'>
-              James<br/>  Custer
-            </div>
+        <div className='names'>
+          <div className='name-1'>
+            Kyrsten<br/> Kelly
           </div>
-
-          <div className='message'>
-            Are tying the knot
+          <div className='and'>
+            &#x2b;
           </div>
-
-          <div className='date'>
-            {date.format('MMM D, YYYY')}
+          <div className='name-2'>
+            James<br/>  Custer
           </div>
-
-          <Countdown date={date} />
         </div>
+
+        <div className='message'>
+          Are tying the knot
+        </div>
+
+        <div className='date'>
+          {date.format('MMM D, YYYY')}
+        </div>
+
+        <Countdown date={date} />
       </div>
     );
   }

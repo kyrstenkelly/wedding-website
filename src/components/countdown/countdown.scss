@@ -1,7 +1,6 @@
 @import '../../styles/common';
 
 .countdown {
-  margin: 3rem;
   display: flex;
   justify-content: center;
 
@@ -27,7 +26,13 @@
       @extend .cursive-font;
       @include font-size(36);
       color: $white;
-      font-size: 2.2rem;
+      font-size: 2.2em;
     }
   }
 }
+
+// @media only screen and (max-width: $screen-sm-2) {
+//   .countdown {
+//     margin: 1rem;
+//   }
+// }

@@ -6,6 +6,7 @@
     background: url('./images/j-and-k.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     height: 100%;
 
     .overlay {
@@ -15,7 +16,7 @@
       z-index: 1;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,.25);
+      background-color: rgba(0,0,0,.3);
     }
 
     .content {
@@ -27,20 +28,15 @@
 
 }
 
-.details {
-  @extend .print-font;
-  @include font-size(18);
-  line-height: 24px;
-  text-transform: none;
-  background: $white;
-  padding: 5em;
-}
-
 @media only screen and (max-width: $screen-md) {
   .app .background-photo {
     background: url('./images/j-and-k-medium.jpg');
     background-size: cover;
     background-position: center;
+  }
+
+  .pages .section {
+    padding: 1em;
   }
 }
 
@@ -49,5 +45,6 @@
     background: url('./images/j-and-k-small.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: scroll;
   }
 }
