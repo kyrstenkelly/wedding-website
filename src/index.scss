@@ -6,6 +6,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   line-height: 18px;
+  box-sizing: border-box;
 }
 
 @media only screen and (min-width: $screen-sm-2) {
