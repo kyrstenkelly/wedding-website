@@ -1,9 +1,8 @@
 import moment from 'moment';
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
-import Details from './components/details/details';
-import Header from './components/header/header';
-import Intro from './components/intro/intro';
+import Details from 'components/details/details';
+import Header from 'components/header/header';
+import Intro from 'components/intro/intro';
 import './app.scss';
 
 class App extends Component {

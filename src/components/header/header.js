@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-scroll'
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import MenuIcon from '../../images/menu-button.svg';
+import MenuIcon from 'images/menu-button.svg';
 import './header.scss';
 
 class Header extends Component {
