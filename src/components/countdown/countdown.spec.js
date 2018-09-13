@@ -7,7 +7,7 @@ import Countdown from './countdown';
 describe('<Countdown />', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<Countdown />);
+    wrapper = shallow(<Countdown date={moment('2020-10-10')}/>);
   });
 
   it('renders three countdown units', () => {
@@ -16,8 +16,8 @@ describe('<Countdown />', () => {
 
   describe('if the wedding date is over a year from now', () => {
     beforeEach(() => {
-      wrapper.setState({
-        weddingDate: moment().add(1, 'year').add(3, 'months')
+      wrapper.setProps({
+        date: moment().add(1, 'year').add(3, 'months')
       });
       wrapper.instance().updateCountdown();
     });
@@ -33,8 +33,8 @@ describe('<Countdown />', () => {
 
   describe('if the wedding date is less than a year from now', () => {
     beforeEach(() => {
-      wrapper.setState({
-        weddingDate: moment().add(3, 'months')
+      wrapper.setProps({
+        date: moment().add(3, 'months').add(4, 'hours')
       });
       wrapper.instance().updateCountdown();
     });
@@ -50,8 +50,8 @@ describe('<Countdown />', () => {
 
   describe('if the wedding date is less than a month from now', () => {
     beforeEach(() => {
-      wrapper.setState({
-        weddingDate: moment().add(2, 'weeks')
+      wrapper.setProps({
+        date: moment().add(2, 'weeks')
       });
       wrapper.instance().updateCountdown();
     });
@@ -67,8 +67,8 @@ describe('<Countdown />', () => {
 
   describe('if the wedding date is less than a week from now', () => {
     beforeEach(() => {
-      wrapper.setState({
-        weddingDate: moment().add(3, 'days')
+      wrapper.setProps({
+        date: moment().add(3, 'days')
       });
       wrapper.instance().updateCountdown();
     });
@@ -84,8 +84,8 @@ describe('<Countdown />', () => {
 
   describe('if the wedding date is less than a day from now', () => {
     beforeEach(() => {
-      wrapper.setState({
-        weddingDate: moment().add(6, 'hours')
+      wrapper.setProps({
+        date: moment().add(6, 'hours')
       });
       wrapper.instance().updateCountdown();
     });
