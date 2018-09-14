@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-scroll'
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+
+import authHelper from 'helpers/auth';
 import MenuIcon from 'images/menu-button.svg';
 import './header.scss';
 
@@ -10,28 +12,48 @@ class Header extends Component {
     colorClass: PropTypes.string,
     links: PropTypes.arrayOf(PropTypes.shape({
       label: PropTypes.string.isRequired,
-      to: PropTypes.string.isRequired
-    })).isRequired,
+      to: PropTypes.string.isRequired,
+      scroll: PropTypes.bool
+    })),
     setHeight: PropTypes.func,
+    logout: PropTypes.bool
+  }
+
+  static defaultProps = {
+    links: []
   }
 
   componentDidMount() {
     const node = ReactDOM.findDOMNode(this);
-    this.props.setHeight(node.scrollHeight);
+    if (this.props.setHeight) {
+      this.props.setHeight(node.scrollHeight);
+    }
   }
 
   renderMenuItems() {
-    return this.props.links.map(link => (
+    const links = this.props.links.map(link => (
       <li className='menu-item' key={link.to}>
-        <Link
-          to={link.to}
-          smooth={true}
-          offset={-20}
-          duration={750}>
-          {link.label}
-        </Link>
+        {link.scroll ?
+          <Link
+            to={link.to}
+            smooth={true}
+            offset={-20}
+            duration={750}>
+            {link.label}
+          </Link>
+          :
+          <a href={link.to}>{link.label}</a>
+        }
       </li>
     ));
+    if (this.props.logout) {
+      links.push(
+        <li className='menu-item' key='logout'>
+          <a onClick={authHelper.logout} className="btn">Log Out</a>
+        </li>
+      );
+    }
+    return links;
   }
 
   render() {

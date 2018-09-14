@@ -1,6 +1,8 @@
 @import 'styles/common.scss';
 
 .admin {
-  text-align: center;
-  padding: 5rem;
+  @extend .paragraph-font;
+  .content {
+    padding: 3rem;
+  }
 }

@@ -41,3 +41,16 @@ $screen-lg: 1224px;
   font-weight: 300;
   letter-spacing: .5px;
 }
+
+
+// BUTTONS
+.btn {
+  padding: 10px 15px;
+  border: 1px solid $dark-gray;
+  border-radius: 4px;
+
+  &:hover {
+    font-weight: 600;
+    cursor: pointer;
+  }
+}

@@ -30,14 +30,17 @@ class App extends Component {
 
     const links = [{
       label: 'Details',
-      to: 'details'
+      to: 'details',
+      scroll: true
     }, {
       label: 'RSVP',
-      to: 'rsvp'
+      to: 'rsvp',
+      scroll: true
     }, {
       label: 'About Us',
-      to: 'about-us'
-    }]
+      to: 'about-us',
+      scroll: true
+    }];
 
     return (
       <div className='app'>
