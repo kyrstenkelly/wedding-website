@@ -1,0 +1,18 @@
+@import 'styles/common.scss';
+
+.login {
+  @extend .print-font;
+  text-align: center;
+  padding: 10rem;
+
+  .btn {
+    padding: 5px 10px;
+    border: 1px solid $dark-gray;
+    border-radius: 4px;
+
+    &:hover {
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+}

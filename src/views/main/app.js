@@ -28,6 +28,17 @@ class App extends Component {
   render() {
     const {weddingDate} = this.state;
 
+    const links = [{
+      label: 'Details',
+      to: 'details'
+    }, {
+      label: 'RSVP',
+      to: 'rsvp'
+    }, {
+      label: 'About Us',
+      to: 'about-us'
+    }]
+
     return (
       <div className='app'>
         <div className='background-photo'>
@@ -36,6 +47,7 @@ class App extends Component {
           <div className='content'>
             <Header
               colorClass={this.state.colorClass}
+              links={links}
               setHeight={this.setHeaderHeight.bind(this)}
             />
 

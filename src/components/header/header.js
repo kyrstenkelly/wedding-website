@@ -8,12 +8,30 @@ import './header.scss';
 class Header extends Component {
   static propTypes = {
     colorClass: PropTypes.string,
-    setHeight: PropTypes.func
+    links: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      to: PropTypes.string.isRequired
+    })).isRequired,
+    setHeight: PropTypes.func,
   }
 
   componentDidMount() {
     const node = ReactDOM.findDOMNode(this);
     this.props.setHeight(node.scrollHeight);
+  }
+
+  renderMenuItems() {
+    return this.props.links.map(link => (
+      <li className='menu-item' key={link.to}>
+        <Link
+          to={link.to}
+          smooth={true}
+          offset={-20}
+          duration={750}>
+          {link.label}
+        </Link>
+      </li>
+    ));
   }
 
   render() {
@@ -28,21 +46,7 @@ class Header extends Component {
 
         <div className='menu-desktop'>
           <ul className='menu-list'>
-            <li className='menu-item'>
-              <Link to="details" smooth={true} offset={-20} duration={750}>
-                Details
-              </Link>
-            </li>
-            <li className='menu-item'>
-              <Link to="rsvp" smooth={true} offset={-20} duration={750}>
-                RSVP
-              </Link>
-            </li>
-            <li className='menu-item'>
-              <Link to="about-us" smooth={true} offset={-20} duration={750}>
-                About Us
-              </Link>
-            </li>
+            {this.renderMenuItems()}
           </ul>
         </div>
       </div>
