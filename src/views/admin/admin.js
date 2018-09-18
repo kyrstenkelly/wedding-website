@@ -6,15 +6,11 @@ import {
   ListItemText,
   MenuList,
   MenuItem,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow
+  Paper
 } from '@material-ui/core';
 
 import Header from 'components/header/header';
+import DataTable from 'components/admin/data-table/data-table';
 import constants from 'constants/admin';
 import adminHelper from 'helpers/admin';
 import './admin.scss';
@@ -64,32 +60,6 @@ class Admin extends Component {
     );
   }
 
-  renderTable() {
-    const {tableData: {columns, data}} = this.state;
-    const formattedData = data.map(d => adminHelper.formatData(d));
-    return (
-      <Paper>
-        <Table>
-          <TableHead>
-            <TableRow>
-              {columns.map(column => <TableCell>{column.label}</TableCell>)}
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {formattedData.map(d => {
-              return (
-                <TableRow key={d.id}>
-                  {columns.map(column => <TableCell>{d[column.key]}</TableCell>)}
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </Paper>
-    );
-  }
-
   render() {
     return (
       <Container>
@@ -104,7 +74,9 @@ class Admin extends Component {
               {this.renderMenu()}
             </div>
             <div className='table-container'>
-              {!_.isEmpty(this.state.tableData) && this.renderTable()}
+              {!_.isEmpty(this.state.tableData) &&
+                <DataTable tableData={this.state.tableData}/>
+              }
             </div>
           </div>
         </div>
