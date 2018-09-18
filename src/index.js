@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import authHelper from 'helpers/auth';
 import Admin from 'views/admin/admin';
 import App from 'views/main/app';
-import Login from 'views/admin/login';
+import Login from 'views/login/login';
 import './index.scss';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (

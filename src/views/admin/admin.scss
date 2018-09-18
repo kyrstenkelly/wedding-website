@@ -3,6 +3,16 @@
 .admin {
   @extend .paragraph-font;
   .content {
+    display: flex;
     padding: 3rem;
+
+    .menu-container {
+      flex: 0 250px;
+      margin-right: 3rem;
+    }
+
+    .table-container {
+      flex: 0 100%;
+    }
   }
 }
