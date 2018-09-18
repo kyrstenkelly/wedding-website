@@ -1,22 +1,17 @@
-import addresses from './mocks/addresses';
 import events from './mocks/events';
 import guests from './mocks/guests';
 import rsvps from './mocks/rsvps';
 
 export default {
-  getAddresses() {
-    return Promise.resolve(addresses);
-  },
-
-  getEvents() {
+  fetchEvents() {
     return Promise.resolve(events);
   },
 
-  getGuests() {
+  fetchGuests() {
     return Promise.resolve(guests);
   },
 
-  getRSVPs() {
+  fetchRSVPs() {
     return Promise.resolve(rsvps);
   }
 }

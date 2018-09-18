@@ -39,13 +39,13 @@ export default {
     let dataPromise = Promise.resolve();
     switch (key) {
       case 'events':
-        dataPromise = rsvpService.getEvents();
+        dataPromise = rsvpService.fetchEvents();
         break;
       case 'guests':
-        dataPromise = rsvpService.getGuests();
+        dataPromise = rsvpService.fetchGuests();
         break;
       case 'rsvps':
-        dataPromise = rsvpService.getRSVPs();
+        dataPromise = rsvpService.fetchRSVPs();
         break;
       default:
         throw new Error(`Unknown data type ${key}`);
@@ -59,15 +59,12 @@ export default {
   },
 
   formatData(data) {
-    return _.mapValues(data, (value, key) => {
-      if (key === 'address') {
-        return `${value.line1} ${value.line2 || ''}\n${value.city}, ${value.state} ${value.zip}`
-      } else if (key === 'guest') {
-        return `${value.firstName} ${value.lastName}`;
-      } else if (key === 'event') {
-        return value.name;
+    return _.mapValues(data, (datum) => {
+      if (_.isObject(datum)) {
+        const flattenDatum = _.omitBy(datum, _.isObject);
+        return _.values(flattenDatum).join(' ');
       }
-      return value;
+      return datum;
     });
   }
 }
