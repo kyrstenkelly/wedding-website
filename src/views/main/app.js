@@ -1,8 +1,11 @@
 import moment from 'moment';
 import React, { Component } from 'react';
+
 import Details from 'components/details/details';
 import Header from 'components/header/header';
 import Intro from 'components/intro/intro';
+import authHelper from 'helpers/auth';
+import config from 'config';
 import './app.scss';
 
 class App extends Component {
@@ -41,6 +44,14 @@ class App extends Component {
       to: 'about-us',
       scroll: true
     }];
+
+    if (authHelper.isAuthenticated()) {
+      links.push({
+        label: 'Admin',
+        to: config.baseURL + '/admin',
+        scroll: false
+      })
+    }
 
     return (
       <div className='app'>

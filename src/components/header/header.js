@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import authHelper from 'helpers/auth';
 import MenuIcon from 'images/menu-button.svg';
+import config from 'config';
 import './header.scss';
 
 class Header extends Component {
@@ -61,7 +62,11 @@ class Header extends Component {
 
     return (
       <div className={headerClass}>
-        <div className='logo'>J &amp; K</div>
+        <div className='logo'>
+          <a href={config.baseURL}>
+            J &amp; K
+          </a>
+        </div>
         <div className='menu-mobile'>
           <img className='menu-icon' src={MenuIcon} alt='Menu'/>
         </div>
