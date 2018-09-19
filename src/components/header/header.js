@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 import authHelper from 'helpers/auth';
-import MenuIcon from 'images/menu-button.svg';
+import MenuIcon from 'assets/images/menu-button.svg';
 import config from 'config';
 import './header.scss';
 
@@ -63,7 +63,7 @@ class Header extends Component {
     return (
       <div className={headerClass}>
         <div className='logo'>
-          <a href={config.baseURL}>
+          <a href={config.BASE_URL}>
             J &amp; K
           </a>
         </div>

@@ -48,7 +48,7 @@ class App extends Component {
     if (authHelper.isAuthenticated()) {
       links.push({
         label: 'Admin',
-        to: config.baseURL + '/admin',
+        to: config.BASE_URL + '/admin',
         scroll: false
       })
     }

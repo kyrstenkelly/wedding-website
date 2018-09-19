@@ -1,10 +1,12 @@
 
 const dev = {
-  baseURL: 'http://localhost:3000'
+  BASE_URL: 'http://localhost:3000',
+  RSVP_API_URL: 'http://localhost:8000'
 };
 
 const prod = {
-  baseURL: 'http://jamesandkyrsten.com'
+  BASE_URL: 'http://jamesandkyrsten.com',
+  RSVP_API_URL: ''
 };
 
 let config = dev;
