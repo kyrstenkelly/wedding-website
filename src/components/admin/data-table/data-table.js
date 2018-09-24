@@ -28,6 +28,13 @@ class DataTable extends Component {
     })
   }
 
+  static defaultProps = {
+    tableData: {
+      columns: [],
+      data: []
+    }
+  }
+
   state = {
     order: 'asc',
     orderBy: getFirstTableColumn(this.props)

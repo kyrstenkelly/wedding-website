@@ -3,7 +3,7 @@ import { Link } from 'react-scroll'
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-import authHelper from 'helpers/auth';
+import authService from 'services/auth-service';
 import MenuIcon from 'assets/images/menu-button.svg';
 import config from 'config';
 import './header.scss';
@@ -50,7 +50,7 @@ class Header extends Component {
     if (this.props.logout) {
       links.push(
         <li className='menu-item' key='logout'>
-          <a onClick={authHelper.logout} className="btn">Log Out</a>
+          <a onClick={authService.logout} className="btn">Log Out</a>
         </li>
       );
     }

@@ -1,66 +1,82 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import Container from '../container';
-import {
-  ListItemIcon,
-  ListItemText,
-  MenuList,
-  MenuItem,
-  Paper
-} from '@material-ui/core';
 
 import Header from 'components/header/header';
 import DataTable from 'components/admin/data-table/data-table';
+import Menu from 'components/admin/menu/menu';
 import constants from 'constants/admin';
-import adminHelper from 'helpers/admin';
+import {actionsBinder} from 'helpers/actions';
 import './admin.scss';
 
 const menuItems = constants.MENU_ITEMS;
 
+const mapStateToProps = (state) => ({
+  events: state.rsvps.events,
+  guests: state.rsvps.guests,
+  rsvps: state.rsvps.rsvps,
+  loading: state.rsvps.loading,
+  error: state.rsvps.error
+});
+
+const mapDispatchToProps = actionsBinder(
+  'getEvents',
+  'getGuests',
+  'getRSVPs'
+);
+
 class Admin extends Component {
   state = {
-    selectedMenuItem: null,
-    tableData: {}
+    selectedMenuItem: _.get(menuItems, ['0', 'key'])
   }
 
   componentDidMount() {
-    this.selectMenuItem(menuItems[0].key);
+    this.props.getGuests();
   }
 
   selectMenuItem(key) {
-    adminHelper.fetchData(key).then(data => {
-      this.setState({
-        selectedMenuItem: key,
-        tableData: data
-      });
+    this.setState({
+      selectedMenuItem: key
     });
+
+    switch (key) {
+      case 'events':
+        this.props.getEvents();
+        break;
+      case 'guests':
+        this.props.getGuests();
+        break;
+      case 'rsvps':
+        this.props.getRSVPs();
+        break;
+      default:
+        throw new Error(`Unknown data type ${key}`);
+    }
   }
 
-  renderMenu() {
-    const {selectedMenuItem} = this.state;
+  getMessage() {
+    const {error, loading} = this.props;
+    if (loading) {
+      return 'Loading';
+    } else if (error) {
+      return error;
+    }
+    return null;
+  }
 
-    return (
-      <Paper>
-        <MenuList>
-          {menuItems.map(item => {
-            return (
-              <MenuItem
-                selected={selectedMenuItem === item.key}
-                onClick={() => this.selectMenuItem(item.key)}
-                key={item.key}>
-                <ListItemIcon className='menu-icon'>
-                  <item.icon/>
-                </ListItemIcon>
-                <ListItemText classes={{ primary: 'primary' }} inset primary={item.label} />
-              </MenuItem>
-            );
-          })}
-        </MenuList>
-      </Paper>
-    );
+  getTableData() {
+    const {selectedMenuItem} = this.state;
+    return {
+      columns: constants.TABLE_COLUMNS[selectedMenuItem],
+      data: this.props[selectedMenuItem] || []
+    }
   }
 
   render() {
+    const message = this.getMessage();
+    const tableData = this.getTableData();
+
     return (
       <Container>
         <div className='admin'>
@@ -71,11 +87,17 @@ class Admin extends Component {
 
           <div className='content'>
             <div className='menu-container'>
-              {this.renderMenu()}
+              <Menu
+                menuItems={menuItems}
+                selectedMenuItem={this.state.selectedMenuItem}
+                selectMenuItem={this.selectMenuItem.bind(this)}
+              />
             </div>
             <div className='table-container'>
-              {!_.isEmpty(this.state.tableData) &&
-                <DataTable tableData={this.state.tableData}/>
+              {message ?
+                <div>{message}</div>
+                :
+                <DataTable tableData={tableData}/>
               }
             </div>
           </div>
@@ -85,4 +107,7 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Admin);

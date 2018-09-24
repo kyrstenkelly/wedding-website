@@ -1,54 +1,6 @@
-import rsvpService from 'services/rsvp-service';
 import helper from './admin';
 
-const mockData = [{mock: 'data'}];
-
 describe('helpers/admin', () => {
-  describe('#fetchData', () => {
-    it('fetches event data', () => {
-      const mock = jest.fn();
-      mock.mockReturnValue(Promise.resolve(mockData));
-      rsvpService.fetchEvents = mock;
-
-      return helper.fetchData('events').then((result) => {
-        expect(mock).toHaveBeenCalled();
-        expect(result.columns);
-        expect(result.data).toBe(mockData);
-      });
-    });
-
-    it('fetches guest data', () => {
-      const mock = jest.fn();
-      mock.mockReturnValue(Promise.resolve(mockData));
-      rsvpService.fetchGuests = mock;
-
-      return helper.fetchData('guests').then((result) => {
-        expect(mock).toHaveBeenCalled();
-        expect(result.columns);
-        expect(result.data).toBe(mockData);
-      });
-    });
-
-    it('fetches rsvp data', () => {
-      const mock = jest.fn();
-      mock.mockReturnValue(Promise.resolve(mockData));
-      rsvpService.fetchRSVPs = mock;
-
-      return helper.fetchData('rsvps').then((result) => {
-        expect(mock).toHaveBeenCalled();
-        expect(result.columns);
-        expect(result.data).toBe(mockData);
-      });
-    });
-
-    it('throws an error for unknown data types', () => {
-      const badDataCall = () => {
-        return helper.fetchData('not-real');
-      };
-      expect(badDataCall).toThrowError();
-    });
-  });
-
   describe('#formatData', () => {
     it('doesnt format anything if there are no nested objects', () => {
       const data = {

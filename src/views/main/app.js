@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Details from 'components/details/details';
 import Header from 'components/header/header';
 import Intro from 'components/intro/intro';
-import authHelper from 'helpers/auth';
+import authService from 'services/auth-service';
 import config from 'config';
 import './app.scss';
 
@@ -45,7 +45,7 @@ class App extends Component {
       scroll: true
     }];
 
-    if (authHelper.isAuthenticated()) {
+    if (authService.isAuthenticated()) {
       links.push({
         label: 'Admin',
         to: config.BASE_URL + '/admin',

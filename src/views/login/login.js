@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 
 import Container from '../container';
-import authHelper from 'helpers/auth';
+import authService from 'services/auth-service';
 import './login.scss';
 
 class Login extends Component {
@@ -12,7 +12,7 @@ class Login extends Component {
         <div className='login'>
           <Button
             color='primary'
-            onClick={authHelper.login}
+            onClick={authService.login}
             size='large'
             variant='contained'>Log In</Button>
         </div>

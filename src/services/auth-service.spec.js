@@ -1,28 +1,28 @@
 import auth0 from 'auth0-js';
-import helper from './auth';
+import service from './auth-service';
 
 
-describe('helpers/auth', () => {
+describe('services/auth-service', () => {
   describe('#isAuthenticated', () => {
-    const originalParseHash = helper.parseHash;
+    const originalParseHash = service.parseHash;
 
     beforeEach(() => {
-      helper.parseHash = jest.fn();
+      service.parseHash = jest.fn();
     });
 
     afterEach(() => {
-      helper.parseHash = originalParseHash;
+      service.parseHash = originalParseHash;
     })
 
-    it('returns true if the id_token has been set in local storage', () => {
-      localStorage.setItem('id_token', 'fake-id-token');
-      expect(helper.isAuthenticated()).toBeTruthy();
+    it('returns true if the jwt cookie has been set', () => {
+      service.setJWT('fake-jwt');
+      expect(service.isAuthenticated()).toBeTruthy();
 
-      localStorage.clear();
+      service.removeJWT();
     });
 
     it('returns false if the id_token has not been set in local storage', () => {
-      expect(helper.isAuthenticated()).toBeFalsy();
+      expect(service.isAuthenticated()).toBeFalsy();
     });
   });
 
@@ -36,7 +36,7 @@ describe('helpers/auth', () => {
       });
       auth0.WebAuth = mockWebAuth;
 
-      helper.parseHash();
+      service.parseHash();
       expect(mockWebAuth).toHaveBeenCalled();
       expect(parseHashSpy).toHaveBeenCalled();
     });
@@ -52,7 +52,7 @@ describe('helpers/auth', () => {
       });
       auth0.WebAuth = mockWebAuth;
 
-      helper.login();
+      service.login();
       expect(mockWebAuth).toHaveBeenCalled();
       expect(authorizeSpy).toHaveBeenCalled();
     });
@@ -64,16 +64,11 @@ describe('helpers/auth', () => {
       reloadSpy = jest.spyOn(window.location, 'reload');
     });
 
-    it('removes login info from local storage and reloads the window', () => {
-      localStorage.setItem('id_token', 'fake-id-token');
-      localStorage.setItem('access_token', 'fake-access-token');
-      localStorage.setItem('profile', 'fake-profile');
+    it('removes the jwt cookie and reloads the window', () => {
+      service.setJWT('fake-jwt');
+      service.logout();
 
-      helper.logout();
-
-      expect(localStorage.getItem('id_token')).toBeFalsy();
-      expect(localStorage.getItem('access_token')).toBeFalsy();
-      expect(localStorage.getItem('profile')).toBeFalsy();
+      expect(service.getJWT()).toBeFalsy();
       expect(reloadSpy).toHaveBeenCalled();
     });
   });
