@@ -7,11 +7,15 @@ import {
   TableCell,
   TableRow
 } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 
 import EnhancedTableHead from './enhanced-table-head';
 import adminHelper from 'helpers/admin';
 import sortHelper from 'helpers/sort';
+
+import './data-table.scss';
 
 const getFirstTableColumn = (props) => {
   return _.get(props, ['tableData', 'columns', '0', 'key']);
@@ -49,12 +53,13 @@ class DataTable extends Component {
     }
 
     this.setState({ order, orderBy });
-  };
+  }
 
   render() {
     const {tableData: {columns, data}} = this.props;
     const {order, orderBy} = this.state;
     const formattedData = data.map(d => adminHelper.formatData(d));
+    const sortedData = sortHelper.stableSort(formattedData, sortHelper.getSorting(order, orderBy));
 
     return (
       <Paper>
@@ -67,8 +72,7 @@ class DataTable extends Component {
           />
 
           <TableBody>
-            {sortHelper.stableSort(formattedData, sortHelper.getSorting(order, orderBy))
-              .map(d => {
+            {sortedData.map(d => {
                 return (
                   <TableRow key={d.id}>
                     {columns.map(column =>
@@ -79,6 +83,16 @@ class DataTable extends Component {
             }
           </TableBody>
         </Table>
+
+        <div className='footer'>
+          <Button
+            variant='fab'
+            color='primary'
+            aria-label='Add'
+            className='add-button'>
+            <AddIcon />
+          </Button>
+        </div>
       </Paper>
     );
   }

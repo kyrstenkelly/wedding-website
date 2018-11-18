@@ -29,6 +29,9 @@ export default {
     }, {
       label: 'Address',
       key: 'address'
+    }, {
+      label: 'RSVP Code',
+      key: 'rsvp_code'
     }],
     events: [{
       label: 'Name',
@@ -43,6 +46,9 @@ export default {
     }, {
       label: 'Event',
       key: 'event'
+    }, {
+      label: 'Attending',
+      key: 'attending'
     }, {
       label: 'Head Count',
       key: 'head_count'
