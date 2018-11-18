@@ -1,8 +1,9 @@
-import guests from './mocks/guests';
-import rsvps from './mocks/rsvps';
 import authService from './auth-service';
 import config from 'config';
+import guests from './mocks/guests';
+import rsvps from './mocks/rsvps';
 
+const UNAUTHORIZED = 401;
 
 const request = (options) => {
   const JWT = authService.getJWT();
@@ -16,10 +17,12 @@ const request = (options) => {
       })
     });
   return fetch(request)
-    .then(resp => resp.json())
-    .catch(err => {
-      console.log(err);
-      return err;
+    .then(resp => {
+      if (resp.status === UNAUTHORIZED) {
+        authService.logout();
+        return;
+      }
+      return resp.json();
     });
 }
 
@@ -27,13 +30,15 @@ export default {
   getEvents() {
     return request({
       path: '/events'
-    }).then(events => ({events}));
+    }).then(events => ({events}))
+    .catch(error => ({error}));
   },
 
   getGuests() {
     return request({
       path: '/guests'
-    }).then(guests => ({guests}));
+    }).then(guests => ({guests}))
+    .catch(error => ({error}));
   },
 
   createGuest(guest) {

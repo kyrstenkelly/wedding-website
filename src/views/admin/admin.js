@@ -55,16 +55,6 @@ class Admin extends Component {
     }
   }
 
-  getMessage() {
-    const {error, loading} = this.props;
-    if (loading) {
-      return 'Loading';
-    } else if (error) {
-      return error;
-    }
-    return null;
-  }
-
   getTableData() {
     const {selectedMenuItem} = this.state;
     return {
@@ -74,7 +64,7 @@ class Admin extends Component {
   }
 
   render() {
-    const message = this.getMessage();
+    const {error, loading} = this.props;
     const tableData = this.getTableData();
 
     return (
@@ -94,9 +84,11 @@ class Admin extends Component {
               />
             </div>
             <div className='table-container'>
-              {message ?
-                <div>{message}</div>
-                :
+              {error && <div className='error'>{error}</div>}
+
+              {loading && <div>Loading...</div>}
+
+              {(!error && !loading) &&
                 <DataTable tableData={tableData}/>
               }
             </div>

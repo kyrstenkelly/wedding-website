@@ -71,7 +71,8 @@ class DataTable extends Component {
               .map(d => {
                 return (
                   <TableRow key={d.id}>
-                    {columns.map(column => <TableCell>{d[column.key]}</TableCell>)}
+                    {columns.map(column =>
+                      <TableCell key={column.key}>{d[column.key]}</TableCell>)}
                   </TableRow>
                 );
               })
