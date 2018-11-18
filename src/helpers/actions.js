@@ -17,6 +17,9 @@ export const asyncMiddleware = store => next => action => {
     const handleError = (error) => {
       console.log(error);
       const errorType = errorTypeName(type);
+      if (error.message === 'Failed to fetch') {
+        error = `Failed to fetch data for ${type} request`;
+      }
       Promise.resolve(1).then(() => store.dispatch({type: errorType, error}));
     }
     const inProgressType = inProgressTypeName(type);

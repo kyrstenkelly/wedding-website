@@ -1,0 +1,8 @@
+@function rem($size) {
+  @return ($size / $base-font-size) + rem;
+}
+
+@mixin font-size($size) {
+  font-size: rem($size);
+  line-height: rem($size * 1.1);
+}

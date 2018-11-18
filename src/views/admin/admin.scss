@@ -4,11 +4,11 @@
   @extend .paragraph-font;
   .content {
     display: flex;
-    padding: 3rem;
+    padding: rem(48);
 
     .menu-container {
       flex: 0 250px;
-      margin-right: 3rem;
+      margin-right: rem(48);
     }
 
     .table-container {
