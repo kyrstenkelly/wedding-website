@@ -1,9 +1,9 @@
 import moment from 'moment';
 import React, { Component } from 'react';
 
-import Details from 'components/details/details';
 import Header from 'components/header/header';
 import Intro from 'components/intro/intro';
+import ScrollContent from 'components/scroll-content/scroll-content';
 import authService from 'services/auth-service';
 import content from '../../constants/content';
 import config from 'config';
@@ -59,7 +59,7 @@ class App extends Component {
 
             <Intro date={weddingDate}/>
 
-            <Details setOffset={(p) => this.setDetailsOffset(p)}/>
+            <ScrollContent setOffset={(p) => this.setDetailsOffset(p)}/>
           </div>
         </div>
 

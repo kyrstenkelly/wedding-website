@@ -3,9 +3,9 @@ import { Element } from 'react-scroll';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import content from '../../constants/content';
-import './details.scss';
+import './scroll-content.scss';
 
-class Details extends Component {
+class ScrollContent extends Component {
   static propTypes = {
     setOffset: PropTypes.func.isRequired
   }
@@ -39,7 +39,7 @@ class Details extends Component {
     const triangles = this.renderTriangles();
 
     return (
-      <div className='details'>
+      <div className='scroll-content'>
         {content.map((item, index) => {
           return (
             <Element name={item.key} className={`section section-${index}`}>
@@ -60,4 +60,4 @@ class Details extends Component {
   }
 }
 
-export default Details;
+export default ScrollContent;
