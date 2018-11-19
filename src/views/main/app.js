@@ -5,6 +5,7 @@ import Details from 'components/details/details';
 import Header from 'components/header/header';
 import Intro from 'components/intro/intro';
 import authService from 'services/auth-service';
+import content from '../../constants/content';
 import config from 'config';
 import './app.scss';
 
@@ -30,20 +31,11 @@ class App extends Component {
 
   render() {
     const {weddingDate} = this.state;
-
-    const links = [{
-      label: 'Details',
-      to: 'details',
+    const links = content.map(item => ({
+      label: item.title,
+      to: item.key,
       scroll: true
-    }, {
-      label: 'RSVP',
-      to: 'rsvp',
-      scroll: true
-    }, {
-      label: 'About Us',
-      to: 'about-us',
-      scroll: true
-    }];
+    }));
 
     if (authService.isAuthenticated()) {
       links.push({
