@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import content from '../../constants/content';
+
+import RSVP from '../rsvp/rsvp';
+import data from '../../constants/data';
 import './scroll-content.scss';
 
 class ScrollContent extends Component {
@@ -40,7 +42,8 @@ class ScrollContent extends Component {
 
     return (
       <div className='scroll-content'>
-        {content.map((item, index) => {
+        {data.content.map((item, index) => {
+          const renderRSVP = item.key === 'rsvp';
           return (
             <Element name={item.key} className={`section section-${index}`}>
               {triangles}
@@ -48,9 +51,17 @@ class ScrollContent extends Component {
               <div className='section-content'>
                 <h1 className='section-header'>{item.title}</h1>
 
-                <p className='section-body'>
-                  {item.content}
-                </p>
+                {item.content &&
+                  <p className='section-body'>
+                    {item.content}
+                  </p>
+                }
+
+                {renderRSVP &&
+                  <p className='section-body'>
+                    <RSVP></RSVP>
+                  </p>
+                }
               </div>
             </Element>
           );

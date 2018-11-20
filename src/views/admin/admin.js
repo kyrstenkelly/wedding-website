@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import Container from '../container';
+import PropTypes from 'prop-types';
 
+import Container from '../container';
 import Header from 'components/header/header';
 import DataTable from 'components/admin/data-table/data-table';
 import Menu from 'components/admin/menu/menu';
@@ -26,7 +27,18 @@ const mapDispatchToProps = actionsBinder(
   'getRSVPs'
 );
 
-class Admin extends Component {
+export class Admin extends Component {
+  static propTypes = {
+    events: PropTypes.array,
+    guests: PropTypes.array,
+    rsvps: PropTypes.array,
+    loading: PropTypes.bool,
+    error: PropTypes.string,
+    getEvents: PropTypes.func.isRequired,
+    getGuests: PropTypes.func.isRequired,
+    getRSVPs: PropTypes.func.isRequired
+  }
+
   state = {
     selectedMenuItem: _.get(menuItems, ['0', 'key'])
   }
