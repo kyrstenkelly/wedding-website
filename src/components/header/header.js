@@ -62,19 +62,21 @@ class Header extends Component {
 
     return (
       <div className={headerClass}>
-        <div className='logo'>
-          <a href={config.BASE_URL}>
-            J &amp; K
-          </a>
-        </div>
-        <div className='menu-mobile'>
-          <img className='menu-icon' src={MenuIcon} alt='Menu'/>
-        </div>
+        <div className='contain'>
+          <div className='logo'>
+            <a href={config.BASE_URL}>
+              J &amp; K
+            </a>
+          </div>
+          <div className='menu-mobile'>
+            <img className='menu-icon' src={MenuIcon} alt='Menu'/>
+          </div>
 
-        <div className='menu-desktop'>
-          <ul className='menu-list'>
-            {this.renderMenuItems()}
-          </ul>
+          <div className='menu-desktop'>
+            <ul className='menu-list'>
+              {this.renderMenuItems()}
+            </ul>
+          </div>
         </div>
       </div>
     );

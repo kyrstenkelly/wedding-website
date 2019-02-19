@@ -62,7 +62,7 @@ class DataTable extends Component {
     const sortedData = sortHelper.stableSort(formattedData, sortHelper.getSorting(order, orderBy));
 
     return (
-      <Paper>
+      <Paper className='data-table'>
         <Table>
           <EnhancedTableHead
             order={order}

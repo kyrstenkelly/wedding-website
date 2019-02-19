@@ -1,6 +1,7 @@
 import moment from 'moment';
 import React, { Component } from 'react';
 
+import Footer from 'components/footer/footer';
 import Header from 'components/header/header';
 import Intro from 'components/intro/intro';
 import ScrollContent from 'components/scroll-content/scroll-content';
@@ -59,6 +60,8 @@ class App extends Component {
             <Intro date={formattedDate}/>
 
             <ScrollContent setOffset={(p) => this.setDetailsOffset(p)}/>
+
+            <Footer></Footer>
           </div>
         </div>
       </div>

@@ -49,16 +49,16 @@ class ScrollContent extends Component {
               {triangles}
 
               <div className='section-content'>
-                <h1 className='section-header'>{item.title}</h1>
+                <h1 className='section-header contain'>{item.title}</h1>
 
                 {item.content &&
-                  <p className='section-body'>
+                  <p className='section-body contain'>
                     {item.content}
                   </p>
                 }
 
                 {renderRSVP &&
-                  <p className='section-body'>
+                  <p className='section-body contain'>
                     <RSVP></RSVP>
                   </p>
                 }

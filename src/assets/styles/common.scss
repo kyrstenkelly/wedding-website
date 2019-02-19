@@ -25,6 +25,8 @@ $screen-lg: 1224px;
 
 // MISC
 $border-radius: rem(4);
+$max-content-width: 1020px;
+$container-padding: rem(16) rem(32);
 
 .cursive-font {
   font-family: 'Rochester', cursive;
@@ -40,6 +42,13 @@ $border-radius: rem(4);
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   letter-spacing: .5px;
+}
+
+.contain {
+  max-width: $max-content-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding: $container-padding;
 }
 
 .error {

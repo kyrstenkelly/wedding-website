@@ -1,11 +1,5 @@
 @import '../../assets/styles/common';
 
-@mixin maxContentWidth {
-  max-width: 1000px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 .scroll-content {
   .section {
     @extend .print-font;
@@ -56,12 +50,10 @@
 
       .section-header {
         margin-bottom: 3rem;
-        @include maxContentWidth();
       }
 
       .section-body {
         @extend .paragraph-font;
-        @include maxContentWidth();
       }
     }
   }
