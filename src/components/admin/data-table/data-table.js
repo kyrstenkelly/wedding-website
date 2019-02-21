@@ -58,11 +58,12 @@ class DataTable extends Component {
   render() {
     const {tableData: {columns, data}} = this.props;
     const {order, orderBy} = this.state;
+    console.log(data);
     const formattedData = data.map(d => adminHelper.formatData(d));
     const sortedData = sortHelper.stableSort(formattedData, sortHelper.getSorting(order, orderBy));
 
     return (
-      <Paper>
+      <Paper className='data-table'>
         <Table>
           <EnhancedTableHead
             order={order}

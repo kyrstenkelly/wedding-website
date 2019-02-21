@@ -4,8 +4,8 @@ import PeopleIcon from '@material-ui/icons/People';
 
 export default {
   MENU_ITEMS: [{
-    key: 'guests',
-    label: 'Guests',
+    key: 'invitations',
+    label: 'Invitations',
     icon: PeopleIcon
   }, {
     key: 'events',
@@ -17,12 +17,12 @@ export default {
     icon: MailIcon
   }],
   TABLE_COLUMNS: {
-    guests: [{
-      label: 'First Name',
-      key: 'first_name'
-    }, {
-      label: 'Last Name',
-      key: 'last_name'
+    invitations: [{
+      label: 'Event',
+      key: 'event'
+    },{
+      label: 'Name',
+      key: 'name'
     }, {
       label: 'Email',
       key: 'email'
@@ -30,13 +30,19 @@ export default {
       label: 'Address',
       key: 'address'
     }, {
-      label: 'RSVP Code',
-      key: 'rsvp_code'
+      label: 'Guests',
+      key: 'guests'
     }],
     events: [{
       label: 'Name',
       key: 'name'
     }, {
+      label: 'Location',
+      key: 'location'
+    },{
+      label: 'Date',
+      key: 'date'
+    },{
       label: 'Address',
       key: 'address'
     }],

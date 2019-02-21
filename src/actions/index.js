@@ -1,10 +1,10 @@
 import events from './events';
-import guests from './guests';
+import invitations from './invitations';
 import rsvps from './rsvps';
 
 export default {
   ...events,
-  ...guests,
+  ...invitations,
   ...rsvps
 };
 

@@ -15,7 +15,7 @@ const menuItems = constants.MENU_ITEMS;
 
 const mapStateToProps = (state) => ({
   events: state.rsvps.events,
-  guests: state.rsvps.guests,
+  invitations: state.rsvps.invitations,
   rsvps: state.rsvps.rsvps,
   loading: state.rsvps.loading,
   error: state.rsvps.error
@@ -23,19 +23,19 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = actionsBinder(
   'getEvents',
-  'getGuests',
+  'getInvitations',
   'getRSVPs'
 );
 
 export class Admin extends Component {
   static propTypes = {
     events: PropTypes.array,
-    guests: PropTypes.array,
+    invitations: PropTypes.array,
     rsvps: PropTypes.array,
     loading: PropTypes.bool,
     error: PropTypes.string,
     getEvents: PropTypes.func.isRequired,
-    getGuests: PropTypes.func.isRequired,
+    getInvitations: PropTypes.func.isRequired,
     getRSVPs: PropTypes.func.isRequired
   }
 
@@ -44,7 +44,7 @@ export class Admin extends Component {
   }
 
   componentDidMount() {
-    this.props.getGuests();
+    this.props.getInvitations();
   }
 
   selectMenuItem(key) {
@@ -56,8 +56,8 @@ export class Admin extends Component {
       case 'events':
         this.props.getEvents();
         break;
-      case 'guests':
-        this.props.getGuests();
+      case 'invitations':
+        this.props.getInvitations();
         break;
       case 'rsvps':
         this.props.getRSVPs();

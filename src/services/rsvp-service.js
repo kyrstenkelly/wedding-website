@@ -1,6 +1,6 @@
 import authService from './auth-service';
 import config from 'config';
-import guests from './mocks/guests';
+import invitations from './mocks/invitations';
 import rsvps from './mocks/rsvps';
 
 const UNAUTHORIZED = 401;
@@ -34,23 +34,23 @@ export default {
     .catch(error => ({error}));
   },
 
-  getGuests() {
+  getInvitations() {
     return request({
-      path: '/guests'
-    }).then(guests => ({guests}))
+      path: '/invitations'
+    }).then(invitations => ({invitations}))
     .catch(error => ({error}));
   },
 
-  createGuest(guest) {
-    guests.push(guest);
-    return Promise.resolve(guest);
+  createInvitation(invitation) {
+    invitations.push(invitation);
+    return Promise.resolve(invitation);
   },
 
-  updateGuest(guest) {
-    return Promise.resolve(guest);
+  updateInvitation(invitation) {
+    return Promise.resolve(invitation);
   },
 
-  deleteGuest(guest) {
+  deleteInvitation(invitation) {
     return Promise.resolve();
   },
 
