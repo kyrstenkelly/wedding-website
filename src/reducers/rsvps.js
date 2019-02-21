@@ -7,7 +7,7 @@ import types from 'actions/types';
 
 const initialState = {
   events: [],
-  guests: [],
+  invitations: [],
   rsvps: [],
   loading: false,
   error: null
@@ -33,19 +33,19 @@ export default function rsvpsReducer(state = initialState, action) {
         loading: false,
         error: action.error
       };
-    case inProgressTypeName(types.GET_GUESTS):
+    case inProgressTypeName(types.GET_INVITATIONS):
       return {
         ...state,
         loading: true
       };
-    case successTypeName(types.GET_GUESTS):
-      const {guests} = action;
+    case successTypeName(types.GET_INVITATIONS):
+      const {invitations} = action;
       return {
         ...state,
         loading: false,
-        guests
+        invitations
       };
-    case errorTypeName(types.GET_GUESTS):
+    case errorTypeName(types.GET_INVITATIONS):
       return {
         ...state,
         loading: false,

@@ -6,7 +6,7 @@ export default [{
   zip: 77054
 }, {
   line1: '123 Redwood Lane',
-  city: 'San Francisco',
+  city: 'Saratoga',
   state: 'CA',
   zip: '12345'
 }, {
