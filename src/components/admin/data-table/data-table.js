@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 
 import EnhancedTableHead from './enhanced-table-head';
+import InvitationModal from '../invitation-modal/invitation-modal';
 import adminHelper from 'helpers/admin';
 import sortHelper from 'helpers/sort';
 
@@ -23,6 +24,7 @@ const getFirstTableColumn = (props) => {
 
 class DataTable extends Component {
   static propTypes = {
+    dataType: PropTypes.string.isRequired,
     tableData: PropTypes.shape({
       columns: PropTypes.arrayOf(PropTypes.shape({
         key: PropTypes.string.isRequired,
@@ -32,16 +34,10 @@ class DataTable extends Component {
     })
   }
 
-  static defaultProps = {
-    tableData: {
-      columns: [],
-      data: []
-    }
-  }
-
   state = {
     order: 'asc',
-    orderBy: getFirstTableColumn(this.props)
+    orderBy: getFirstTableColumn(this.props),
+    isModalOpen: false
   }
 
   handleRequestSort = (event, property) => {
@@ -55,46 +51,80 @@ class DataTable extends Component {
     this.setState({ order, orderBy });
   }
 
+  openModal() {
+    this.setState({isModalOpen: true});
+  }
+
+  closeModal() {
+    this.setState({isModalOpen: false});
+  }
+
+  renderModal() {
+    switch (this.props.dataType) {
+      case 'invitations':
+        return (
+          <InvitationModal
+            open={this.state.isModalOpen}
+            onClose={() => this.closeModal()}
+          />
+        );
+      default:
+        return;
+    }
+  }
+
   render() {
     const {tableData: {columns, data}} = this.props;
     const {order, orderBy} = this.state;
-    console.log(data);
     const formattedData = data.map(d => adminHelper.formatData(d));
-    const sortedData = sortHelper.stableSort(formattedData, sortHelper.getSorting(order, orderBy));
+    const sortedData = sortHelper.stableSort(
+      formattedData,
+      sortHelper.getSorting(order, orderBy)
+    );
 
     return (
-      <Paper className='data-table'>
-        <Table>
-          <EnhancedTableHead
-            order={order}
-            orderBy={orderBy}
-            columns={columns}
-            onRequestSort={this.handleRequestSort}
-          />
+      <div className='data-table-container'>
+        <Paper>
+          <Table className='data-table'>
+            <EnhancedTableHead
+              order={order}
+              orderBy={orderBy}
+              columns={columns}
+              onRequestSort={this.handleRequestSort}
+            />
 
-          <TableBody>
-            {sortedData.map(d => {
-                return (
-                  <TableRow key={d.id}>
-                    {columns.map(column =>
-                      <TableCell key={column.key}>{d[column.key]}</TableCell>)}
-                  </TableRow>
-                );
-              })
-            }
-          </TableBody>
-        </Table>
+            <TableBody>
+              {sortedData.map(d => {
+                  return (
+                    <TableRow key={d.id}>
+                      {columns.map(column =>
+                        <TableCell
+                          key={column.key}
+                          padding='dense'>
+                          {d[column.key]}
+                        </TableCell>
+                      )}
+                    </TableRow>
+                  );
+                })
+              }
+            </TableBody>
+          </Table>
 
-        <div className='footer'>
-          <Button
-            variant='fab'
-            color='primary'
-            aria-label='Add'
-            className='add-button'>
-            <AddIcon />
-          </Button>
-        </div>
-      </Paper>
+          <div className='footer'>
+            <Button
+              variant='fab'
+              color='primary'
+              aria-label='Add'
+              onClick={() => this.openModal()}
+              className='add-button'>
+              <AddIcon />
+            </Button>
+          </div>
+        </Paper>
+
+        {this.renderModal()}
+      </div>
     );
   }
 }

@@ -1,14 +1,28 @@
 @import '../../../assets/styles/mixins';
 
-.data-table {
+.data-table-container {
   .footer {
     padding: rem(10) rem(20);
     display: flex;
     justify-content: flex-end;
+    box-sizing: border-box;
 
     .add-button {
       width: 36px;
       height: 36px;
     }
+  }
+}
+
+.modal-content {
+  max-width: rem(600);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: rem(20);
+
+  &:focus {
+    outline: none;
   }
 }

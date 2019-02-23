@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Container from '../container';
@@ -8,7 +8,7 @@ import Header from 'components/header/header';
 import DataTable from 'components/admin/data-table/data-table';
 import Menu from 'components/admin/menu/menu';
 import constants from 'constants/admin';
-import {actionsBinder} from 'helpers/actions';
+import { actionsBinder } from 'helpers/actions';
 import './admin.scss';
 
 const menuItems = constants.MENU_ITEMS;
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => ({
   events: state.rsvps.events,
   invitations: state.rsvps.invitations,
   rsvps: state.rsvps.rsvps,
-  loading: state.rsvps.loading,
+  // loading: state.rsvps.loading,
   error: state.rsvps.error
 });
 
@@ -32,7 +32,7 @@ export class Admin extends Component {
     events: PropTypes.array,
     invitations: PropTypes.array,
     rsvps: PropTypes.array,
-    loading: PropTypes.bool,
+    // loading: PropTypes.bool,
     error: PropTypes.string,
     getEvents: PropTypes.func.isRequired,
     getInvitations: PropTypes.func.isRequired,
@@ -76,7 +76,7 @@ export class Admin extends Component {
   }
 
   render() {
-    const {error, loading} = this.props;
+    // const {error, loading} = this.props;
     const tableData = this.getTableData();
 
     return (
@@ -96,13 +96,13 @@ export class Admin extends Component {
               />
             </div>
             <div className='table-container'>
-              {error && <div className='error'>{error}</div>}
+              {/* {error && <div className='error'>{error}</div>} */}
 
-              {loading && <div>Loading...</div>}
+              {/* {loading && <div>Loading...</div>} */}
 
-              {(!error && !loading) &&
-                <DataTable tableData={tableData}/>
-              }
+              {/* {(!error && !loading) && */}
+                <DataTable tableData={tableData} dataType={this.state.selectedMenuItem}/>
+              {/* } */}
             </div>
           </div>
         </div>
