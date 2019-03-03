@@ -2,18 +2,25 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
+  Button,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
   MenuItem,
   Modal,
   Paper,
+  Radio,
+  RadioGroup,
   TextField
 } from '@material-ui/core';
-// import Button from '@material-ui/core/Button';
 
+import AddressForm from '../address-form/address-form';
 import { actionsBinder } from 'helpers/actions';
 import './invitation-modal.scss';
 
 const mapStateToProps = (state) => ({
-  events: state.rsvps.events
+  events: state.rsvps.events,
+  loading: state.rsvps.loading.events
 });
 
 const mapDispatchToProps = actionsBinder(
@@ -23,43 +30,72 @@ const mapDispatchToProps = actionsBinder(
 
 export class InvitationModal extends Component {
   static propTypes = {
+    loading: PropTypes.bool.isRequired,
     open: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
     events: PropTypes.array
   }
 
-  defaultProps = {
-    events: []
+  static defaultProps = {
+    events: [],
+    loading: false
   }
 
   state = {
-    event: '',
-    name: '',
-    email: '',
-    address: {
-      line1: '',
-      line2: '',
-      city: '',
-      state: '',
-      zip: ''
+    invitation: {
+      event: '',
+      name: '',
+      email: '',
+      address: {},
+      guests: [],
+      plusOne: false
     },
-    guests: []
+    eventsFetched: false
   }
 
   componentDidUpdate() {
-    if (this.props.open && !this.props.events.length) {
+    const { invitation } = this.state;
+    if (this.props.open && !this.state.eventsFetched) {
       this.props.getEvents();
+      this.setState({eventsFetched: true});
+    }
+    // By default set the event to the first in the list
+    if (this.props.events.length && invitation.event === '') {
+      this.setState({ invitation: {
+        ...invitation,
+        event: this.props.events[0].name }
+      });
     }
   }
 
   handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
+    let value = event.target.value;
+    if (name === 'guests') {
+      value = value.split(/[\r?\n,]/);
+    }
+    if (name === 'plusOne') {
+      value = value === 'true';
+    }
+    this.setState({ invitation: {
+      ...this.state.invitation,
+      [name]: value
+    }});
+  }
+
+  handleAddressChange = address => {
+    this.setState({invitation: {
+      ...this.state.invitation,
+      address
+    }});
+  }
+
+  saveInvitation() {
+    this.props.createInvitation(this.state.invitation);
   }
 
   render() {
     const { events } = this.props;
+    const { invitation } = this.state;
 
     return (
       <Modal
@@ -69,36 +105,82 @@ export class InvitationModal extends Component {
         onClose={this.props.onClose}
       >
         <Paper className='modal-content'>
-          {/* {loading && <div>Loading...</div>} */}
+          <div className='form'>
+            <h1 className='form-title'>Create an Invitation</h1>
 
-          {/* {(!error && !loading) && */}
-            <div>
-              <h1>Create an Invitation</h1>
+            <TextField
+              select
+              label='Event'
+              className='text-field form-field'
+              value={invitation.event}
+              onChange={this.handleChange('event')}
+              SelectProps={{
+                MenuProps: { className: 'menu' }
+              }}
+              margin='normal'
+              variant='outlined'
+            >
+              {events.map(option => (
+                <MenuItem
+                  className='select-item'
+                  key={option.id}
+                  value={option.name}>
+                  {option.name}
+                </MenuItem>
+              ))}
+            </TextField>
 
-              <TextField
-                id='outlined-select-event'
-                select
-                label='Select'
-                className='text-field'
-                value={this.state.event}
-                onChange={this.handleChange('event')}
-                SelectProps={{
-                  MenuProps: {
-                    className: 'menu',
-                  },
-                }}
-                helperText='Please select an event'
-                margin='normal'
-                variant='outlined'
+            <TextField
+              label='Name'
+              className='text-field form-field'
+              margin='normal'
+              value={invitation.name}
+              onChange={this.handleChange('name')}
+            />
+
+            <TextField
+              label='Email'
+              className='text-field form-field'
+              margin='normal'
+              value={invitation.email}
+              onChange={this.handleChange('email')}
+            />
+
+            <TextField
+              label='Guests'
+              className='text-field form-field'
+              margin='normal'
+              multiline
+              rows='2'
+              rowsMax='6'
+              value={invitation.guests.join('\n')}
+              onChange={this.handleChange('guests')}
+            />
+
+            <FormControl margin='normal'>
+              <FormLabel>Plus One</FormLabel>
+              <RadioGroup
+                name='plusOne'
+                className='plus-one-radio-group'
+                value={String(invitation.plusOne)}
+                onChange={this.handleChange('plusOne')}
               >
-                {events.map(option => (
-                  <MenuItem key={option.id} value={option.name}>
-                    {option.name}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </div>
+                <FormControlLabel value='true' control={<Radio color='primary'/>} label='Yes' />
+                <FormControlLabel value='false' control={<Radio color='primary'/>} label='No' />
+              </RadioGroup>
+            </FormControl>
 
+            <AddressForm onChange={this.handleAddressChange} />
+
+            <Button
+              className='save-button'
+              variant='contained'
+              color='primary'
+              onClick={() => this.saveInvitation()}
+            >
+              Save
+            </Button>
+          </div>
         </Paper>
       </Modal>
     );

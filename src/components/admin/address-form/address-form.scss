@@ -1,0 +1,25 @@
+@import '../../../assets/styles/common';
+
+.address-fields {
+  &--title {
+    margin-bottom: 0;
+  }
+
+  &--row {
+    display: flex;
+  }
+
+  .form-field {
+    flex: 1;
+    margin-right: $default-spacing-sm;
+    margin-left: $default-spacing-sm;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

@@ -26,9 +26,6 @@ class EnhancedTableHead extends Component {
   render() {
     const { order, orderBy } = this.props;
 
-    // numeric={column.numeric}
-    //             padding={column.disablePadding ? 'none' : 'default'}
-
     return (
       <TableHead>
         <TableRow>

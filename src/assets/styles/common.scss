@@ -26,7 +26,10 @@ $screen-lg: 1224px;
 // MISC
 $border-radius: rem(4);
 $max-content-width: 1020px;
-$container-padding: rem(16) rem(32);
+$default-spacing-sm: rem(20);
+$default-spacing-md: rem(32);
+$default-spacing-lg: rem(40);
+$container-padding: rem(16) $default-spacing-md;
 
 .cursive-font {
   font-family: 'Rochester', cursive;

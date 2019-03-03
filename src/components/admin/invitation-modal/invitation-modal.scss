@@ -1,0 +1,24 @@
+@import '../../../assets/styles/forms';
+@import '../../../assets/styles/common';
+
+.modal-content {
+  max-width: rem(600);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: $default-spacing-md;
+
+  &:focus {
+    outline: none;
+  }
+
+  .plus-one-radio-group {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .save-button {
+    margin-top: $default-spacing-md;
+  }
+}

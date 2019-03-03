@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+
+  .form-title {
+    margin-top: 0;
+  }
+}
+
+.menu {
+  ul {
+    li.select-item {
+      padding: 10px 12px;
+    }
+  }
+}
