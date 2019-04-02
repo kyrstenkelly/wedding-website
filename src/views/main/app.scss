@@ -1,4 +1,4 @@
-@import '../../assets/styles/common.scss';
+@import '~assets/styles/common';
 
 .app {
   .background-photo {
@@ -16,7 +16,7 @@
       z-index: 1;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,.3);
+      background-color: rgba(6,24,49, .45);
     }
 
     .content {

@@ -1,9 +1,12 @@
 @import 'mixins';
 
+// COLORS (new)
+$yellow: #E5C86A;
+
 // COLORS
 $dark-gray: #444444;
 $dark-blue: #07183F;
-$yellow: #EACF64;
+// $yellow: #EACF64;
 $light-gray: #EFEFEF;
 $white: #ffffff;
 $red: #EE3108;
@@ -33,7 +36,6 @@ $container-padding: rem(16) $default-spacing-md;
 
 .cursive-font {
   font-family: 'Rochester', cursive;
-  // font-family: 'Lobster Two', cursive;
 }
 
 .print-font {

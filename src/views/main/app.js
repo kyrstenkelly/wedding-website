@@ -1,10 +1,9 @@
 import moment from 'moment';
 import React, { Component } from 'react';
 
-import Footer from 'components/footer/footer';
-import Header from 'components/header/header';
+import Footer from 'components/shared/footer/footer';
+import Header from 'components/shared/header/header';
 import Intro from 'components/intro/intro';
-import ScrollContent from 'components/scroll-content/scroll-content';
 import authService from 'services/auth-service';
 import data from '../../constants/data';
 import config from 'config';
@@ -47,22 +46,22 @@ class App extends Component {
 
     return (
       <div className='app'>
-        <div className='background-photo'>
-          <div className='overlay'></div>
+        <div className='content'>
+          <div className='background-photo'>
+            <div className='overlay'></div>
 
-          <div className='content'>
-            <Header
-              colorClass={this.state.colorClass}
-              links={links}
-              setHeight={this.setHeaderHeight.bind(this)}
-            />
+            <div className='content'>
+              <Header
+                colorClass={this.state.colorClass}
+                links={links}
+                setHeight={this.setHeaderHeight.bind(this)}
+              />
 
-            <Intro date={formattedDate}/>
-
-            <ScrollContent setOffset={(p) => this.setDetailsOffset(p)}/>
-
-            <Footer></Footer>
+              <Intro date={formattedDate}/>
+            </div>
           </div>
+
+          <Footer></Footer>
         </div>
       </div>
     );

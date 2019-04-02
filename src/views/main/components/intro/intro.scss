@@ -1,0 +1,32 @@
+@import '../../assets/styles/common';
+
+.intro {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  margin: rem(270) 0 rem(30);
+  box-sizing: border-box;
+
+  &--content {
+    display: inline-block;
+  }
+
+  .date {
+    @extend .print-font;
+    @include font-size(44);
+
+    color: $white;
+    margin: rem(20);
+
+    @include media($screen-md) {
+      @include font-size(40);
+    }
+
+    @include media($screen-sm-3) {
+      @include font-size(36);
+    }
+
+    @include media($screen-sm-2) {
+      @include font-size(32);
+    }
+  }
+}
