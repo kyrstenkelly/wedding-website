@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 import authService from 'services/auth-service';
-import MenuIcon from 'assets/images/menu-button.svg';
+import MenuIcon from 'images/menu-button.svg';
 import config from 'config';
 import './header.scss';
 

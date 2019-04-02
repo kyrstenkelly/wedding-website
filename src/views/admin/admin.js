@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Container from '../container';
-import Header from 'components/header/header';
-import DataTable from 'components/admin/data-table/data-table';
-import InvitationModal from 'components/admin/invitation-modal/invitation-modal';
-import Menu from 'components/admin/menu/menu';
+import Header from 'shared/components/header/header';
+import DataTable from './components/data-table/data-table';
+import InvitationModal from './components/invitation-modal/invitation-modal';
+import Menu from './components/menu/menu';
 import constants from 'constants/admin';
 import { actionsBinder } from 'helpers/actions';
 import './admin.scss';

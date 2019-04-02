@@ -1,4 +1,4 @@
-@import '~assets/styles/common';
+@import '~shared/styles/common';
 
 .header {
   @extend .print-font;
@@ -15,7 +15,7 @@
   }
 
   &.dark {
-    background-color: $dark-gray;
+    background-color: $dark-blue;
   }
 
   .contain {

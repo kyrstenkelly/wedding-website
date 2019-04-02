@@ -1,9 +1,9 @@
 import moment from 'moment';
 import React, { Component } from 'react';
 
-import Footer from 'components/shared/footer/footer';
-import Header from 'components/shared/header/header';
-import Intro from 'components/intro/intro';
+import Footer from 'shared/components/footer/footer';
+import Header from 'shared/components/header/header';
+import Intro from './components/intro/intro';
 import authService from 'services/auth-service';
 import data from '../../constants/data';
 import config from 'config';
