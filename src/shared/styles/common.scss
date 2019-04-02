@@ -28,6 +28,7 @@ $container-padding: rem(16) $default-spacing-md;
 
 .cursive-font {
   font-family: 'Rochester', cursive;
+  font-weight: 400;
 }
 
 .print-font {
@@ -39,6 +40,15 @@ $container-padding: rem(16) $default-spacing-md;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   letter-spacing: .5px;
+}
+
+.info-font {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: rem(20);
+  line-height: rem(30);
+  letter-spacing: 1.5px;
+  color: $yellow;
 }
 
 .contain {

@@ -1,9 +1,17 @@
 @import '~shared/styles/common';
 
 .footer {
-  background: $white;
-  color: $dark-blue;
   width: 100%;
   font-family: 'Poiret One', cursive;
-  text-align: left;
+  text-align: center;
+
+  &.light {
+    background: $white;
+    color: $dark-blue;
+  }
+
+  &.dark {
+    background: $darker-blue;
+    color: $white;
+  }
 }

@@ -1,6 +1,7 @@
 import moment from 'moment';
 import React, { Component } from 'react';
 
+import EventDetails from './components/event-details/event-details';
 import Footer from 'shared/components/footer/footer';
 import Header from 'shared/components/header/header';
 import Intro from './components/intro/intro';
@@ -61,7 +62,9 @@ class App extends Component {
             </div>
           </div>
 
-          <Footer></Footer>
+          <EventDetails />
+
+          <Footer theme='dark'></Footer>
         </div>
       </div>
     );
