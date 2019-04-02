@@ -63,8 +63,8 @@ export class InvitationModal extends Component {
     if (this.props.events.length && invitation.event === '') {
       this.setState({ invitation: {
         ...invitation,
-        event: this.props.events[0].name }
-      });
+        event: this.props.events[0].id
+      }});
     }
   }
 
@@ -90,7 +90,10 @@ export class InvitationModal extends Component {
   }
 
   saveInvitation() {
-    this.props.createInvitation(this.state.invitation);
+    this.props.createInvitation({
+      ...this.state.invitation,
+      event: { id: this.state.event }
+    });
   }
 
   render() {
@@ -124,7 +127,7 @@ export class InvitationModal extends Component {
                 <MenuItem
                   className='select-item'
                   key={option.id}
-                  value={option.name}>
+                  value={option.id}>
                   {option.name}
                 </MenuItem>
               ))}
