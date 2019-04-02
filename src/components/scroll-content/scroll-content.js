@@ -45,7 +45,7 @@ class ScrollContent extends Component {
         {data.content.map((item, index) => {
           const renderRSVP = item.key === 'rsvp';
           return (
-            <Element name={item.key} className={`section section-${index}`}>
+            <Element key={item.key} name={item.key} className={`section section-${index}`}>
               {triangles}
 
               <div className='section-content'>
