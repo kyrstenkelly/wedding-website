@@ -1,7 +1,7 @@
 @import '~shared/styles/common';
 
 .header {
-  @extend .print-font;
+  // @extend .print-font;
   color: $white;
   font-weight: 600;
   position: sticky;
@@ -26,39 +26,34 @@
   }
 
   .logo {
-    @include font-size(28);
-    height: 70px;
-    width: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    letter-spacing: -4px;
-    border-radius: 50%;
-    border: 2px solid $white;
+    @extend .cursive-font;
+    @include font-size(56);
+    text-decoration: none;
+    color: $white;
 
-    a {
-      text-decoration: none;
-      color: $white;
+    &:hover {
+      cursor: pointer;
     }
   }
 
-  .menu-mobile {
-    display: none;
+  .menu {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    .menu-icon {
+    &__icon {
       height: 25px;
       width: 25px;
     }
-  }
 
-  .menu-desktop {
-    display: initial;
-
-    ul.menu-list {
+    &__list {
       list-style: none;
+      padding-left: 0;
 
-      li.menu-item {
-        @include font-size(22);
+      &-item {
+        @extend .print-font;
+        @include font-size(20);
         font-weight: 600;
         display: inline-block;
         margin: 0 20px;
@@ -77,40 +72,6 @@
           @include font-size(16);
         }
       }
-    }
-  }
-}
-
-@media only screen and (max-width: $screen-md) {
-  .header {
-    .menu-mobile {
-      display: initial;
-    }
-
-    .menu-desktop {
-      display: none;
-    }
-  }
-}
-
-@media only screen and (max-width: $screen-sm-2) {
-  .header {
-    .logo {
-      @include font-size(28);
-      height: 70px;
-      width: 70px;
-    }
-  }
-}
-
-@media only screen and (max-width: $screen-sm) {
-  .header {
-    padding: 1rem;
-
-    .logo {
-      @include font-size(24);
-      height: 60px;
-      width: 60px;
     }
   }
 }

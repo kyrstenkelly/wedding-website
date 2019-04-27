@@ -77,3 +77,23 @@ $container-padding: rem(16) $default-spacing-md;
     cursor: pointer;
   }
 }
+
+// HELPERS
+.mobile {
+  display: none !important;
+}
+
+.desktop {
+  display: initial;
+}
+
+
+@include media($screen-md) {
+  .mobile {
+    display: initial;
+  }
+
+  .desktop {
+    display: none !important;
+  }
+}

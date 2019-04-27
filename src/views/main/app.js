@@ -7,7 +7,6 @@ import Header from 'shared/components/header/header';
 import Intro from './components/intro/intro';
 import authService from 'services/auth-service';
 import data from '../../constants/data';
-import config from 'config';
 import './app.scss';
 
 class App extends Component {
@@ -31,17 +30,12 @@ class App extends Component {
 
   render() {
     const formattedDate = moment(data.weddingDate);
-    const links = data.content.map(item => ({
-      label: item.title,
-      to: item.key,
-      scroll: true
-    }));
+    const links = data.content;
 
     if (authService.isAuthenticated()) {
       links.push({
-        label: 'Admin',
-        to: config.BASE_URL + '/admin',
-        scroll: false
+        title: 'Admin',
+        key: 'admin'
       })
     }
 
