@@ -10,24 +10,6 @@ import data from '../../constants/data';
 import './app.scss';
 
 class App extends Component {
-  state = {
-    colorClass: ''
-  }
-
-  setHeaderHeight(height) {
-    this.setState({headerHeight: height});
-  }
-
-  setDetailsOffset(position) {
-    // Offset headerheight by 10 so color transition starts
-    // before it actually hits the header
-    if (position <= (this.state.headerHeight + 20)) {
-      this.setState({colorClass: 'dark'});
-    } else {
-      this.setState({colorClass: 'light'});
-    }
-  }
-
   render() {
     const formattedDate = moment(data.weddingDate);
     const links = data.content;
@@ -46,11 +28,7 @@ class App extends Component {
             <div className='overlay'></div>
 
             <div className='content'>
-              <Header
-                colorClass={this.state.colorClass}
-                links={links}
-                setHeight={this.setHeaderHeight.bind(this)}
-              />
+              <Header links={links} />
 
               <Intro date={formattedDate}/>
             </div>

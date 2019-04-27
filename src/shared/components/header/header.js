@@ -5,29 +5,46 @@ import PropTypes from 'prop-types';
 import MenuIcon from 'images/menu-button.svg';
 import './header.scss';
 
+const COLOR_CLASSES = {
+  dark: 'dark',
+  light: 'light'
+};
+
 class Header extends Component {
   static propTypes = {
-    colorClass: PropTypes.string,
     links: PropTypes.arrayOf(PropTypes.shape({
       title: PropTypes.string.isRequired,
       key: PropTypes.string.isRequired
-    })),
-    setHeight: PropTypes.func
+    }))
   }
 
   static defaultProps = {
     links: []
   }
 
+  state = {
+    colorClass: COLOR_CLASSES.light,
+    height: null
+  }
+
   componentDidMount() {
     const node = ReactDOM.findDOMNode(this);
-    if (this.props.setHeight) {
-      this.props.setHeight(node.scrollHeight);
-    }
+    this.setState({ height: node.scrollHeight });
+    window.addEventListener('scroll', this.handleScroll.bind(this));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll.bind(this));
   }
 
   goToSection(key) {
     console.log(`Going to section: ${key}`);
+  }
+
+  handleScroll() {
+    const scrolledPastHeader = window.scrollY > (this.state.height * 2);
+    const colorClass = scrolledPastHeader ? COLOR_CLASSES.dark : COLOR_CLASSES.light
+    this.setState({ colorClass });
   }
 
   renderMenuItems(links) {
@@ -52,8 +69,8 @@ class Header extends Component {
   }
 
   render() {
-    const { colorClass, links } = this.props
-    const headerClass = `header ${colorClass}`;
+    const { links } = this.props
+    const headerClass = `header ${this.state.colorClass}`;
     const middleIndex = Math.ceil(links.length / 2);
     const leftMenuItems = links.slice(0, middleIndex);
     const rightMenuItems = links.slice(middleIndex, links.length);
