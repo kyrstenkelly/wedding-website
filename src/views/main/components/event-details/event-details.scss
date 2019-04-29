@@ -1,0 +1,47 @@
+@import '~shared/styles/common';
+
+.event-details {
+  color: $white;
+  background: $darker-blue;
+  display: flex;
+  justify-items: center;
+
+  &--content {
+    @extend .contain;
+    text-align: center;
+  }
+
+  .stars {
+    width: 100%;
+    margin-top: rem(20);
+  }
+
+  .events {
+    display: flex;
+    justify-content: center;
+    margin-top: rem(-250);
+    margin-bottom: rem(100);
+
+    .event {
+      margin: 0 rem(50);
+
+      &--title {
+        @include font-size(56);
+        @extend .cursive-font;
+        line-height: rem(72);
+        margin-bottom: 0;
+      }
+
+      &--time {
+        @extend .info-font;
+        margin: rem(20) 0;
+      }
+
+      &--address {
+        @extend .paragraph-font;
+        font-size: rem(20);
+        line-height: rem(30);
+      }
+    }
+  }
+}

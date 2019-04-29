@@ -1,0 +1,92 @@
+@import '~shared/styles/common';
+
+.header {
+  color: $white;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: background-color 0.5s ease;
+
+  &.light {
+    background-color: initial;
+  }
+
+  &.dark {
+    background-color: $darker-blue;
+  }
+
+  .contain {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include media($screen-sm) {
+      flex-direction: column;
+    }
+
+    @include media($screen-md) {
+      flex-direction: row;
+    }
+
+    .logo {
+      @extend .cursive-font;
+      @include font-size(56);
+      text-decoration: none;
+      color: $white;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      @include media($screen-sm) {
+        margin-bottom: rem(10);
+      }
+
+      @include media($screen-md) {
+        margin-bottom: 0;
+      }
+    }
+
+    &__icon {
+      height: 25px;
+      width: 25px;
+    }
+
+    &__list {
+      list-style: none;
+      padding-left: 0;
+
+      &-item {
+        @extend .print-font;
+        @include font-size(20);
+        font-weight: 600;
+        display: inline-block;
+        margin: 0 rem(20);
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        a {
+          color: $white;
+          text-decoration: none;
+        }
+
+        .btn {
+          border-color: $white;
+          @include font-size(16);
+        }
+      }
+    }
+  }
+}

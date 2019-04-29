@@ -1,14 +1,15 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Container from '../container';
-import Header from 'components/header/header';
-import DataTable from 'components/admin/data-table/data-table';
-import Menu from 'components/admin/menu/menu';
+import Header from 'shared/components/header/header';
+import DataTable from './components/data-table/data-table';
+import InvitationModal from './components/invitation-modal/invitation-modal';
+import Menu from './components/menu/menu';
 import constants from 'constants/admin';
-import {actionsBinder} from 'helpers/actions';
+import { actionsBinder } from 'helpers/actions';
 import './admin.scss';
 
 const menuItems = constants.MENU_ITEMS;
@@ -32,7 +33,11 @@ export class Admin extends Component {
     events: PropTypes.array,
     invitations: PropTypes.array,
     rsvps: PropTypes.array,
-    loading: PropTypes.bool,
+    loading: PropTypes.shape({
+      events: PropTypes.bool.isRequired,
+      invitations: PropTypes.bool.isRequired,
+      rsvps: PropTypes.bool.isRequired
+    }),
     error: PropTypes.string,
     getEvents: PropTypes.func.isRequired,
     getInvitations: PropTypes.func.isRequired,
@@ -40,6 +45,7 @@ export class Admin extends Component {
   }
 
   state = {
+    isModalOpen: false,
     selectedMenuItem: _.get(menuItems, ['0', 'key'])
   }
 
@@ -75,9 +81,32 @@ export class Admin extends Component {
     }
   }
 
+  openModal() {
+    this.setState({isModalOpen: true});
+  }
+
+  closeModal() {
+    this.setState({isModalOpen: false});
+  }
+
+  renderModal() {
+    switch (this.state.selectedMenuItem) {
+      case 'invitations':
+        return (
+          <InvitationModal
+            open={this.state.isModalOpen}
+            onClose={() => this.closeModal()}
+          />
+        );
+      default:
+        return;
+    }
+  }
+
   render() {
     const {error, loading} = this.props;
     const tableData = this.getTableData();
+    const dataLoading = loading[this.state.selectedMenuItem];
 
     return (
       <Container>
@@ -96,15 +125,19 @@ export class Admin extends Component {
               />
             </div>
             <div className='table-container'>
-              {error && <div className='error'>{error}</div>}
-
-              {loading && <div>Loading...</div>}
-
-              {(!error && !loading) &&
-                <DataTable tableData={tableData}/>
+              {error ?
+                <div className='error'>{error}</div>
+                :
+                <DataTable
+                  tableData={tableData}
+                  loading={dataLoading}
+                  openModal={() => this.openModal()}
+                />
               }
             </div>
           </div>
+
+          {this.renderModal()}
         </div>
       </Container>
     );

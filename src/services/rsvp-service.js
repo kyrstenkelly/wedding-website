@@ -1,6 +1,5 @@
 import authService from './auth-service';
 import config from 'config';
-import invitations from './mocks/invitations';
 import rsvps from './mocks/rsvps';
 
 const UNAUTHORIZED = 401;
@@ -42,8 +41,11 @@ export default {
   },
 
   createInvitation(invitation) {
-    invitations.push(invitation);
-    return Promise.resolve(invitation);
+    return request({
+      path: '/invitations',
+      method: 'post',
+      body: JSON.stringify(invitation)
+    });
   },
 
   updateInvitation(invitation) {

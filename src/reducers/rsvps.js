@@ -9,7 +9,11 @@ const initialState = {
   events: [],
   invitations: [],
   rsvps: [],
-  loading: false,
+  loading: {
+    events: false,
+    invitations: false,
+    rsvps: false
+  },
   error: null
 };
 
@@ -18,55 +22,82 @@ export default function rsvpsReducer(state = initialState, action) {
     case inProgressTypeName(types.GET_EVENTS):
       return {
         ...state,
-        loading: true
+        loading: {
+          ...state.loading,
+          events: true
+        }
       };
     case successTypeName(types.GET_EVENTS):
       const {events} = action;
       return {
         ...state,
-        loading: false,
+        loading: {
+          ...state.loading,
+          events: false
+        },
         events
       };
     case errorTypeName(types.GET_EVENTS):
       return {
         ...state,
-        loading: false,
+        loading: {
+          ...state.loading,
+          events: false
+        },
         error: action.error
       };
     case inProgressTypeName(types.GET_INVITATIONS):
       return {
         ...state,
-        loading: true
+        loading: {
+          ...state.loading,
+          invitations: true
+        }
       };
     case successTypeName(types.GET_INVITATIONS):
       const {invitations} = action;
       return {
         ...state,
-        loading: false,
+        loading: {
+          ...state.loading,
+          invitations: false
+        },
         invitations
       };
     case errorTypeName(types.GET_INVITATIONS):
       return {
         ...state,
-        loading: false,
+        loading: {
+          ...state.loading,
+          invitations: false
+        },
         error: action.error
       };
     case inProgressTypeName(types.GET_RSVPS):
       return {
         ...state,
-        loading: true
+        loading: {
+          ...state.loading,
+          rsvps: true
+        }
       };
     case successTypeName(types.GET_RSVPS):
       const {rsvps} = action;
       return {
         ...state,
-        loading: false,
+        loading: {
+          ...state.loading,
+          rsvps: false
+        },
         rsvps
       };
     case errorTypeName(types.GET_RSVPS):
       return {
         ...state,
-        loading: false,
+        loading: {
+          ...state.loading,
+          rsvps: false
+        },
         error: action.error
       };
     default:

@@ -1,10 +1,11 @@
-@import '../../../assets/styles/mixins';
+@import '~shared/styles/common';
 
-.data-table {
+.data-table-container {
   .footer {
-    padding: rem(10) rem(20);
+    padding: rem(10) $default-spacing-sm;
     display: flex;
     justify-content: flex-end;
+    box-sizing: border-box;
 
     .add-button {
       width: 36px;

@@ -1,0 +1,77 @@
+/**
+* VISIBILITY HELPER
+*
+* Show only for the given seize:
+* .show-[size]
+*
+* Show for the given size and all larger sizes:
+* .show-[size]-up
+*
+* Use display flex instead of block
+* .show-[size].show-flex
+*
+* Use display inline instead of block
+* .show-[size].show-inline
+*
+* Use display inline block instead of block
+* .show-[size].show-inline-block
+*/
+
+$screen-xs: 480px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+
+$screen: (
+  xs: $screen-xs,
+  sm: $screen-sm,
+  md: $screen-md,
+  lg: $screen-lg
+);
+
+$display: (
+	flex: flex,
+	inline: inline,
+	inline-block: inline-block
+);
+
+@mixin show($size, $display, $opt: '') {
+	$target-screen-size: map-get($screen, $size);
+
+	@each $key, $val in $screen {
+		$screen-size: map-get($screen, $key);
+
+		@include media($screen-size) {
+			@if $size == $key {
+				display: $display !important;
+			} @else if $opt == 'up' and $screen-size > $target-screen-size {
+				display: $display !important;
+			} @else {
+				display: none !important;
+			}
+		}
+	}
+}
+
+@each $key, $val in $screen {
+  .show-#{$key} {
+		@include show($key, block);
+
+		@each $display-key, $display-val in $display {
+			&.show-#{$display-val} {
+				@include show($key, $display-val);
+			}
+		}
+	}
+
+	.show-#{$key}-up {
+		@include show($key, block, 'up');
+
+		@each $display-key, $display-val in $display {
+			&.show-#{$display-val} {
+				@include show($key, $display-val, 'up');
+			}
+		}
+	}
+}
+

@@ -8,3 +8,9 @@ $base-font-size: 16;
   font-size: rem($size);
   line-height: rem($size * 1.1);
 }
+
+@mixin media($screen-size) {
+  @media only screen and (min-width: $screen-size) {
+    @content;
+  }
+}

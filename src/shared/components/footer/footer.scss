@@ -1,0 +1,17 @@
+@import '~shared/styles/common';
+
+.footer {
+  width: 100%;
+  font-family: 'Poiret One', cursive;
+  text-align: center;
+
+  &.light {
+    background: $white;
+    color: $dark-blue;
+  }
+
+  &.dark {
+    background: $darker-blue;
+    color: $white;
+  }
+}

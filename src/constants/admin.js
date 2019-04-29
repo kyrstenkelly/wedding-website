@@ -32,6 +32,9 @@ export default {
     }, {
       label: 'Guests',
       key: 'guests'
+    }, {
+      label: 'Plus One',
+      key: 'plus_one'
     }],
     events: [{
       label: 'Name',

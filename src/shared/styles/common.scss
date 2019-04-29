@@ -1,36 +1,26 @@
 @import 'mixins';
+@import 'visibility';
 
 // COLORS
-$dark-gray: #444444;
-$dark-blue: #07183F;
-$yellow: #EACF64;
-$light-gray: #EFEFEF;
+$dark-yellow: #D4AF37;
+$yellow: #E5C86A;
+$light-yellow: #F0DEA3;
+$dark-blue: #05213C;
+$darker-blue: #061831;
 $white: #ffffff;
 $red: #EE3108;
-
-$green: #2D6856;
-$gold: #E6B584;
-$light-green: #74948B;
-$brown: #3F2726;
-$light-brown: #AF9B89;
-
-
-// SCREEN SIZES
-$screen-sm: 320px;
-$screen-sm-2: 420px;
-$screen-sm-3: 500px;
-$screen-md: 768px;
-$screen-lg: 1224px;
-
 
 // MISC
 $border-radius: rem(4);
 $max-content-width: 1020px;
-$container-padding: rem(16) rem(32);
+$default-spacing-sm: rem(20);
+$default-spacing-md: rem(32);
+$default-spacing-lg: rem(40);
+$container-padding: rem(16) $default-spacing-md;
 
 .cursive-font {
   font-family: 'Rochester', cursive;
-  // font-family: 'Lobster Two', cursive;
+  font-weight: 400;
 }
 
 .print-font {
@@ -42,6 +32,15 @@ $container-padding: rem(16) rem(32);
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   letter-spacing: .5px;
+}
+
+.info-font {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: rem(20);
+  line-height: rem(30);
+  letter-spacing: 1.5px;
+  color: $yellow;
 }
 
 .contain {
@@ -63,7 +62,6 @@ $container-padding: rem(16) rem(32);
 // BUTTONS
 .btn {
   padding: rem(10) rem(15);
-  border: 1px solid $dark-gray;
   border-radius: $border-radius;
 
   &:hover {
