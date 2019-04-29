@@ -9,14 +9,14 @@ body {
   box-sizing: border-box;
 }
 
-@media only screen and (min-width: $screen-sm-2) {
+@include media($screen-sm) {
   body {
     font-size: 14px;
     line-height: 20px;
   }
 }
 
-@media only screen and (min-width: $screen-lg) {
+@include media($screen-lg) {
   body {
     font-size: 16px;
     line-height: 24px;

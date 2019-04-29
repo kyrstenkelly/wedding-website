@@ -70,30 +70,44 @@ class Header extends Component {
 
   render() {
     const { links } = this.props
-    const headerClass = `header ${this.state.colorClass}`;
     const middleIndex = Math.ceil(links.length / 2);
-    const leftMenuItems = links.slice(0, middleIndex);
-    const rightMenuItems = links.slice(middleIndex, links.length);
+    const leftMenuItems = this.renderMenuItems(links.slice(0, middleIndex));
+    const rightMenuItems = this.renderMenuItems(links.slice(middleIndex, links.length));
     const logo = this.renderLogo();
 
     return (
-      <div className={headerClass}>
+      <div className={`header ${this.state.colorClass}`}>
         <div className='contain'>
-          <div className='menu mobile'>
+          <div className='menu show-xs show-flex'>
             <img className='menu__icon' src={MenuIcon} alt='Menu'/>
 
             {logo}
+
+            {/*
+              Magical 3rd div so the logo is center aligned.
+              https://stackoverflow.com/a/44348868/3250243
+            */}
+            <div></div>
           </div>
 
-          <div className='menu desktop'>
+          <div className='menu show-sm show-flex'>
+            {logo}
+
             <ul className='menu__list'>
-              {this.renderMenuItems(leftMenuItems)}
+              {leftMenuItems}
+              {rightMenuItems}
+            </ul>
+          </div>
+
+          <div className='menu show-md-up show-flex'>
+            <ul className='menu__list'>
+              {leftMenuItems}
             </ul>
 
             {logo}
 
             <ul className='menu__list'>
-              {this.renderMenuItems(rightMenuItems)}
+              {rightMenuItems}
             </ul>
           </div>
         </div>

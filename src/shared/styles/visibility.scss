@@ -16,7 +16,11 @@
 * Use display inline block instead of block
 * .show-[size].show-inline-block
 */
-@import 'common';
+
+$screen-xs: 480px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
 
 $screen: (
   xs: $screen-xs,

@@ -3,10 +3,10 @@
 .app {
   .background-photo {
     position: relative;
-    background: url('../../images/j-and-k.jpg');
+    background: url('../../images/j-and-k-small.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     height: 100%;
 
     .overlay {
@@ -24,27 +24,18 @@
       z-index: 2;
       height: 100%;
     }
-  }
 
-}
+    @include media($screen-sm) {
+      background: url('../../images/j-and-k-medium.jpg');
+      background-size: cover;
+      background-position: center;
+    }
 
-@media only screen and (max-width: $screen-md) {
-  .app .background-photo {
-    background: url('../../images/j-and-k-medium.jpg');
-    background-size: cover;
-    background-position: center;
-  }
-
-  .pages .section {
-    padding: 1em;
-  }
-}
-
-@media only screen and (max-width: $screen-sm-2) {
-  .app .background-photo {
-    background: url('../../images/j-and-k-small.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: scroll;
+    @include media($screen-md) {
+      background: url('../../images/j-and-k.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
   }
 }
