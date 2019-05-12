@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import EventDetails from './components/event-details/event-details';
 import Footer from 'shared/components/footer/footer';
-import Header from 'shared/components/header/header';
+import Header from './components/header/header';
 import Intro from './components/intro/intro';
 import authService from 'services/auth-service';
 import data from '../../constants/data';

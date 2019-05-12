@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { Admin } from './admin';
-import Header from 'components/header/header';
 import DataTable from 'components/admin/data-table/data-table';
 import Menu from 'components/admin/menu/menu';
 
@@ -22,8 +21,7 @@ describe('<Admin />', () => {
     wrapper = shallow(<Admin {...defaultProps} />);
   });
 
-  it('renders a header and menu', () => {
-    expect(wrapper.find(Header)).toHaveLength(1);
+  it('renders a menu', () => {
     expect(wrapper.find(Menu)).toHaveLength(1);
   });
 
