@@ -1,5 +1,4 @@
 @import 'mixins';
-@import 'visibility';
 
 // COLORS
 $dark-yellow: #D4AF37;
@@ -17,6 +16,13 @@ $default-spacing-sm: rem(20);
 $default-spacing-md: rem(32);
 $default-spacing-lg: rem(40);
 $container-padding: rem(16) $default-spacing-md;
+
+// SCREEN SIZES
+$screen-xs: 320px;
+$screen-sm: 480px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
 
 .cursive-font {
   font-family: 'Rochester', cursive;
@@ -47,7 +53,11 @@ $container-padding: rem(16) $default-spacing-md;
   max-width: $max-content-width;
   margin-left: auto;
   margin-right: auto;
-  padding: $container-padding;
+  padding: $default-spacing-sm;
+
+  @include media($screen-sm) {
+    padding: $container-padding;
+  }
 }
 
 .error {

@@ -1,4 +1,5 @@
 @import '~shared/styles/common';
+@import '~shared/styles/visibility';
 
 .header {
   color: $white;
@@ -30,17 +31,17 @@
     align-items: center;
     justify-content: space-between;
 
-    @include media($screen-sm) {
+    @include media($screen-md) {
       flex-direction: column;
     }
 
-    @include media($screen-md) {
+    @include media($screen-lg) {
       flex-direction: row;
     }
 
     .logo {
       @extend .cursive-font;
-      @include font-size(56);
+      @include font-size(36);
       text-decoration: none;
       color: $white;
 
@@ -49,10 +50,15 @@
       }
 
       @include media($screen-sm) {
-        margin-bottom: rem(10);
+        @include font-size(44);
       }
 
       @include media($screen-md) {
+        @include font-size(56);
+        margin-bottom: rem(10);
+      }
+
+      @include media($screen-lg) {
         margin-bottom: 0;
       }
     }
@@ -85,6 +91,52 @@
         .btn {
           border-color: $white;
           @include font-size(16);
+        }
+      }
+    }
+  }
+
+  .mobile-menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: $default-spacing-sm;
+    background: $darker-blue;
+    top: 0;
+    left: -999px;
+    height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    transition: left .3s ease;
+
+    &.open {
+      left: 0;
+    }
+
+    &__close {
+      align-self: flex-end;
+    }
+
+    &__items {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: $default-spacing-sm;
+
+      .menu__list-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        height: 27%;
+        margin: rem(15);
+        border: 2px solid $dark-yellow;
+        border-radius: $border-radius;
+
+        &:active {
+          background: $dark-yellow;
         }
       }
     }

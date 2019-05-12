@@ -24,27 +24,33 @@ class Header extends Component {
 
   state = {
     colorClass: COLOR_CLASSES.light,
-    height: null
+    height: null,
+    mobileMenuVisible: false
   }
 
   componentDidMount() {
     const node = ReactDOM.findDOMNode(this);
     this.setState({ height: node.scrollHeight });
-    window.addEventListener('scroll', this.handleScroll.bind(this));
+    window.addEventListener('scroll', this.onScroll.bind(this));
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll.bind(this));
+    window.removeEventListener('scroll', this.onScroll.bind(this));
   }
 
   goToSection(key) {
     console.log(`Going to section: ${key}`);
+    this.setState({ mobileMenuVisible: false });
   }
 
-  handleScroll() {
+  onScroll() {
     const scrolledPastHeader = window.scrollY > (this.state.height * 2);
     const colorClass = scrolledPastHeader ? COLOR_CLASSES.dark : COLOR_CLASSES.light
     this.setState({ colorClass });
+  }
+
+  toggleMobileMenu() {
+    this.setState({ mobileMenuVisible: !this.state.mobileMenuVisible });
   }
 
   renderMenuItems(links) {
@@ -71,6 +77,7 @@ class Header extends Component {
   render() {
     const { links } = this.props
     const middleIndex = Math.ceil(links.length / 2);
+    const mobileMenuClass = this.state.mobileMenuVisible ? 'open' : '';
     const leftMenuItems = this.renderMenuItems(links.slice(0, middleIndex));
     const rightMenuItems = this.renderMenuItems(links.slice(middleIndex, links.length));
     const logo = this.renderLogo();
@@ -78,8 +85,13 @@ class Header extends Component {
     return (
       <div className={`header ${this.state.colorClass}`}>
         <div className='contain'>
-          <div className='menu show-xs show-flex'>
-            <img className='menu__icon' src={MenuIcon} alt='Menu'/>
+          <div className='menu show-xs-sm show-flex'>
+            <img
+              className='menu__icon'
+              src={MenuIcon}
+              alt='Menu'
+              onClick={() => this.toggleMobileMenu()}
+            />
 
             {logo}
 
@@ -88,9 +100,22 @@ class Header extends Component {
               https://stackoverflow.com/a/44348868/3250243
             */}
             <div></div>
+
+            <div className={`mobile-menu ${mobileMenuClass}`}>
+              {/* TODO: Get a real close icon */}
+              <span
+                className='mobile-menu__close'
+                onClick={() => this.toggleMobileMenu()}
+              >X</span>
+
+              <div className='mobile-menu__items'>
+                {leftMenuItems}
+                {rightMenuItems}
+              </div>
+            </div>
           </div>
 
-          <div className='menu show-sm show-flex'>
+          <div className='menu show-md show-flex'>
             {logo}
 
             <ul className='menu__list'>
@@ -99,7 +124,7 @@ class Header extends Component {
             </ul>
           </div>
 
-          <div className='menu show-md-up show-flex'>
+          <div className='menu show-lg-up show-flex'>
             <ul className='menu__list'>
               {leftMenuItems}
             </ul>

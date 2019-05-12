@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Container from '../container';
-import Header from 'shared/components/header/header';
 import DataTable from './components/data-table/data-table';
 import InvitationModal from './components/invitation-modal/invitation-modal';
 import Menu from './components/menu/menu';
@@ -111,11 +110,6 @@ export class Admin extends Component {
     return (
       <Container>
         <div className='admin'>
-          <Header
-            colorClass='dark'
-            logout={true}
-          />
-
           <div className='content'>
             <div className='menu-container'>
               <Menu

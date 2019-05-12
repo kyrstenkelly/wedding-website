@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './footer.scss';
 
-class Header extends Component {
+class Footer extends Component {
   static propTypes = {
     theme: PropTypes.string
   }
@@ -25,4 +25,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default Footer;
