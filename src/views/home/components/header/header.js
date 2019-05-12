@@ -39,6 +39,7 @@ class Header extends Component {
   }
 
   goToSection(key) {
+    // TODO: Figure out how we're going to handle switching sections.
     console.log(`Going to section: ${key}`);
     this.setState({ mobileMenuVisible: false });
   }

@@ -7,9 +7,9 @@ import Header from './components/header/header';
 import Intro from './components/intro/intro';
 import authService from 'services/auth-service';
 import data from '../../constants/data';
-import './app.scss';
+import './home.scss';
 
-class App extends Component {
+class Home extends Component {
   render() {
     const formattedDate = moment(data.weddingDate);
     const links = data.content;
@@ -22,7 +22,7 @@ class App extends Component {
     }
 
     return (
-      <div className='app'>
+      <div className='home'>
         <div className='content'>
           <div className='background-photo'>
             <div className='overlay'></div>
@@ -43,4 +43,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;

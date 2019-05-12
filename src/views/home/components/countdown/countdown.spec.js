@@ -25,9 +25,9 @@ describe('<Countdown />', () => {
     it('renders years, months, and days', () => {
       const unitLabels = wrapper.find('.unit-label');
       expect(unitLabels).toHaveLength(3);
-      expect(unitLabels.get(0).props.children).toEqual('year');
-      expect(unitLabels.get(1).props.children).toEqual('months');
-      expect(unitLabels.get(2).props.children).toEqual('days');
+      expect(unitLabels.get(0).props.children).toContain('year');
+      expect(unitLabels.get(1).props.children).toContain('month');
+      expect(unitLabels.get(2).props.children).toContain('day');
     });
   });
 

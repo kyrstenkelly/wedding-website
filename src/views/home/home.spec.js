@@ -1,15 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import App from './app';
-import Header from 'components/header/header';
-import Intro from 'components/intro/intro';
+import Home from './home';
+import Header from './components/header/header';
+import Intro from './components/intro/intro';
 import data from '../../constants/data';
 
-describe('<App />', () => {
+describe('<Home />', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = shallow(<Home />);
   });
 
   it('renders a header, intro and scroll content', () => {
@@ -19,12 +19,6 @@ describe('<App />', () => {
 
   it('generates a list of links from the data', () => {
     const header = wrapper.find(Header);
-    expect(header.prop('links')).toEqual(
-      data.content.map(item => ({
-        label: item.title,
-        to: item.key,
-        scroll: true
-      }))
-    );
+    expect(header.prop('links')).toEqual(data.content);
   });
 });

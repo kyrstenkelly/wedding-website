@@ -9,7 +9,7 @@ import reducers from 'reducers';
 import {asyncMiddleware} from 'helpers/actions';
 import authService from 'services/auth-service';
 import Admin from 'views/admin/admin';
-import App from 'views/main/app';
+import Home from 'views/home/home';
 import Login from 'views/login/login';
 import './index.scss';
 
@@ -39,7 +39,7 @@ const Routes = (
   <Provider store={store}>
     <BrowserRouter>
       <div>
-        <Route exact path="/" component={App}/>
+        <Route exact path="/" component={Home}/>
         <PrivateRoute path="/admin" component={Admin}/>
         <Route path="/login" render={props =>
           authService.isAuthenticated() ? (
