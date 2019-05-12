@@ -19,8 +19,13 @@
   .events {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     margin-top: rem(-250);
     margin-bottom: rem(100);
+
+    @include media($screen-md) {
+      flex-direction: row;
+    }
 
     .event {
       margin: 0 rem(50);
