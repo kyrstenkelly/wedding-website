@@ -78,7 +78,7 @@ class Header extends Component {
     return (
       <div className={`header ${this.state.colorClass}`}>
         <div className='contain'>
-          <div className='menu show-xs show-flex'>
+          <div className='menu show-xs-sm show-flex'>
             <img className='menu__icon' src={MenuIcon} alt='Menu'/>
 
             {logo}
@@ -90,7 +90,7 @@ class Header extends Component {
             <div></div>
           </div>
 
-          <div className='menu show-sm show-flex'>
+          <div className='menu show-md show-flex'>
             {logo}
 
             <ul className='menu__list'>
@@ -99,7 +99,7 @@ class Header extends Component {
             </ul>
           </div>
 
-          <div className='menu show-md-up show-flex'>
+          <div className='menu show-lg-up show-flex'>
             <ul className='menu__list'>
               {leftMenuItems}
             </ul>

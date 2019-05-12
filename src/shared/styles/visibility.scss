@@ -1,32 +1,15 @@
-/**
-* VISIBILITY HELPER
-*
-* Show only for the given seize:
-* .show-[size]
-*
-* Show for the given size and all larger sizes:
-* .show-[size]-up
-*
-* Use display flex instead of block
-* .show-[size].show-flex
-*
-* Use display inline instead of block
-* .show-[size].show-inline
-*
-* Use display inline block instead of block
-* .show-[size].show-inline-block
-*/
+@import './common';
 
-$screen-xs: 480px;
-$screen-sm: 768px;
-$screen-md: 992px;
-$screen-lg: 1200px;
+/**
+* VISIBILITY HELPER: see README for useage
+*/
 
 $screen: (
   xs: $screen-xs,
   sm: $screen-sm,
   md: $screen-md,
-  lg: $screen-lg
+	lg: $screen-lg,
+	xl: $screen-xl
 );
 
 $display: (
@@ -39,12 +22,25 @@ $display: (
 	$target-screen-size: map-get($screen, $size);
 
 	@each $key, $val in $screen {
-		$screen-size: map-get($screen, $key);
-
-		@include media($screen-size) {
+		@include media($val) {
 			@if $size == $key {
 				display: $display !important;
-			} @else if $opt == 'up' and $screen-size > $target-screen-size {
+			} @else if $opt == 'up' and $val > $target-screen-size {
+				display: $display !important;
+			} @else {
+				display: none !important;
+			}
+		}
+	}
+}
+
+@mixin show-range($small-size, $large-size, $display) {
+	$smaller-target: map-get($screen, $small-size);
+	$larger-target: map-get($screen, $large-size);
+
+	@each $key, $val in $screen {
+		@include media($val) {
+			@if $val >= $smaller-target and $val <= $larger-target {
 				display: $display !important;
 			} @else {
 				display: none !important;
@@ -70,6 +66,21 @@ $display: (
 		@each $display-key, $display-val in $display {
 			&.show-#{$display-val} {
 				@include show($key, $display-val, 'up');
+			}
+		}
+	}
+
+	// Support range options
+	@each $key2, $val2 in $screen {
+		@if $key2 != $key and $val2 > $val {
+			.show-#{$key}-#{$key2} {
+				@include show-range($key, $key2, block);
+
+				@each $display-key, $display-val in $display {
+					&.show-#{$display-val} {
+						@include show-range($key, $key2, $display-val);
+					}
+				}
 			}
 		}
 	}
