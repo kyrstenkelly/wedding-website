@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { select } from 'd3-selection';
-import FourPointStar from './d3-star-4';
-import FivePointStar from './d3-star-5';
-// import SixPointStar from './d3-star-6';
+import Star from 'services/star-service';
 import './stars.scss';
 
 class Stars extends Component {
@@ -41,42 +39,38 @@ class Stars extends Component {
       maxSize,
       numStars
     } = this.props;
-    const maxVerticalSpacing = 1.5 * (height - maxSize) / (numStars - 1);
-    const leftBounds = [0, width - maxSize];
-    const topBounds = [0, height - maxSize];
 
+    const maxVerticalSpacing = 1.5 * (height - maxSize) / (numStars - 1);
+    const leftLimit = width - maxSize;
+    const topLimit = height - maxSize;
     const numColumns = Math.floor(width / maxSize);
     const columnWidth = width / numColumns;
-
+    const numPoints = [4, 5, 6];
     const stars = [];
 
     for (let i = 1; i <= numStars; i++) {
       const previousStar = stars[stars.length - 1] || { top: 0, left: 0, size: 0, column: 0 };
       const size = this.getRandomInt(minSize, maxSize);
+      const points = numPoints[this.getRandomInt(0, 2)];
 
       // Put star at least 1/2 star away from the previous star
-      const topLimit = Math.min(previousStar.top + maxVerticalSpacing, topBounds[1]);
-      const top = this.getRandomInt(previousStar.top + (previousStar.size / 2), topLimit);
+      const topMax = Math.min(previousStar.top + maxVerticalSpacing, topLimit);
+      const top = this.getRandomInt(previousStar.top + (previousStar.size / 2), topMax);
 
       // Make sure star doesn't end up in the same column as the previous star
       const column = this.getRandomInt(1, numColumns, previousStar.column);
-      const leftMax = Math.min(leftBounds[1], column * columnWidth);
+      const leftMax = Math.min(leftLimit, column * columnWidth);
       const left = this.getRandomInt((column - 1) * columnWidth, leftMax);
 
-      const star = { top, left, size, column };
-      // debugger;
-      console.log(star);
-      stars.push(star);
+      stars.push({ top, left, points, size, column });
     }
 
     return stars;
   }
 
-  renderStar(size) {
+  renderStar(points, size) {
     const yellowGradient = 'url(#yellowGradient)';
-    // const fourPointStar = new FourPointStar(size, yellowGradient);
-    const fivePointStar = new FivePointStar(size, yellowGradient);
-    // const star = new SixPointStar(size, yellowGradient);
+    const fivePointStar = new Star(size, yellowGradient, points);
 
     return (
       <g className="star" ref={node => fivePointStar.draw(select(node))} />
@@ -114,7 +108,7 @@ class Stars extends Component {
                 width={s.size}
               >
                 {SVGDefs}
-                {this.renderStar(s.size)}
+                {this.renderStar(s.points, s.size)}
               </svg>
             );
           })
