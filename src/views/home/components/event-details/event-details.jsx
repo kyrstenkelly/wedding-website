@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Stars from '../stars/stars';
 import './event-details.scss';
 
 const eventDetails = [{
@@ -25,8 +24,6 @@ class EventDetails extends Component {
     return (
       <div className='event-details'>
         <div className='event-details--content'>
-          <Stars/>
-
           <div className='events'>
             {eventDetails.map(event =>
               <div className='event'>
