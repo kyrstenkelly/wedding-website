@@ -2,17 +2,22 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { Admin } from './admin';
-import DataTable from 'components/admin/data-table/data-table';
-import Menu from 'components/admin/menu/menu';
+import DataTable from './components/data-table/data-table';
+import Menu from './components/menu/menu';
 
 const getEvents = jest.fn();
-const getGuests = jest.fn();
+const getInvitations = jest.fn();
 const getRSVPs = jest.fn();
 
 const defaultProps = {
   getEvents,
-  getGuests,
-  getRSVPs
+  getInvitations,
+  getRSVPs,
+  loading: {
+    events: false,
+    invitations: false,
+    rsvps: false
+  }
 }
 
 describe('<Admin />', () => {
@@ -29,13 +34,17 @@ describe('<Admin />', () => {
     beforeEach(() => {
       const props = {
         ...defaultProps,
-        loading: true
+        loading: {
+          ...defaultProps.loading,
+          invitations: true
+        }
       };
       wrapper = shallow(<Admin {...props} />);
     });
 
-    it('shows a loading message', () => {
-      expect(wrapper.find('.table-container').text()).toBe('Loading...');
+    it('passes that along to the data table', () => {
+      const dataTable = wrapper.find(DataTable);
+      expect(dataTable.prop('loading')).toBe(true);
     });
   });
 
@@ -55,7 +64,7 @@ describe('<Admin />', () => {
   });
 
   describe('if the data loaded properly', () => {
-    const guests = [{
+    const invitations = [{
       first_name: 'James',
       last_name: 'Sherbert'
     }];
@@ -63,7 +72,7 @@ describe('<Admin />', () => {
     beforeEach(() => {
       const props = {
         ...defaultProps,
-        guests
+        invitations
       };
       wrapper = shallow(<Admin {...props} />);
     });
@@ -75,7 +84,7 @@ describe('<Admin />', () => {
     it('passes table data to the table', () => {
       const table = wrapper.find(DataTable);
       const tableData = table.prop('tableData');
-      expect(tableData.data).toEqual(guests);
+      expect(tableData.data).toEqual(invitations);
     });
   });
 });

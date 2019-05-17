@@ -143,7 +143,7 @@ class Stars extends Component {
     const fivePointStar = new Star(size, yellowGradient, points);
 
     return (
-      <g className='star' ref={node => fivePointStar.draw(select(node))} />
+      <g ref={node => fivePointStar.draw(select(node))} />
     );
   }
 
