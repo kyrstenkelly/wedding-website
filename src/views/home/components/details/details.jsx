@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './event-details.scss';
+import './details.scss';
 
-const eventDetails = [{
+const events = [{
   title: 'Ceremony',
   time: '4pm',
   address: {
@@ -19,13 +19,13 @@ const eventDetails = [{
   }
 }]
 
-class EventDetails extends Component {
+class Details extends Component {
   render() {
     return (
-      <div className='event-details'>
-        <div className='event-details--content'>
+      <div className='details'>
+        <div className='details--content'>
           <div className='events'>
-            {eventDetails.map(event =>
+            {events.map(event =>
               <div className='event' key={event.title}>
                 <h3 className='event--title'>{ event.title }</h3>
                 <div className='event--time'>{ event.time }</div>
@@ -43,4 +43,4 @@ class EventDetails extends Component {
   }
 }
 
-export default EventDetails;
+export default Details;

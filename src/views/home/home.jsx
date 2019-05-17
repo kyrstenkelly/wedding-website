@@ -7,27 +7,19 @@ import Footer from 'shared/components/footer/footer';
 import Header from './components/header/header';
 import Intro from './components/intro/intro';
 import Stars from './components/stars/stars';
-import data from '../../constants/data';
+import constants from '../../constants/home';
 import './home.scss';
 
-const BREAKPOINTS = {
-  xs: 320,
-  sm: 480,
-  md: 768,
-  lg: 992,
-  xl: 1200
-};
-
-const STAR_WIDTH_MAPPING = {
-  xs: 20,
-  sm: 50,
-  md: 100,
-  lg: 200,
-  xl: 250
-};
+const {
+  HEADER_LINKS,
+  BREAKPOINTS,
+  STAR_WIDTH_MAPPING,
+  WEDDING_DATE
+} = constants;
 
 class Home extends Component {
   state = {
+    currentSection: HEADER_LINKS[0].key,
     starWidth: null,
     starHeight: null,
   }
@@ -59,10 +51,23 @@ class Home extends Component {
     });
   }
 
+  updateCurrentSection(key) {
+    this.setState({ currentSection: key });
+  }
+
+  renderCurrentSection() {
+    switch(this.state.currentSection) {
+      case 'details':
+        return <EventDetails />;
+      default:
+        return null;
+    }
+  }
+
   render() {
     const { starHeight, starWidth } = this.state;
-    const formattedDate = moment(data.weddingDate);
-    const links = data.content;
+    const formattedDate = moment(WEDDING_DATE);
+    const links = HEADER_LINKS;
     const starProps = {
       height: starHeight,
       width: starWidth,
@@ -95,7 +100,7 @@ class Home extends Component {
             </div>
           </div>
 
-          <EventDetails />
+          {this.renderCurrentSection()}
 
           <Footer theme='dark'></Footer>
         </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Countdown from '../countdown/countdown';
+import Countdown from './countdown/countdown';
 import './intro.scss';
 
 class Intro extends Component {
