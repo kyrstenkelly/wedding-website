@@ -1,15 +1,17 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import Home from './home';
 import Header from './components/header/header';
 import Intro from './components/intro/intro';
+import Stars from './components/stars/stars';
 import data from '../../constants/data';
 
 describe('<Home />', () => {
   let wrapper;
+
   beforeEach(() => {
-    wrapper = shallow(<Home />);
+    wrapper = mount(<Home />);
   });
 
   it('renders a header, intro and scroll content', () => {
@@ -21,4 +23,26 @@ describe('<Home />', () => {
     const header = wrapper.find(Header);
     expect(header.prop('links')).toEqual(data.content);
   });
+
+  describe('if there is no height and width set for the stars', () => {
+    it('will not render the Stars components', () => {
+      wrapper.setState({
+        starHeight: 0,
+        starWidth: 0
+      }, () => {
+        expect(wrapper.find(Stars)).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('if there is a height and width set for the stars', () => {
+    it('renders two Stars components', () => {
+      wrapper.setState({
+        starHeight: 100,
+        starWidth: 100
+      }, () => {
+        expect(wrapper.find(Stars)).toHaveLength(2);
+      });
+    });
+  })
 });

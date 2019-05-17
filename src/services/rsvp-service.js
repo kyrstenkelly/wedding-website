@@ -1,5 +1,5 @@
 import authService from './auth-service';
-import config from 'config';
+import config from '../config';
 import rsvps from './mocks/rsvps';
 
 const UNAUTHORIZED = 401;

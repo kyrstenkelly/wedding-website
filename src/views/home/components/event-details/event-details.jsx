@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import stars from 'images/stars-homepage.png';
 import './event-details.scss';
 
 const eventDetails = [{
@@ -25,11 +24,9 @@ class EventDetails extends Component {
     return (
       <div className='event-details'>
         <div className='event-details--content'>
-          <img className='stars' src={stars} alt='stars' />
-
           <div className='events'>
             {eventDetails.map(event =>
-              <div className='event'>
+              <div className='event' key={event.title}>
                 <h3 className='event--title'>{ event.title }</h3>
                 <div className='event--time'>{ event.time }</div>
                 <div className='event--address'>

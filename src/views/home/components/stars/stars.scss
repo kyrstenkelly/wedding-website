@@ -1,0 +1,8 @@
+.stars {
+  position: relative;
+
+  .star {
+    position: absolute;
+    transition: opacity 100ms ease;
+  }
+}
