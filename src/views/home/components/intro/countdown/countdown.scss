@@ -5,6 +5,10 @@
   justify-content: center;
 
   .unit {
+    display: flex;
+    flex-direction: column;
+    margin: rem(10) rem(15) rem(5);
+
     .unit-value {
       @extend .print-font;
       @include font-size(48);
@@ -14,9 +18,7 @@
 
       background: rgba(255, 255, 255, 0.4);
       color: $white;
-
       font-weight: 500;
-      margin: rem(10) rem(15) rem(5);
       border-radius: $border-radius;
       height: 85px;
       width: 80px;
@@ -28,11 +30,11 @@
       color: $yellow;
     }
 
-    &:first-of-type .unit-value {
+    &:first-of-type {
       margin-left: 0;
     }
 
-    &:last-of-type .unit-value {
+    &:last-of-type {
       margin-right: 0;
     }
   }
