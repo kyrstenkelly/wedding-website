@@ -15,7 +15,8 @@ class Header extends Component {
     links: PropTypes.arrayOf(PropTypes.shape({
       title: PropTypes.string.isRequired,
       key: PropTypes.string.isRequired
-    }))
+    })),
+    onLinkClick: PropTypes.func
   }
 
   static defaultProps = {
@@ -39,8 +40,10 @@ class Header extends Component {
   }
 
   goToSection(key) {
-    // TODO: Figure out how we're going to handle switching sections.
-    console.log(`Going to section: ${key}`);
+    const { onLinkClick } = this.props;
+    if (onLinkClick) {
+      onLinkClick(key);
+    }
     this.setState({ mobileMenuVisible: false });
   }
 

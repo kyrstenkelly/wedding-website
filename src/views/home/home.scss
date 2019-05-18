@@ -1,15 +1,16 @@
 @import '~shared/styles/common';
 
 .home {
-  .background-photo {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .hero {
     position: relative;
-    background: url('../../images/j-and-k-small.jpg');
     background-size: cover;
-    background-position: center;
-    background-attachment: scroll;
     height: 100%;
 
-    .overlay {
+    &__overlay {
       position: absolute;
       top: 0;
       left: 0;
@@ -19,33 +20,30 @@
       background-color: rgba(6,24,49, .45);
     }
 
-    .content {
+    &__content {
       position: relative;
       z-index: 3;
       height: 100%;
     }
+  }
 
-    .stars-container {
-      position: absolute;
-      display: flex;
-      z-index: 2;
-      justify-content: space-between;
+  .stars-container {
+    position: fixed;
+    display: flex;
+    z-index: 2;
+    justify-content: space-between;
+    top: 0;
+    width: 100vw;
+    height: calc(100% - 100px);
+
+    @include media($screen-lg) {
       top: 100px;
-      width: 100vw;
-      height: 100%;
     }
+  }
 
-    @include media($screen-sm) {
-      background: url('../../images/j-and-k-medium.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-
-    @include media($screen-md) {
-      background: url('../../images/j-and-k.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
+  .content {
+    flex: 1;
+    background: $darker-blue;
+    color: $white;
   }
 }

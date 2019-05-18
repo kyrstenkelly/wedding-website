@@ -48,7 +48,7 @@ class Stars extends Component {
     min = Math.floor(min);
     max = Math.floor(max);
     const random = Math.floor(Math.random() * (max - min + 1)) + min;
-    if (random === exclude) {
+    if (random === exclude && exclude !== min && exclude !== max) {
       return this.getRandomInt(min, max, exclude);
     } else {
       return random;

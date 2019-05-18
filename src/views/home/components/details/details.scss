@@ -1,13 +1,10 @@
 @import '~shared/styles/common';
 
 .details {
-  color: $white;
-  background: $darker-blue;
   display: flex;
-  justify-items: center;
+  justify-content: center;
 
   &--content {
-    @extend .contain;
     text-align: center;
   }
 

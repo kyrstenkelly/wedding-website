@@ -50,13 +50,17 @@ $screen-xl: 1200px;
 }
 
 .contain {
-  max-width: $max-content-width;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding: $default-spacing-sm;
 
   @include media($screen-sm) {
     padding: $container-padding;
+  }
+
+  @include media($screen-lg) {
+    max-width: $max-content-width;
   }
 }
 

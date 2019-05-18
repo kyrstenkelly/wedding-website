@@ -1,23 +1,36 @@
+import details from '../images/details.jpg';
+import rsvp from '../images/rsvp.jpg';
+import story from '../images/story.jpg';
+import travel from '../images/travel.jpg';
+
 export default {
   WEDDING_DATE: '2020-10-10T06',
   HEADER_LINKS: [{
     title: 'Details',
-    key: 'details'
+    key: 'details',
+    backgroundImage: details
   }, {
     title: 'Story',
-    key: 'story'
+    key: 'story',
+    backgroundImage: story,
+    backgroundPosition: 'top'
   }, {
     title: 'Gallery',
-    key: 'gallery'
+    key: 'gallery',
+    backgroundImage: details
   }, {
     title: 'Travel',
-    key: 'travel'
+    key: 'travel',
+    backgroundImage: details
   }, {
     title: 'Gifts',
-    key: 'gifts'
+    key: 'gifts',
+    backgroundImage: travel
   }, {
     title: 'RSVP',
-    key: 'rsvp'
+    key: 'rsvp',
+    backgroundImage: rsvp,
+    backgroundPosition: 'center'
   }],
   BREAKPOINTS: {
     xs: 320,
@@ -28,7 +41,7 @@ export default {
   },
   STAR_WIDTH_MAPPING: {
     xs: 0,
-    sm: 50,
+    sm: 100,
     md: 100,
     lg: 200,
     xl: 250
