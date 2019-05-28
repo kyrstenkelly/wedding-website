@@ -65,7 +65,7 @@ class Home extends Component {
     const { currentSection } = this.state;
     switch(currentSection.key) {
       case 'details':
-        return <Details />;
+        return <Details events={constants.EVENTS} />;
       case 'travel':
         return <Travel />;
       case 'rsvp':

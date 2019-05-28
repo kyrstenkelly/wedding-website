@@ -5,7 +5,7 @@ import Home from './home';
 import Header from './components/header/header';
 import Intro from './components/intro/intro';
 import Stars from './components/stars/stars';
-import data from '../../constants/data';
+import constants from 'constants/home';
 
 describe('<Home />', () => {
   let wrapper;
@@ -21,7 +21,7 @@ describe('<Home />', () => {
 
   it('generates a list of links from the data', () => {
     const header = wrapper.find(Header);
-    expect(header.prop('links')).toEqual(data.content);
+    expect(header.prop('links')).toEqual(constants.HEADER_LINKS);
   });
 
   describe('if there is no height and width set for the stars', () => {

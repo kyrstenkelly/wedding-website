@@ -1,31 +1,26 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './details.scss';
 
-const events = [{
-  title: 'Ceremony',
-  time: '4pm',
-  address: {
-    line1: 'Sanborn County Park',
-    line2: '16055 Sanborn Rd',
-    line3: 'Saratoga, CA 95070'
-  }
-}, {
-  title: 'Reception',
-  time: '5 - 10pm',
-  address: {
-    line1: 'Saratoga Springs',
-    line2: '22801 Big Basin Way',
-    line3: 'Saratoga, CA 95070'
-  }
-}]
-
 class Details extends Component {
+  static propTypes = {
+    events: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      address: PropTypes.shape({
+        line1: PropTypes.string.isRequired,
+        line2: PropTypes.string.isRequired,
+        line3: PropTypes.string.isRequired
+      }).isRequired
+    }))
+  }
+
   render() {
     return (
       <div className='details'>
         <div className='details--content'>
           <div className='events'>
-            {events.map(event =>
+            {this.props.events.map(event =>
               <div className='event' key={event.title}>
                 <h3 className='event--title'>{ event.title }</h3>
                 <div className='event--time'>{ event.time }</div>
