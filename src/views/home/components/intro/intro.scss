@@ -3,11 +3,19 @@
 .intro {
   font-family: 'Open Sans', sans-serif;
   text-align: center;
-  margin: rem(270) 0 rem(30);
+  margin: rem(140) 0 rem(30);
   box-sizing: border-box;
 
   &--content {
     display: inline-block;
+  }
+
+  @include media($screen-sm) {
+    margin: rem(270) 0 rem(30);
+  }
+
+  @include media($screen-md) {
+    margin: rem(200) 0 rem(30);
   }
 
   .date {

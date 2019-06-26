@@ -10,6 +10,7 @@ import RSVP from './components/rsvp/rsvp';
 import Stars from './components/stars/stars';
 import Travel from './components/travel/travel';
 import constants from '../../constants/home';
+import { debounce } from '../../helpers/utils';
 import './home.scss';
 
 const {
@@ -18,6 +19,8 @@ const {
   STAR_WIDTH_MAPPING,
   WEDDING_DATE
 } = constants;
+
+const DEBOUNCE_TIMEOUT = 300;
 
 class Home extends Component {
   state = {
@@ -28,7 +31,9 @@ class Home extends Component {
 
   componentDidMount() {
     this.onResize();
-    window.addEventListener('resize', this.onResize.bind(this));
+    window.addEventListener('resize', debounce(() => {
+      this.onResize()
+    }, DEBOUNCE_TIMEOUT));
   }
 
   componentWillUnmount() {
@@ -78,12 +83,14 @@ class Home extends Component {
   render() {
     const { currentSection, starHeight, starWidth } = this.state;
     const formattedDate = moment(WEDDING_DATE);
-    const links = HEADER_LINKS;
+    // const links = HEADER_LINKS;
+    const links = [];
     const starProps = {
       height: starHeight,
       width: starWidth,
-      numStars: 20
+      numStars: starWidth <= 100 ? 10 : 20
     };
+    // console.log('star width? ', starProps.width);
 
     // TODO: Add a placeholder image while high-res bg is loading
     return (
@@ -118,8 +125,11 @@ class Home extends Component {
         </div>
 
         <div className='content'>
-          <div className='contain'>
+          {/* <div className='contain'>
             {this.renderCurrentSection()}
+          </div> */}
+          <div className='contain save-the-date'>
+            Save the date!
           </div>
         </div>
 

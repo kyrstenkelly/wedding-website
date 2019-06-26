@@ -41,6 +41,14 @@
     }
   }
 
+  .save-the-date {
+    @extend .cursive-font;
+    margin-top: rem(30);
+    font-size: rem(50);
+    line-height: rem(60);
+    text-align: center;
+  }
+
   .content {
     flex: 1;
     background: $darker-blue;

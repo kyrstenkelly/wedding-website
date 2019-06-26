@@ -90,12 +90,16 @@ class Header extends Component {
       <div className={`header ${this.state.colorClass}`}>
         <div className='contain'>
           <div className='menu show-xs-sm show-flex'>
-            <img
-              className='menu__icon'
-              src={MenuIcon}
-              alt='Menu'
-              onClick={() => this.toggleMobileMenu()}
-            />
+            {!!links.length ?
+              <img
+                className='menu__icon'
+                src={MenuIcon}
+                alt='Menu'
+                onClick={() => this.toggleMobileMenu()}
+              />
+              :
+              <div></div>
+            }
 
             {logo}
 
