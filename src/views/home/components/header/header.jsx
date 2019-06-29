@@ -31,7 +31,7 @@ class Header extends Component {
 
   componentDidMount() {
     const node = ReactDOM.findDOMNode(this);
-    this.setState({ height: node.scrollHeight });
+    this.setState({ height: node.clientHeight });
     window.addEventListener('scroll', this.onScroll.bind(this));
   }
 
@@ -73,7 +73,7 @@ class Header extends Component {
         className='logo'
         onClick={() => this.goToSection('details')}
       >
-        Kyrsten &amp; James
+        James &amp; Kyrsten
       </a>
     );
   }

@@ -36,7 +36,7 @@
   }
 
   .stars-container {
-    position: fixed;
+    position: absolute;
     display: flex;
     z-index: 2;
     justify-content: space-between;
@@ -64,6 +64,8 @@
     }
 
     @include media($screen-md) {
+      position: fixed;
+
       .stars-left {
         margin-top: 0;
       }
