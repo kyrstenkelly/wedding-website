@@ -1,5 +1,9 @@
+@import '~shared/styles/common';
+
 .stars {
   position: relative;
+  width: 100%;
+  height: 100%;
 
   .star {
     position: absolute;

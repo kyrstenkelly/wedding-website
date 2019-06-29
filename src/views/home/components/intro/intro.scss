@@ -18,6 +18,18 @@
     margin: rem(200) 0 rem(30);
   }
 
+  @include media($screen-lg) {
+    margin: rem(200) 0 rem(80);
+  }
+
+  @include media($screen-xl) {
+    margin: rem(250) 0 rem(150);
+  }
+
+  @include media($screen-xxl) {
+    margin: rem(250) 0 rem(200);
+  }
+
   .date {
     @extend .print-font;
     @include font-size(32);

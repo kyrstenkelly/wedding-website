@@ -49,19 +49,5 @@ export default {
     key: 'rsvp',
     backgroundImage: rsvp,
     backgroundPosition: 'center'
-  }],
-  BREAKPOINTS: {
-    xs: 320,
-    sm: 480,
-    md: 768,
-    lg: 992,
-    xl: 1200
-  },
-  STAR_WIDTH_MAPPING: {
-    xs: 0,
-    sm: 100,
-    md: 100,
-    lg: 200,
-    xl: 250
-  }
+  }]
 };

@@ -11,7 +11,6 @@ $red: #EE3108;
 
 // MISC
 $border-radius: rem(4);
-$max-content-width: 1020px;
 $default-spacing-sm: rem(20);
 $default-spacing-md: rem(32);
 $default-spacing-lg: rem(40);
@@ -23,6 +22,14 @@ $screen-sm: 480px;
 $screen-md: 768px;
 $screen-lg: 992px;
 $screen-xl: 1200px;
+$screen-xxl: 1400px;
+
+// CONTENT WIDTH
+$max-content-width: 70%;
+
+@include media($screen-lg) {
+  $max-content-width: 800px;
+}
 
 .cursive-font {
   font-family: 'Rochester', cursive;
@@ -59,7 +66,7 @@ $screen-xl: 1200px;
     padding: $container-padding;
   }
 
-  @include media($screen-lg) {
+  @include media($screen-md) {
     max-width: $max-content-width;
   }
 }

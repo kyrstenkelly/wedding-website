@@ -5,7 +5,8 @@ import Home from './home';
 import Header from './components/header/header';
 import Intro from './components/intro/intro';
 import Stars from './components/stars/stars';
-import constants from 'constants/home';
+import Footer from 'shared/components/footer/footer';
+// import constants from 'constants/home';
 
 describe('<Home />', () => {
   let wrapper;
@@ -19,30 +20,17 @@ describe('<Home />', () => {
     expect(wrapper.find(Intro)).toHaveLength(1);
   });
 
-  it('generates a list of links from the data', () => {
-    const header = wrapper.find(Header);
-    expect(header.prop('links')).toEqual(constants.HEADER_LINKS);
+  // TODO: Add back when we add the header to the site
+  // it('generates a list of links from the data', () => {
+  //   const header = wrapper.find(Header);
+  //   expect(header.prop('links')).toEqual(constants.HEADER_LINKS);
+  // });
+
+  it('renders two Stars components', () => {
+    expect(wrapper.find(Stars)).toHaveLength(2);
   });
 
-  describe('if there is no height and width set for the stars', () => {
-    it('will not render the Stars components', () => {
-      wrapper.setState({
-        starHeight: 0,
-        starWidth: 0
-      }, () => {
-        expect(wrapper.find(Stars)).toHaveLength(0);
-      });
-    });
+  it('renders a footer', () => {
+    expect(wrapper.find(Footer)).toHaveLength(1);
   });
-
-  describe('if there is a height and width set for the stars', () => {
-    it('renders two Stars components', () => {
-      wrapper.setState({
-        starHeight: 100,
-        starWidth: 100
-      }, () => {
-        expect(wrapper.find(Stars)).toHaveLength(2);
-      });
-    });
-  })
 });

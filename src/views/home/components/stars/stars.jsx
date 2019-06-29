@@ -1,58 +1,61 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { select } from 'd3-selection';
 import Star from 'services/star-service';
+import { generateStars } from 'helpers/stars';
+import { debounce, getRandomInt } from 'helpers/utils';
 import './stars.scss';
 
-// TODO: Make 6 pointed stars look better
-const supportedStarTypes = [4, 5 /*, 6 */];
+const DEBOUNCE_TIMEOUT = 300;
 
 class Stars extends Component {
   static propTypes = {
-    height: PropTypes.number.isRequired,
-    width: PropTypes.number.isRequired,
-    numStars: PropTypes.number,
     minSize: PropTypes.number,
     maxSize: PropTypes.number
   }
 
   static defaultProps = {
-    numStars: 20,
     minSize: 10,
     maxSize: 35
   }
 
   state = {
     fadingIn: false,
-    stars: []
+    stars: [],
+    height: 0,
+    width: 0
   }
 
-  componentWillMount() {
-    this.generateStars();
+  componentDidMount() {
+    this.onResize();
+
+    window.addEventListener('resize', debounce(() => {
+      this.onResize();
+    }, DEBOUNCE_TIMEOUT));
   }
 
-  componentWillReceiveProps(newProps) {
-    const newHeight = newProps.height !== this.props.height;
-    const newWidth = newProps.width !== this.props.width;
-
-    // Stop and redraw stars if the height or width of the canvas changes
-    if (newHeight || newWidth) {
-      this.setState({
-        fadingIn: false,
-        stars: []
-      }, () => this.generateStars());
-    }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize.bind(this));
   }
 
-  getRandomInt(min, max, exclude) {
-    min = Math.floor(min);
-    max = Math.floor(max);
-    const random = Math.floor(Math.random() * (max - min + 1)) + min;
-    if (random === exclude && exclude !== min && exclude !== max) {
-      return this.getRandomInt(min, max, exclude);
-    } else {
-      return random;
-    }
+  onResize() {
+    const node = ReactDOM.findDOMNode(this);
+
+    this.setState({
+      height: node.scrollHeight,
+      width: node.scrollWidth,
+      fadingIn: false,
+      stars: []
+    }, () => this.generateStars());
+  }
+
+  generateStars() {
+    const stars = generateStars({
+      height: this.state.height,
+      width: this.state.width
+    });
+    this.setState({ stars }, () => this.initializeFadeIn());
   }
 
   initializeFadeIn() {
@@ -75,56 +78,11 @@ class Stars extends Component {
       stars[currentIndex].opacity = 1;
       this.setState({ stars });
 
-      const timeoutInterval = this.getRandomInt(80, 200);
+      const timeoutInterval = getRandomInt(80, 200);
       setTimeout(() => {
         this.fadeIn(currentIndex + 1)
       }, timeoutInterval);
     }
-  }
-
-  generateStars() {
-    const {
-      height,
-      width,
-      minSize,
-      maxSize,
-      numStars
-    } = this.props;
-
-    const maxVerticalSpacing = 1.5 * (height - maxSize) / (numStars - 1);
-    const leftLimit = width - maxSize;
-    const topLimit = height - maxSize;
-    const numColumns = Math.floor(width / maxSize);
-    const columnWidth = width / numColumns;
-    const stars = [];
-
-    for (let i = 1; i <= numStars; i++) {
-      const size = this.getRandomInt(minSize, maxSize);
-      const rotation = this.getRandomInt(0, 360);
-      const previousStar = stars[stars.length - 1] || { top: 0, left: 0, size: 0, column: 0 };
-      const points = supportedStarTypes[this.getRandomInt(0, supportedStarTypes.length - 1)];
-
-      // Put star at least 1/2 star away from the previous star
-      const topMax = Math.min(previousStar.top + maxVerticalSpacing, topLimit);
-      const top = this.getRandomInt(previousStar.top + (previousStar.size / 2), topMax);
-
-      // Make sure star doesn't end up in the same column as the previous star
-      const column = this.getRandomInt(1, numColumns, previousStar.column);
-      const leftMax = Math.min(leftLimit, column * columnWidth);
-      const left = this.getRandomInt((column - 1) * columnWidth, leftMax);
-
-      stars.push({
-        top,
-        left,
-        points,
-        size,
-        column,
-        rotation,
-        opacity: 0
-      });
-    }
-
-    this.setState({ stars }, () => this.initializeFadeIn());
   }
 
   renderSVGDefs() {
@@ -149,11 +107,10 @@ class Stars extends Component {
 
   render() {
     const { stars } = this.state;
-    const { height, width } = this.props;
     const SVGDefs = this.renderSVGDefs();
 
     return (
-      <div className='stars' style={{ height, width }}>
+      <div className='stars'>
         {
           stars.map((s,i) => {
             return (
