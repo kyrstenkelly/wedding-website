@@ -19,7 +19,12 @@ const {
 
 class Home extends Component {
   state = {
-    currentSection: HEADER_LINKS[0]
+    currentSection: null,
+    backgroundLoaded: false
+  }
+
+  componentWillMount() {
+    this.updateCurrentSection(HEADER_LINKS[0].key);
   }
 
   updateCurrentSection(key) {
@@ -27,7 +32,19 @@ class Home extends Component {
     if (!currentSection) {
       console.error(`${key} is not a valid section`);
     }
-    this.setState({ currentSection });
+
+    const image = new Image();
+    const setBackgroundLoaded = () => {
+      console.log('background loaded');
+      this.setState({ backgroundLoaded: true });
+    }
+    image.onload = setBackgroundLoaded.bind(this);
+    image.src = currentSection.backgroundImage;
+
+    this.setState({
+      currentSection,
+      backgroundLoaded: false
+    });
   }
 
   renderCurrentSection() {
@@ -45,21 +62,23 @@ class Home extends Component {
   }
 
   render() {
-    const { currentSection } = this.state;
+    const {  backgroundLoaded, currentSection } = this.state;
     const formattedDate = moment(WEDDING_DATE);
     const links = [];
+    const imageUrl = backgroundLoaded ? currentSection.backgroundImage
+      : currentSection.backgroundImageCompressed;
 
-    // TODO: Add a placeholder image while high-res bg is loading
     return (
       <div className='home'>
-        <div
-          className='hero'
-          style={{
-            backgroundImage: `url(${currentSection.backgroundImage})`,
-            backgroundPosition: currentSection.backgroundPosition || 'bottom'
-          }}
-        >
-          <div className='hero__overlay'></div>
+        <div className='hero'>
+          <div
+            className='hero__overlay'
+            style={{
+              backgroundImage: `url(${imageUrl})`,
+              backgroundPosition: currentSection.backgroundPosition || 'bottom',
+              filter: backgroundLoaded ? 'none' : 'blur(3px)'
+            }}
+          ></div>
 
           <div className='stars-container'>
             <div className='stars-left'>
