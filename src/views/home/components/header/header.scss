@@ -69,7 +69,7 @@
     }
 
     &__list {
-      display: none; // TODO: Undo once we add menu items back!
+      visibility: hidden; // TODO: Undo once we add menu items back!
       list-style: none;
       padding-left: 0;
 
