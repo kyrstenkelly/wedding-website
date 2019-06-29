@@ -104,8 +104,14 @@ class Home extends Component {
           <div className='contain'>
             <div className='save-the-date'>
               Save the date!
+
               <p>
-                Check back soon for more details.
+                October 10, 2020<br/>
+                Saratoga, California
+              </p>
+
+              <p className='small'>
+                (Check back soon for more details)
               </p>
             </div>
           </div>

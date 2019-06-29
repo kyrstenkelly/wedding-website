@@ -98,6 +98,10 @@
       @extend .paragraph-font;
       font-size: rem(20);
       line-height: rem(28);
+
+      &.small {
+        font-size: rem(14);
+      }
     }
   }
 

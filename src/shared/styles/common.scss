@@ -56,6 +56,11 @@ $max-content-width: 70%;
   color: $yellow;
 }
 
+.small {
+  font-size: rem(14);
+  line-height: rem(20);
+}
+
 .contain {
   max-width: 100%;
   margin-left: auto;
