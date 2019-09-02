@@ -79,7 +79,7 @@ class Header extends Component {
   }
 
   render() {
-    const { links } = this.props
+    const { links } = this.props;
     const middleIndex = Math.ceil(links.length / 2);
     const mobileMenuClass = this.state.mobileMenuVisible ? 'open' : '';
     const leftMenuItems = this.renderMenuItems(links.slice(0, middleIndex));

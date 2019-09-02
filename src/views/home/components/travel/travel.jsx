@@ -5,7 +5,7 @@ class Travel extends Component {
   render() {
     return (
       <div className='travel'>
-        Travel
+        <div className='title-main'>Travel</div>
       </div>
     );
   }

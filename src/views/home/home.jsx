@@ -35,7 +35,6 @@ class Home extends Component {
 
     const image = new Image();
     const setBackgroundLoaded = () => {
-      console.log('background loaded');
       this.setState({ backgroundLoaded: true });
     }
     image.onload = setBackgroundLoaded.bind(this);
@@ -64,7 +63,7 @@ class Home extends Component {
   render() {
     const {  backgroundLoaded, currentSection } = this.state;
     const formattedDate = moment(WEDDING_DATE);
-    const links = [];
+    const links = HEADER_LINKS;
     const imageUrl = backgroundLoaded ? currentSection.backgroundImage
       : currentSection.backgroundImageCompressed;
 
@@ -98,22 +97,8 @@ class Home extends Component {
         </div>
 
         <div className='content'>
-          {/* <div className='contain'>
-            {this.renderCurrentSection()}
-          </div> */}
           <div className='contain'>
-            <div className='save-the-date'>
-              Save the date!
-
-              <p>
-                October 10, 2020<br/>
-                Saratoga, California
-              </p>
-
-              <p className='small'>
-                (Check back soon for more details)
-              </p>
-            </div>
+            {this.renderCurrentSection()}
           </div>
         </div>
 

@@ -31,6 +31,26 @@ $max-content-width: 70%;
   $max-content-width: 800px;
 }
 
+.title-main {
+  @extend .cursive-font;
+  @include font-size(56);
+  line-height: rem(72);
+  margin-bottom: 0;
+}
+
+.title-secondary {
+  @extend .print-font;
+  @include font-size(34);
+  line-height: rem(40);
+  margin-bottom: 0;
+}
+
+p {
+  @extend .paragraph-font;
+  @include font-size(18);
+  line-height: rem(24);
+}
+
 .cursive-font {
   font-family: 'Rochester', cursive;
   font-weight: 400;

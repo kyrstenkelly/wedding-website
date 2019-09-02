@@ -29,7 +29,9 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
+    // For just two menu items:
+    justify-content: center;
 
     @include media($screen-md) {
       flex-direction: column;
@@ -42,6 +44,7 @@
     .logo {
       @extend .cursive-font;
       @include font-size(36);
+      margin: 0 20px;
       text-decoration: none;
       color: $white;
 
@@ -51,6 +54,7 @@
 
       @include media($screen-sm) {
         @include font-size(44);
+        margin: 0 20px;
       }
 
       @include media($screen-md) {
@@ -64,12 +68,11 @@
     }
 
     &__icon {
-      height: 25px;
-      width: 25px;
+      height: rem(20);
+      width: rem(20);
     }
 
     &__list {
-      visibility: hidden; // TODO: Undo once we add menu items back!
       list-style: none;
       padding-left: 0;
 

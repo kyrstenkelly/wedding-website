@@ -2,29 +2,39 @@
 
 .details {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 
-  &--content {
+  &--section {
     text-align: center;
+    margin: rem(10);
+
+    @include media($screen-md) {
+      margin: rem(30);
+    }
+
+    @include media($screen-xl) {
+      margin: rem(50);
+    }
   }
 
   .events {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: rem(100);
 
     @include media($screen-md) {
       flex-direction: row;
     }
 
     .event {
-      margin: 0 rem(50);
+      margin-right: 0;
 
       &--title {
-        @include font-size(56);
-        @extend .cursive-font;
-        line-height: rem(72);
+        @include font-size(24);
+        @extend .print-font;
+        line-height: rem(32);
+        letter-spacing: 2px;
         margin-bottom: 0;
       }
 
@@ -37,6 +47,14 @@
         @extend .paragraph-font;
         font-size: rem(20);
         line-height: rem(30);
+      }
+
+      @include media($screen-md) {
+        margin-right: rem(40);
+
+        &:last-of-type {
+          margin-right: 0;
+        }
       }
     }
   }
