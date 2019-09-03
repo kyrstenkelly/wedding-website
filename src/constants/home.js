@@ -4,8 +4,8 @@ import detailsCompressed from '../images/details-compressed.jpg';
 // import rsvpCompressed from '../images/rsvp-compressed.jpg';
 // import story from '../images/story.jpg';
 // import storyCompressed from '../images/story-compressed.jpg';
-// import travel from '../images/travel.jpg';
-// import travelCompressed from '../images/travel-compressed.jpg';
+import travel from '../images/travel.jpg';
+import travelCompressed from '../images/travel-compressed.jpg';
 
 export default {
   WEDDING_DATE: '2020-10-10T06',
@@ -46,7 +46,6 @@ export default {
   //   key: 'story',
   //   backgroundImage: story,
   //   backgroundImageCompressed: storyCompressed,
-  //   backgroundPosition: 'top'
   // }, {
   //   title: 'Gallery',
   //   key: 'gallery',
@@ -55,8 +54,8 @@ export default {
   }, {
     title: 'Travel',
     key: 'travel',
-    backgroundImage: details,
-    backgroundImageCompressed: detailsCompressed
+    backgroundImage: travel,
+    backgroundImageCompressed: travelCompressed
   // }, {
   //   title: 'Gifts',
   //   key: 'gifts',
@@ -66,7 +65,6 @@ export default {
   //   title: 'RSVP',
   //   key: 'rsvp',
   //   backgroundImage: rsvp,
-  //   backgroundImageCompressed: rsvpCompressed,
-  //   backgroundPosition: 'center'
+  //   backgroundImageCompressed: rsvpCompressed
   }]
 };

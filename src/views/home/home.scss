@@ -10,6 +10,7 @@
 
     &__overlay {
       background-size: cover;
+      background-position: center bottom;
       position: absolute;
       top: 0;
       left: 0;
@@ -25,6 +26,10 @@
         width: 100%;
         z-index: 2;
         background-color: rgba(6,24,49, .45);
+      }
+
+      @include media($screen-xxl) {
+        background-position: center;
       }
     }
 
@@ -80,30 +85,10 @@
       }
     }
 
-    // TODO: Add back when we include the header
-    // height: calc(100% - 100px);
+    height: calc(100% - 100px);
 
-    // @include media($screen-lg) {
-    //   top: 100px;
-    // }
-  }
-
-  .save-the-date {
-    @extend .cursive-font;
-    margin-top: rem(70);
-    margin-bottom: rem(50);
-    font-size: rem(50);
-    line-height: rem(60);
-    text-align: center;
-
-    p {
-      @extend .paragraph-font;
-      font-size: rem(20);
-      line-height: rem(28);
-
-      &.small {
-        font-size: rem(14);
-      }
+    @include media($screen-lg) {
+      top: 100px;
     }
   }
 
@@ -111,5 +96,6 @@
     flex: 1;
     background: $darker-blue;
     color: $white;
+    text-align: center;
   }
 }

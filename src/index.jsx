@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {BrowserRouter, Redirect, Route} from 'react-router-dom';
+import {BrowserRouter, Switch, Redirect, Route} from 'react-router-dom';
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore } from 'redux'
 
@@ -11,11 +11,11 @@ import authService from 'services/auth-service';
 import Admin from 'views/admin/admin';
 import Home from 'views/home/home';
 import Login from 'views/login/login';
+import constants from './constants/home';
 import './index.scss';
 
-
+const allowedPaths = constants.HEADER_LINKS.map(l => l.key);
 const store = createStore(reducers, applyMiddleware(asyncMiddleware));
-
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -38,9 +38,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Routes = (
   <Provider store={store}>
     <BrowserRouter>
-      <div>
-        <Route exact path="/" component={Home}/>
+      <Switch>
         <PrivateRoute path="/admin" component={Admin}/>
+
         <Route path="/login" render={props =>
           authService.isAuthenticated() ? (
             <Redirect
@@ -51,9 +51,22 @@ const Routes = (
             />
           ) : (
             <Login />
-          )
-        }/>
-      </div>
+          )}
+        />
+
+        <Route exact path="/" component={() => <Home section={allowedPaths[0]}/>}/>
+        
+        <Route path="/*" component={
+          ({ location }) => {
+            const path = location.pathname.replace('/', '');
+            if (allowedPaths.includes(path)) {
+              return <Home section={path}/>;
+            }
+
+            return <Redirect to={{ pathname: '/' }}/>;
+          }}
+        />
+      </Switch>
     </BrowserRouter>
   </Provider>
 );

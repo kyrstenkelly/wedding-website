@@ -5,26 +5,26 @@ import './details.scss';
 class Details extends Component {
   static propTypes = {
     events: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string.isRequired,
+      title: PropTypes.string,
       time: PropTypes.string.isRequired,
       address: PropTypes.shape({
         line1: PropTypes.string.isRequired,
         line2: PropTypes.string.isRequired,
-        line3: PropTypes.string.isRequired
+        line3: PropTypes.string
       }).isRequired
     }))
   }
 
   renderEvent(event) {
     return (
-      <div className='event' key={event.title}>
+      <div className='event' key={`${event.title}-${event.time}`}>
         {event.title && <h3 className='event--title'>{ event.title }</h3>}
         {event.time && <div className='event--time'>{ event.time }</div>}
         <p>
           { event.address.line1 }<br/>
           { event.address.line2 }
           {event.address.line3 &&
-            <div>{ event.address.line3 }</div>
+            <span><br/>{ event.address.line3 }</span>
           }
         </p>
       </div>

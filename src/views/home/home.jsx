@@ -1,5 +1,7 @@
 import moment from 'moment';
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Details from './components/details/details';
 import Footer from 'shared/components/footer/footer';
@@ -16,33 +18,43 @@ const {
   WEDDING_DATE
 } = constants;
 
-
 class Home extends Component {
+  static propTypes = {
+    section: PropTypes.oneOf(HEADER_LINKS.map(l => l.key))
+  }
+
   state = {
-    currentSection: null,
+    currentSection: HEADER_LINKS[0],
     backgroundLoaded: false
   }
 
-  componentWillMount() {
-    this.updateCurrentSection(HEADER_LINKS[0].key);
+  componentDidMount() {
+    this.setCurrentSection();
   }
 
-  updateCurrentSection(key) {
-    const currentSection = HEADER_LINKS.find(l => l.key === key);
-    if (!currentSection) {
-      console.error(`${key} is not a valid section`);
+  componentDidUpdate(prevProps) {
+    if (prevProps.section !== this.props.section) {
+      this.setCurrentSection();
     }
+  }
+  
+  setCurrentSection() {
+    const currentSection = HEADER_LINKS.find(l => l.key === this.props.section);
+    const backgroundLoaded  = currentSection.loadedImage;
 
-    const image = new Image();
-    const setBackgroundLoaded = () => {
-      this.setState({ backgroundLoaded: true });
+    if (!backgroundLoaded) {
+      const image = new Image();
+      const setBackgroundLoaded = () => {
+        currentSection.loadedImage = image;
+        this.setState({ backgroundLoaded: true });
+      }
+      image.onload = setBackgroundLoaded.bind(this);
+      image.src = currentSection.backgroundImage;
     }
-    image.onload = setBackgroundLoaded.bind(this);
-    image.src = currentSection.backgroundImage;
 
     this.setState({
       currentSection,
-      backgroundLoaded: false
+      backgroundLoaded
     });
   }
 
@@ -61,9 +73,8 @@ class Home extends Component {
   }
 
   render() {
-    const {  backgroundLoaded, currentSection } = this.state;
+    const { backgroundLoaded, currentSection } = this.state;
     const formattedDate = moment(WEDDING_DATE);
-    const links = HEADER_LINKS;
     const imageUrl = backgroundLoaded ? currentSection.backgroundImage
       : currentSection.backgroundImageCompressed;
 
@@ -74,7 +85,7 @@ class Home extends Component {
             className='hero__overlay'
             style={{
               backgroundImage: `url(${imageUrl})`,
-              backgroundPosition: currentSection.backgroundPosition || 'bottom',
+              // backgroundPosition: currentSection.backgroundPosition || 'bottom',
               filter: backgroundLoaded ? 'none' : 'blur(3px)'
             }}
           ></div>
@@ -90,7 +101,7 @@ class Home extends Component {
           </div>
 
           <div className='hero__content'>
-            <Header links={links} onLinkClick={this.updateCurrentSection.bind(this)} />
+            <Header links={HEADER_LINKS} />
 
             <Intro date={formattedDate}/>
           </div>
@@ -108,4 +119,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);

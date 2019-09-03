@@ -1,10 +1,6 @@
 @import '~shared/styles/common';
 
 .details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
   &--section {
     text-align: center;
     margin: rem(10);

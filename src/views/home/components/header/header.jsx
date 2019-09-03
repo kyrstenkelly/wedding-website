@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
@@ -15,8 +16,7 @@ class Header extends Component {
     links: PropTypes.arrayOf(PropTypes.shape({
       title: PropTypes.string.isRequired,
       key: PropTypes.string.isRequired
-    })),
-    onLinkClick: PropTypes.func
+    }))
   }
 
   static defaultProps = {
@@ -39,14 +39,6 @@ class Header extends Component {
     window.removeEventListener('scroll', this.onScroll.bind(this));
   }
 
-  goToSection(key) {
-    const { onLinkClick } = this.props;
-    if (onLinkClick) {
-      onLinkClick(key);
-    }
-    this.setState({ mobileMenuVisible: false });
-  }
-
   onScroll() {
     const scrolledPastHeader = window.scrollY > (this.state.height * 2);
     const colorClass = scrolledPastHeader ? COLOR_CLASSES.dark : COLOR_CLASSES.light
@@ -60,9 +52,7 @@ class Header extends Component {
   renderMenuItems(links) {
     return links.map(link => (
       <li className='menu__list-item' key={link.key}>
-        <a onClick={() => this.goToSection(link.key)}>
-          {link.title}
-        </a>
+        <Link to={`/${link.key}`}>{link.title}</Link>
       </li>
     ));
   }
