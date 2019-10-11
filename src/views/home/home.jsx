@@ -90,7 +90,7 @@ class Home extends Component {
             }}
           ></div>
 
-          <div className='stars-container'>
+          {/* <div className='stars-container'>
             <div className='stars-left'>
               <Stars />
             </div>
@@ -98,7 +98,7 @@ class Home extends Component {
             <div className='stars-right'>
               <Stars />
             </div>
-          </div>
+          </div> */}
 
           <div className='hero__content'>
             <Header links={HEADER_LINKS} />

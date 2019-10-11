@@ -11,17 +11,7 @@ export default {
   WEDDING_DATE: '2020-10-10T06',
   // TODO: Get events from backend
   EVENTS: [{
-    title: 'Ceremony',
-    time: '4pm',
-    place: 'redwoods',
-    address: {
-      line1: 'Sanborn County Park',
-      line2: '16055 Sanborn Rd',
-      line3: 'Saratoga, CA 95070'
-    }
-  }, {
-    title: 'Reception',
-    time: '5 - 10pm',
+    time: '5pm - 10pm',
     place: 'redwoods',
     address: {
       line1: 'Saratoga Springs',
@@ -32,8 +22,8 @@ export default {
     time: '7pm - 11pm',
     place: 'austin',
     address: {
-      line1: 'Some Cool Venue',
-      line2: '123 To Be Determined'
+      line1: 'Location TBD',
+      line2: 'Austin, TX'
     }
   }],
   HEADER_LINKS: [{

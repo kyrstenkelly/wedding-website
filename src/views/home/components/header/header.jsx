@@ -59,12 +59,9 @@ class Header extends Component {
 
   renderLogo() {
     return (
-      <a
-        className='logo'
-        onClick={() => this.goToSection('details')}
-      >
+      <Link to='/details' className='logo'>
         James &amp; Kyrsten
-      </a>
+      </Link>
     );
   }
 

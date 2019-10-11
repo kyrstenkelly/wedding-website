@@ -25,17 +25,14 @@ $screen-xl: 1200px;
 $screen-xxl: 1400px;
 
 // CONTENT WIDTH
-$max-content-width: 70%;
-
-@include media($screen-lg) {
-  $max-content-width: 800px;
-}
+$max-content-width: 600px;
 
 .title-main {
   @extend .cursive-font;
   @include font-size(56);
   line-height: rem(72);
   margin-bottom: 0;
+  margin-top: rem(20);
 }
 
 .title-secondary {
@@ -45,10 +42,31 @@ $max-content-width: 70%;
   margin-bottom: 0;
 }
 
+.section {
+  text-align: center;
+  margin: rem(10);
+
+  @include media($screen-md) {
+    margin: rem(30);
+  }
+
+  @include media($screen-xl) {
+    margin: rem(50);
+  }
+}
+
 p {
   @extend .paragraph-font;
   @include font-size(18);
   line-height: rem(24);
+
+  .link {
+    color: $white;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .cursive-font {
@@ -74,6 +92,10 @@ p {
   line-height: rem(30);
   letter-spacing: 1.5px;
   color: $yellow;
+}
+
+.center {
+  text-align: center;
 }
 
 .small {
