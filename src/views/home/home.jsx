@@ -7,7 +7,7 @@ import Footer from 'shared/components/footer/footer';
 import Header from './components/header/header';
 import Intro from './components/intro/intro';
 import RSVP from './components/rsvp/rsvp';
-import Stars from './components/stars/stars';
+// import Stars from './components/stars/stars';
 import Travel from './components/travel/travel';
 import constants from '../../constants/home';
 import './home.scss';
@@ -61,7 +61,7 @@ class Home extends Component {
     const { currentSection } = this.state;
     switch(currentSection.key) {
       case 'details':
-        return <Details events={constants.EVENTS} />;
+        return <Details />;
       case 'travel':
         return <Travel />;
       case 'rsvp':

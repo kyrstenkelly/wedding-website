@@ -1,57 +1,26 @@
 @import '~shared/styles/common';
 
 .details {
-  &--section {
-    text-align: center;
+  .event {
     margin: rem(10);
+    flex: 1;
+    text-align: center;
+
+    &--title {
+      @include font-size(24);
+      @extend .print-font;
+      line-height: rem(32);
+      letter-spacing: 2px;
+      margin: 0;
+    }
+
 
     @include media($screen-md) {
-      margin: rem(30);
+      margin: rem(20);
     }
 
     @include media($screen-xl) {
-      margin: rem(50);
-    }
-  }
-
-  .events {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-
-    @include media($screen-md) {
-      flex-direction: row;
-    }
-
-    .event {
-      margin-right: 0;
-
-      &--title {
-        @include font-size(24);
-        @extend .print-font;
-        line-height: rem(32);
-        letter-spacing: 2px;
-        margin-bottom: 0;
-      }
-
-      &--time {
-        @extend .info-font;
-        margin: rem(20) 0;
-      }
-
-      &--address {
-        @extend .paragraph-font;
-        font-size: rem(20);
-        line-height: rem(30);
-      }
-
-      @include media($screen-md) {
-        margin-right: rem(40);
-
-        &:last-of-type {
-          margin-right: 0;
-        }
-      }
+      margin: rem(30);
     }
   }
 }
