@@ -1,3 +1,4 @@
+import moment from 'moment';
 import details from '../images/details.jpg';
 import detailsCompressed from '../images/details-compressed.jpg';
 // import rsvp from '../images/rsvp.jpg';
@@ -7,25 +8,11 @@ import detailsCompressed from '../images/details-compressed.jpg';
 import travel from '../images/travel.jpg';
 import travelCompressed from '../images/travel-compressed.jpg';
 
+const WEDDING_DATE = moment('2020-10-10T06');
+
 export default {
-  WEDDING_DATE: '2020-10-10T06',
-  // TODO: Get events from backend
-  EVENTS: [{
-    time: '5pm - 10pm',
-    place: 'redwoods',
-    address: {
-      line1: 'Saratoga Springs',
-      line2: '22801 Big Basin Way',
-      line3: 'Saratoga, CA 95070'
-    }
-  }, {
-    time: '7pm - 11pm',
-    place: 'austin',
-    address: {
-      line1: 'Location TBD',
-      line2: 'Austin, TX'
-    }
-  }],
+  WEDDING_DATE,
+  WEDDING_DATE_FORMATTED: WEDDING_DATE.format('MMM D, YYYY'),
   HEADER_LINKS: [{
     title: 'Details',
     key: 'details',

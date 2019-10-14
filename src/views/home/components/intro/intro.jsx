@@ -1,23 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Countdown from './countdown/countdown';
+import constants from 'constants/home';
 import './intro.scss';
 
-class Intro extends Component {
-  render() {
-    const {date} = this.props;
+const Intro = () => {
+  return (
+    <div className='intro'>
+      <div className='intro--content'>
+        <Countdown date={constants.WEDDING_DATE} />
 
-    return (
-      <div className='intro'>
-        <div className='intro--content'>
-          <Countdown date={date} />
-
-          <div className='date'>
-            {date.format('MMM D, YYYY')}
-          </div>
+        <div className='date'>
+          {constants.WEDDING_DATE_FORMATTED}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Intro;

@@ -1,4 +1,3 @@
-import moment from 'moment';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -74,7 +73,6 @@ class Home extends Component {
 
   render() {
     const { backgroundLoaded, currentSection } = this.state;
-    const formattedDate = moment(WEDDING_DATE);
     const imageUrl = backgroundLoaded ? currentSection.backgroundImage
       : currentSection.backgroundImageCompressed;
 
@@ -103,7 +101,7 @@ class Home extends Component {
           <div className='hero__content'>
             <Header links={HEADER_LINKS} />
 
-            <Intro date={formattedDate}/>
+            <Intro date={WEDDING_DATE}/>
           </div>
         </div>
 
