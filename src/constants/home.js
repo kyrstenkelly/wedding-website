@@ -6,8 +6,8 @@ import Travel from 'views/home/components/travel/travel';
 
 import details from 'images/details.jpg';
 import detailsCompressed from 'images/details-compressed.jpg';
-import rsvp from '../images/rsvp.jpg';
-import rsvpCompressed from '../images/rsvp-compressed.jpg';
+// import rsvp from '../images/rsvp.jpg';
+// import rsvpCompressed from '../images/rsvp-compressed.jpg';
 // import story from '../images/story.jpg';
 // import storyCompressed from '../images/story-compressed.jpg';
 import travel from 'images/travel.jpg';
@@ -19,11 +19,6 @@ export default {
   WEDDING_DATE,
   WEDDING_DATE_FORMATTED: WEDDING_DATE.format('MMM D, YYYY'),
   PAGES: [{
-    title: '',
-    key: '',
-    backgroundImage: rsvp,
-    backgroundImageCompressed: rsvpCompressed
-  }, {
     title: 'Details',
     key: 'details',
     backgroundImage: details,

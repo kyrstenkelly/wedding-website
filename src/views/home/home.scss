@@ -6,90 +6,31 @@
   min-height: 100vh;
 
   .hero {
-    position: relative;
     flex: 1;
 
-    &__overlay {
-      background-size: cover;
-      background-position: center bottom;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-
-      &:before {
-        content: '';
-        position: absolute;
-        display: block;
-        height: 100%;
-        width: 100%;
-        z-index: 2;
-        background-color: rgba(6,24,49, .45);
-      }
-
-      @include media($screen-xxl) {
-        background-position: center;
-      }
-    }
-
     &__content {
-      position: relative;
-      z-index: 3;
-      height: 100%;
-    }
-  }
+      flex: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
 
-  .stars-container {
-    position: absolute;
-    display: flex;
-    z-index: 2;
-    justify-content: space-between;
-    box-sizing: border-box;
-    top: 0;
-    width: 100vw;
-    height: 100%;
-    padding: 0 10px;
-
-    .stars-left {
-      width: 100%;
-      height: 100px;
-      margin-top: 70px;
-    }
-
-    .stars-right {
-      display: none;
-    }
-
-    @include media($screen-sm) {
-      .stars-left {
-        margin-top: 90px;
-        height: 175px;
+      .date {
+        @extend .print-font;
+        @include font-size(32);
+    
+        color: $white;
+        margin: rem(20);
+    
+        @include media($screen-sm) {
+          @include font-size(40);
+        }
+    
+        @include media($screen-md) {
+          @include font-size(44);
+        }
       }
-    }
-
-    @include media($screen-md) {
-      position: fixed;
-
-      .stars-left {
-        margin-top: 0;
-      }
-
-      .stars-right {
-        display: initial;
-      }
-
-      .stars-left, .stars-right {
-        width: calc((100% - #{$max-content-width}) / 2);
-        height: 100%;
-      }
-    }
-
-    height: calc(100% - 100px);
-
-    @include media($screen-lg) {
-      top: 100px;
     }
   }
 
@@ -98,4 +39,56 @@
     background: $darker-blue;
     color: $white;
   }
+
+  // .stars-container {
+  //   position: absolute;
+  //   display: flex;
+  //   z-index: 2;
+  //   justify-content: space-between;
+  //   box-sizing: border-box;
+  //   top: 0;
+  //   width: 100vw;
+  //   height: 100%;
+  //   padding: 0 10px;
+
+  //   .stars-left {
+  //     width: 100%;
+  //     height: 100px;
+  //     margin-top: 70px;
+  //   }
+
+  //   .stars-right {
+  //     display: none;
+  //   }
+
+  //   @include media($screen-sm) {
+  //     .stars-left {
+  //       margin-top: 90px;
+  //       height: 175px;
+  //     }
+  //   }
+
+  //   @include media($screen-md) {
+  //     position: fixed;
+
+  //     .stars-left {
+  //       margin-top: 0;
+  //     }
+
+  //     .stars-right {
+  //       display: initial;
+  //     }
+
+  //     .stars-left, .stars-right {
+  //       width: calc((100% - #{$max-content-width}) / 2);
+  //       height: 100%;
+  //     }
+  //   }
+
+  //   height: calc(100% - 100px);
+
+  //   @include media($screen-lg) {
+  //     top: 100px;
+  //   }
+  // }
 }

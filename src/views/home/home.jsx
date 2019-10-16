@@ -1,76 +1,23 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-
-import Footer from 'shared/components/footer/footer';
+import BackgroundImage from 'shared/components/background-image/background-image';
+import Countdown from './components/countdown/countdown';
 import Header from './components/header/header';
-import Intro from './components/intro/intro';
 // import Stars from './components/stars/stars';
 import constants from '../../constants/home';
+import background from 'images/rsvp.jpg';
+import backgroundCompressed from 'images/rsvp-compressed.jpg';
 import './home.scss';
 
-const {
-  PAGES,
-  WEDDING_DATE
-} = constants;
-
-class Home extends Component {
-  static propTypes = {
-    section: PropTypes.oneOf(PAGES.map(l => l.key))
-  }
-
-  state = {
-    currentSection: PAGES.find(p => p.key === this.props.section),
-    backgroundLoaded: false
-  }
-
-  componentDidMount() {
-    this.setCurrentSection();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.section !== this.props.section) {
-      this.setCurrentSection();
-    }
-  }
-  
-  setCurrentSection() {
-    const currentSection = PAGES.find(p => p.key === this.props.section);
-    const backgroundLoaded  = currentSection.loadedImage;
-
-    if (!backgroundLoaded) {
-      const image = new Image();
-      const setBackgroundLoaded = () => {
-        currentSection.loadedImage = image;
-        this.setState({ backgroundLoaded: true });
-      }
-      image.onload = setBackgroundLoaded.bind(this);
-      image.src = currentSection.backgroundImage;
-    }
-
-    this.setState({
-      currentSection,
-      backgroundLoaded
-    });
-  }
-
+export class Home extends Component {
   render() {
-    const { backgroundLoaded, currentSection } = this.state;
-    const imageUrl = backgroundLoaded ? currentSection.backgroundImage
-      : currentSection.backgroundImageCompressed;
-    const headerLinks = PAGES.filter(p => !!p.key);
-
     return (
       <div className='home'>
-        <div className='hero'>
-          <div
-            className='hero__overlay'
-            style={{
-              backgroundImage: `url(${imageUrl})`,
-              filter: backgroundLoaded ? 'none' : 'blur(3px)'
-            }}
-          ></div>
-
+        <BackgroundImage 
+          className='hero'
+          url={background}
+          placeholderUrl={backgroundCompressed}
+        >
           {/* <div className='stars-container'>
             <div className='stars-left'>
               <Stars />
@@ -81,24 +28,16 @@ class Home extends Component {
             </div>
           </div> */}
 
+          <Header links={constants.PAGES} />
+
           <div className='hero__content'>
-            <Header links={headerLinks} />
+            <Countdown date={constants.WEDDING_DATE} />
 
-            <Intro date={WEDDING_DATE}/>
-          </div>
-        </div>
-
-        { currentSection.component &&
-          <div className='content'>
-            <div className='contain'>
-              {currentSection.component}
+            <div className='date'>
+              {constants.WEDDING_DATE_FORMATTED}
             </div>
           </div>
-        }
-
-        { !!currentSection.key &&
-          <Footer theme='dark'></Footer>
-        }
+        </BackgroundImage>
       </div>
     );
   }

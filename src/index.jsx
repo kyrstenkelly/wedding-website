@@ -11,6 +11,7 @@ import authService from 'services/auth-service';
 import Admin from 'views/admin/admin';
 import Home from 'views/home/home';
 import Login from 'views/login/login';
+import Page from 'views/home/page';
 import constants from './constants/home';
 import './index.scss';
 
@@ -54,13 +55,13 @@ const Routes = (
           )}
         />
 
-        <Route exact path="/" component={() => <Home section={allowedPaths[0]}/>}/>
+        <Route exact path="/" component={Home}/>
         
         <Route path="/*" component={
           ({ location }) => {
             const path = location.pathname.replace('/', '');
             if (allowedPaths.includes(path)) {
-              return <Home section={path}/>;
+              return <Page section={path}/>;
             }
 
             return <Redirect to={{ pathname: '/' }}/>;
