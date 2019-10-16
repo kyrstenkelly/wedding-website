@@ -51,7 +51,11 @@ class Header extends Component {
 
   renderMenuItems(links) {
     return links.map(link => (
-      <li className='menu__list-item' key={link.key}>
+      <li 
+        className='menu__list-item' 
+        key={link.key} 
+        onClick={() => this.toggleMobileMenu()}
+      >
         <Link to={`/${link.key}`}>{link.title}</Link>
       </li>
     ));
