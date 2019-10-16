@@ -1,0 +1,407 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Details/> matches the snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Details />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="title-main center"
+>
+          Details
+</div>,
+        <div
+          className="event"
+>
+          <h3
+                    className="event--title"
+          >
+                    Oct 10, 2020
+                    <br />
+                    5pm - 10pm
+          </h3>
+          <p>
+                    Saratoga Springs Events 
+                    <br />
+                    22801 Big Basin Way 
+                    <br />
+                    Saratoga, CA 95070
+          </p>
+          <p>
+                    Ceremony with a reception to follow. 
+                    <br />
+                    Dinner will be served.
+          </p>
+</div>,
+      ],
+      "className": "details",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Details",
+          "className": "title-main center",
+        },
+        "ref": null,
+        "rendered": "Details",
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h3
+              className="event--title"
+>
+              Oct 10, 2020
+              <br />
+              5pm - 10pm
+</h3>,
+            <p>
+              Saratoga Springs Events 
+              <br />
+              22801 Big Basin Way 
+              <br />
+              Saratoga, CA 95070
+</p>,
+            <p>
+              Ceremony with a reception to follow. 
+              <br />
+              Dinner will be served.
+</p>,
+          ],
+          "className": "event",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "Oct 10, 2020",
+                <br />,
+                "5pm - 10pm",
+              ],
+              "className": "event--title",
+            },
+            "ref": null,
+            "rendered": Array [
+              "Oct 10, 2020",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
+              "5pm - 10pm",
+            ],
+            "type": "h3",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "Saratoga Springs Events ",
+                <br />,
+                "22801 Big Basin Way ",
+                <br />,
+                "Saratoga, CA 95070",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "Saratoga Springs Events ",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
+              "22801 Big Basin Way ",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
+              "Saratoga, CA 95070",
+            ],
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "Ceremony with a reception to follow. ",
+                <br />,
+                "Dinner will be served.",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "Ceremony with a reception to follow. ",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
+              "Dinner will be served.",
+            ],
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="title-main center"
+>
+            Details
+</div>,
+          <div
+            className="event"
+>
+            <h3
+                        className="event--title"
+            >
+                        Oct 10, 2020
+                        <br />
+                        5pm - 10pm
+            </h3>
+            <p>
+                        Saratoga Springs Events 
+                        <br />
+                        22801 Big Basin Way 
+                        <br />
+                        Saratoga, CA 95070
+            </p>
+            <p>
+                        Ceremony with a reception to follow. 
+                        <br />
+                        Dinner will be served.
+            </p>
+</div>,
+        ],
+        "className": "details",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Details",
+            "className": "title-main center",
+          },
+          "ref": null,
+          "rendered": "Details",
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <h3
+                className="event--title"
+>
+                Oct 10, 2020
+                <br />
+                5pm - 10pm
+</h3>,
+              <p>
+                Saratoga Springs Events 
+                <br />
+                22801 Big Basin Way 
+                <br />
+                Saratoga, CA 95070
+</p>,
+              <p>
+                Ceremony with a reception to follow. 
+                <br />
+                Dinner will be served.
+</p>,
+            ],
+            "className": "event",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Oct 10, 2020",
+                  <br />,
+                  "5pm - 10pm",
+                ],
+                "className": "event--title",
+              },
+              "ref": null,
+              "rendered": Array [
+                "Oct 10, 2020",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                "5pm - 10pm",
+              ],
+              "type": "h3",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Saratoga Springs Events ",
+                  <br />,
+                  "22801 Big Basin Way ",
+                  <br />,
+                  "Saratoga, CA 95070",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Saratoga Springs Events ",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                "22801 Big Basin Way ",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                "Saratoga, CA 95070",
+              ],
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Ceremony with a reception to follow. ",
+                  <br />,
+                  "Dinner will be served.",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Ceremony with a reception to follow. ",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                "Dinner will be served.",
+              ],
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": false,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": true,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;

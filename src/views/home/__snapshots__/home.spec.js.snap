@@ -1,0 +1,379 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> matches the snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Home />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <BackgroundImage
+        className="hero"
+        placeholderUrl="rsvp-compressed.jpg"
+        url="rsvp.jpg"
+>
+        <Header
+                links={
+                        Array [
+                                Object {
+                                  "backgroundImage": "details.jpg",
+                                  "backgroundImageCompressed": "details-compressed.jpg",
+                                  "component": <Details />,
+                                  "key": "details",
+                                  "title": "Details",
+                                },
+                                Object {
+                                  "backgroundImage": "travel.jpg",
+                                  "backgroundImageCompressed": "travel-compressed.jpg",
+                                  "component": <Travel />,
+                                  "key": "travel",
+                                  "title": "Travel",
+                                },
+                              ]
+                }
+        />
+        <div
+                className="hero__content"
+        >
+                <Countdown
+                        date={"2020-10-10T11:00:00.000Z"}
+                />
+                <div
+                        className="date"
+                >
+                        Oct 10, 2020
+                </div>
+        </div>
+</BackgroundImage>,
+      "className": "home",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <Header
+            links={
+                        Array [
+                                    Object {
+                                      "backgroundImage": "details.jpg",
+                                      "backgroundImageCompressed": "details-compressed.jpg",
+                                      "component": <Details />,
+                                      "key": "details",
+                                      "title": "Details",
+                                    },
+                                    Object {
+                                      "backgroundImage": "travel.jpg",
+                                      "backgroundImageCompressed": "travel-compressed.jpg",
+                                      "component": <Travel />,
+                                      "key": "travel",
+                                      "title": "Travel",
+                                    },
+                                  ]
+            }
+/>,
+          <div
+            className="hero__content"
+>
+            <Countdown
+                        date={"2020-10-10T11:00:00.000Z"}
+            />
+            <div
+                        className="date"
+            >
+                        Oct 10, 2020
+            </div>
+</div>,
+        ],
+        "className": "hero",
+        "placeholderUrl": "rsvp-compressed.jpg",
+        "url": "rsvp.jpg",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "links": Array [
+              Object {
+                "backgroundImage": "details.jpg",
+                "backgroundImageCompressed": "details-compressed.jpg",
+                "component": <Details />,
+                "key": "details",
+                "title": "Details",
+              },
+              Object {
+                "backgroundImage": "travel.jpg",
+                "backgroundImageCompressed": "travel-compressed.jpg",
+                "component": <Travel />,
+                "key": "travel",
+                "title": "Travel",
+              },
+            ],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Countdown
+                date={"2020-10-10T11:00:00.000Z"}
+/>,
+              <div
+                className="date"
+>
+                Oct 10, 2020
+</div>,
+            ],
+            "className": "hero__content",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "date": "2020-10-10T11:00:00.000Z",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Oct 10, 2020",
+                "className": "date",
+              },
+              "ref": null,
+              "rendered": "Oct 10, 2020",
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <BackgroundImage
+          className="hero"
+          placeholderUrl="rsvp-compressed.jpg"
+          url="rsvp.jpg"
+>
+          <Header
+                    links={
+                              Array [
+                                        Object {
+                                          "backgroundImage": "details.jpg",
+                                          "backgroundImageCompressed": "details-compressed.jpg",
+                                          "component": <Details />,
+                                          "key": "details",
+                                          "title": "Details",
+                                        },
+                                        Object {
+                                          "backgroundImage": "travel.jpg",
+                                          "backgroundImageCompressed": "travel-compressed.jpg",
+                                          "component": <Travel />,
+                                          "key": "travel",
+                                          "title": "Travel",
+                                        },
+                                      ]
+                    }
+          />
+          <div
+                    className="hero__content"
+          >
+                    <Countdown
+                              date={"2020-10-10T11:00:00.000Z"}
+                    />
+                    <div
+                              className="date"
+                    >
+                              Oct 10, 2020
+                    </div>
+          </div>
+</BackgroundImage>,
+        "className": "home",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Header
+              links={
+                            Array [
+                                          Object {
+                                            "backgroundImage": "details.jpg",
+                                            "backgroundImageCompressed": "details-compressed.jpg",
+                                            "component": <Details />,
+                                            "key": "details",
+                                            "title": "Details",
+                                          },
+                                          Object {
+                                            "backgroundImage": "travel.jpg",
+                                            "backgroundImageCompressed": "travel-compressed.jpg",
+                                            "component": <Travel />,
+                                            "key": "travel",
+                                            "title": "Travel",
+                                          },
+                                        ]
+              }
+/>,
+            <div
+              className="hero__content"
+>
+              <Countdown
+                            date={"2020-10-10T11:00:00.000Z"}
+              />
+              <div
+                            className="date"
+              >
+                            Oct 10, 2020
+              </div>
+</div>,
+          ],
+          "className": "hero",
+          "placeholderUrl": "rsvp-compressed.jpg",
+          "url": "rsvp.jpg",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "links": Array [
+                Object {
+                  "backgroundImage": "details.jpg",
+                  "backgroundImageCompressed": "details-compressed.jpg",
+                  "component": <Details />,
+                  "key": "details",
+                  "title": "Details",
+                },
+                Object {
+                  "backgroundImage": "travel.jpg",
+                  "backgroundImageCompressed": "travel-compressed.jpg",
+                  "component": <Travel />,
+                  "key": "travel",
+                  "title": "Travel",
+                },
+              ],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <Countdown
+                  date={"2020-10-10T11:00:00.000Z"}
+/>,
+                <div
+                  className="date"
+>
+                  Oct 10, 2020
+</div>,
+              ],
+              "className": "hero__content",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "date": "2020-10-10T11:00:00.000Z",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Oct 10, 2020",
+                  "className": "date",
+                },
+                "ref": null,
+                "rendered": "Oct 10, 2020",
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": false,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": true,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;

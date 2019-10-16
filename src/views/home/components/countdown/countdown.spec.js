@@ -6,8 +6,13 @@ import Countdown from './countdown';
 
 describe('<Countdown />', () => {
   let wrapper;
+
   beforeEach(() => {
     wrapper = shallow(<Countdown date={moment('2020-10-10')}/>);
+  });
+  
+  it('matches the snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('renders three countdown units', () => {

@@ -1,16 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import Travel from './travel';
 
 describe('<Travel />', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = mount(<Travel />);
-  });
-
-  it('renders', () => {
-    expect(wrapper);
+  it('matches the snapshot', () => {
+    expect(shallow(<Travel />)).toMatchSnapshot();
   });
 });
