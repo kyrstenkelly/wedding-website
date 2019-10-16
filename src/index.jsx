@@ -14,7 +14,7 @@ import Login from 'views/login/login';
 import constants from './constants/home';
 import './index.scss';
 
-const allowedPaths = constants.HEADER_LINKS.map(l => l.key);
+const allowedPaths = constants.PAGES.map(l => l.key);
 const store = createStore(reducers, applyMiddleware(asyncMiddleware));
 
 const PrivateRoute = ({ component: Component, ...rest }) => (

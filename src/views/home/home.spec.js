@@ -23,7 +23,7 @@ describe('<Home />', () => {
   // TODO: Add back when we add the header to the site
   // it('generates a list of links from the data', () => {
   //   const header = wrapper.find(Header);
-  //   expect(header.prop('links')).toEqual(constants.HEADER_LINKS);
+  //   expect(header.prop('links')).toEqual(constants.PAGES);
   // });
 
   it('renders two Stars components', () => {

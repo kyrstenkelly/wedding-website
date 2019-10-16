@@ -59,7 +59,7 @@ class Header extends Component {
 
   renderLogo() {
     return (
-      <Link to='/details' className='logo'>
+      <Link to='/' className='logo'>
         James &amp; Kyrsten
       </Link>
     );

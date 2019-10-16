@@ -2,28 +2,25 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Details from './components/details/details';
 import Footer from 'shared/components/footer/footer';
 import Header from './components/header/header';
 import Intro from './components/intro/intro';
-import RSVP from './components/rsvp/rsvp';
 // import Stars from './components/stars/stars';
-import Travel from './components/travel/travel';
 import constants from '../../constants/home';
 import './home.scss';
 
 const {
-  HEADER_LINKS,
+  PAGES,
   WEDDING_DATE
 } = constants;
 
 class Home extends Component {
   static propTypes = {
-    section: PropTypes.oneOf(HEADER_LINKS.map(l => l.key))
+    section: PropTypes.oneOf(PAGES.map(l => l.key))
   }
 
   state = {
-    currentSection: HEADER_LINKS[0],
+    currentSection: PAGES.find(p => p.key === this.props.section),
     backgroundLoaded: false
   }
 
@@ -38,7 +35,7 @@ class Home extends Component {
   }
   
   setCurrentSection() {
-    const currentSection = HEADER_LINKS.find(l => l.key === this.props.section);
+    const currentSection = PAGES.find(p => p.key === this.props.section);
     const backgroundLoaded  = currentSection.loadedImage;
 
     if (!backgroundLoaded) {
@@ -57,24 +54,11 @@ class Home extends Component {
     });
   }
 
-  renderCurrentSection() {
-    const { currentSection } = this.state;
-    switch(currentSection.key) {
-      case 'details':
-        return <Details />;
-      case 'travel':
-        return <Travel />;
-      case 'rsvp':
-        return <RSVP />;
-      default:
-        return null;
-    }
-  }
-
   render() {
     const { backgroundLoaded, currentSection } = this.state;
     const imageUrl = backgroundLoaded ? currentSection.backgroundImage
       : currentSection.backgroundImageCompressed;
+    const headerLinks = PAGES.filter(p => !!p.key);
 
     return (
       <div className='home'>
@@ -83,7 +67,6 @@ class Home extends Component {
             className='hero__overlay'
             style={{
               backgroundImage: `url(${imageUrl})`,
-              // backgroundPosition: currentSection.backgroundPosition || 'bottom',
               filter: backgroundLoaded ? 'none' : 'blur(3px)'
             }}
           ></div>
@@ -99,19 +82,23 @@ class Home extends Component {
           </div> */}
 
           <div className='hero__content'>
-            <Header links={HEADER_LINKS} />
+            <Header links={headerLinks} />
 
             <Intro date={WEDDING_DATE}/>
           </div>
         </div>
 
-        <div className='content'>
-          <div className='contain'>
-            {this.renderCurrentSection()}
+        { currentSection.component &&
+          <div className='content'>
+            <div className='contain'>
+              {currentSection.component}
+            </div>
           </div>
-        </div>
+        }
 
-        <Footer theme='dark'></Footer>
+        { !!currentSection.key &&
+          <Footer theme='dark'></Footer>
+        }
       </div>
     );
   }

@@ -1,23 +1,34 @@
+import React from 'react';
 import moment from 'moment';
-import details from '../images/details.jpg';
-import detailsCompressed from '../images/details-compressed.jpg';
-// import rsvp from '../images/rsvp.jpg';
-// import rsvpCompressed from '../images/rsvp-compressed.jpg';
+import Details from 'views/home/components/details/details';
+import Travel from 'views/home/components/travel/travel';
+// import RSVP from './components/rsvp/rsvp';
+
+import details from 'images/details.jpg';
+import detailsCompressed from 'images/details-compressed.jpg';
+import rsvp from '../images/rsvp.jpg';
+import rsvpCompressed from '../images/rsvp-compressed.jpg';
 // import story from '../images/story.jpg';
 // import storyCompressed from '../images/story-compressed.jpg';
-import travel from '../images/travel.jpg';
-import travelCompressed from '../images/travel-compressed.jpg';
+import travel from 'images/travel.jpg';
+import travelCompressed from 'images/travel-compressed.jpg';
 
 const WEDDING_DATE = moment('2020-10-10T06');
 
 export default {
   WEDDING_DATE,
   WEDDING_DATE_FORMATTED: WEDDING_DATE.format('MMM D, YYYY'),
-  HEADER_LINKS: [{
+  PAGES: [{
+    title: '',
+    key: '',
+    backgroundImage: rsvp,
+    backgroundImageCompressed: rsvpCompressed
+  }, {
     title: 'Details',
     key: 'details',
     backgroundImage: details,
-    backgroundImageCompressed: detailsCompressed
+    backgroundImageCompressed: detailsCompressed,
+    component: <Details />
   // }, {
   //   title: 'Story',
   //   key: 'story',
@@ -32,7 +43,8 @@ export default {
     title: 'Travel',
     key: 'travel',
     backgroundImage: travel,
-    backgroundImageCompressed: travelCompressed
+    backgroundImageCompressed: travelCompressed,
+    component: <Travel />
   // }, {
   //   title: 'Gifts',
   //   key: 'gifts',
