@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import imageService from 'services/image-service';
 import './background-image.scss';
 
 class BackgroundImage extends Component {
@@ -14,23 +15,20 @@ class BackgroundImage extends Component {
   }
 
   componentDidMount() {
-    this.loadImage();
+    imageService.loadImage(this.props.url).then(() => this.setState({
+      loading: false
+    }));
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.url !== this.props.url) {
       this.setState({
         loading: true
-      }, this.loadImage());
+      }, () => {
+        imageService.loadImage(this.props.url)
+          .then(this.setState({ loading: false }));
+      });
     }
-  }
-
-  loadImage() {
-    // TODO: check if we've previously loaded this url, only load once
-    const image = new Image();
-    const setBackgroundLoaded = () => this.setState({ loading: false });
-    image.onload = setBackgroundLoaded.bind(this);
-    image.src = this.props.url;
   }
 
   render() {
@@ -40,7 +38,6 @@ class BackgroundImage extends Component {
       url
     } = this.props;
     const { loading } = this.state;
-
     const imageUrl = loading ? placeholderUrl : url;
 
     return (
