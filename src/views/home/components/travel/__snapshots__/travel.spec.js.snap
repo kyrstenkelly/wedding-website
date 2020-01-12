@@ -25,22 +25,23 @@ ShallowWrapper {
           <div
                     className="title-main"
           >
-                    Airports
+                    Hotel
           </div>
           <p>
-                    The closest airport to the venue is 
-                    <Link
-                              href="https://www.google.com/maps/dir/Norman+Y.+Mineta+San+Jose+International+Airport+(SJC),+1701+Airport+Blvd,+San+Jose,+CA+95110/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.298684,-121.9812996,12z/data=!4m8!4m7!1m2!1m1!1s0x808fcbc3fab3c59b:0xbcfa443f6df67e3e!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
-                              label="San Jose Airport (SJC)"
-                    />
-                    ,
+                    We have a group block at Wild Palms Hotel. The group rate applies to Friday and Saturday nights.
+          </p>
+          <p>
+                    Wild Palms Hotel 
                     <br />
-                    and 
+                    910 E Fremont Ave 
+                    <br />
+                    Sunnyvale, CA 94087
+          </p>
+          <p>
                     <Link
-                              href="https://www.google.com/maps/dir/San+Francisco+Airport+(SFO),+San+Francisco,+CA/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.4355891,-122.2161904,11z/data=!4m8!4m7!1m2!1m1!1s0x808f778c55555555:0xa4f25c571acded3f!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
-                              label="San Fransisco Airport (SFO)"
+                              href="https://www.hyatt.com/shop/sjcjw?location=Wild%20Palms%20Hotel&checkinDate=2020-10-09&checkoutDate=2020-10-11&rooms=1&adults=1&kids=0&corp_id=G-OCT0"
+                              label="Group Booking Link"
                     />
-                     is the next closest.
           </p>
 </div>,
         <div
@@ -49,10 +50,24 @@ ShallowWrapper {
           <div
                     className="title-main"
           >
-                    Hotels
+                    Airports
           </div>
           <p>
-                    We will arrange a block of hotels rooms somewhere nearby. Check back soon for more details.
+                    <Link
+                              href="https://www.google.com/maps/dir/Norman+Y.+Mineta+San+Jose+International+Airport+(SJC),+1701+Airport+Blvd,+San+Jose,+CA+95110/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.298684,-121.9812996,12z/data=!4m8!4m7!1m2!1m1!1s0x808fcbc3fab3c59b:0xbcfa443f6df67e3e!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
+                              label="San Jose Airport (SJC)"
+                    />
+                    <br />
+                    San Jose is the closest airport to the hotel (~15-20 minutes) and to the venue. 
+                    <br />
+                    <br />
+                    <Link
+                              href="https://www.google.com/maps/dir/San+Francisco+Airport+(SFO),+San+Francisco,+CA/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.4355891,-122.2161904,11z/data=!4m8!4m7!1m2!1m1!1s0x808f778c55555555:0xa4f25c571acded3f!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
+                              label="San Fransisco Airport (SFO)"
+                    />
+                     
+                    <br />
+                    San Fransisco may have more flights or better prices, as it's the bigger airport, however it will be 30 - 45 minutes from the hotel (depending on traffic).
           </p>
 </div>,
       ],
@@ -69,22 +84,146 @@ ShallowWrapper {
             <div
               className="title-main"
 >
+              Hotel
+</div>,
+            <p>
+              We have a group block at Wild Palms Hotel. The group rate applies to Friday and Saturday nights.
+</p>,
+            <p>
+              Wild Palms Hotel 
+              <br />
+              910 E Fremont Ave 
+              <br />
+              Sunnyvale, CA 94087
+</p>,
+            <p>
+              <Link
+                            href="https://www.hyatt.com/shop/sjcjw?location=Wild%20Palms%20Hotel&checkinDate=2020-10-09&checkoutDate=2020-10-11&rooms=1&adults=1&kids=0&corp_id=G-OCT0"
+                            label="Group Booking Link"
+              />
+</p>,
+          ],
+          "className": "section",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Hotel",
+              "className": "title-main",
+            },
+            "ref": null,
+            "rendered": "Hotel",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "We have a group block at Wild Palms Hotel. The group rate applies to Friday and Saturday nights.",
+            },
+            "ref": null,
+            "rendered": "We have a group block at Wild Palms Hotel. The group rate applies to Friday and Saturday nights.",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "Wild Palms Hotel ",
+                <br />,
+                "910 E Fremont Ave ",
+                <br />,
+                "Sunnyvale, CA 94087",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "Wild Palms Hotel ",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
+              "910 E Fremont Ave ",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
+              "Sunnyvale, CA 94087",
+            ],
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Link
+                href="https://www.hyatt.com/shop/sjcjw?location=Wild%20Palms%20Hotel&checkinDate=2020-10-09&checkoutDate=2020-10-11&rooms=1&adults=1&kids=0&corp_id=G-OCT0"
+                label="Group Booking Link"
+/>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "href": "https://www.hyatt.com/shop/sjcjw?location=Wild%20Palms%20Hotel&checkinDate=2020-10-09&checkoutDate=2020-10-11&rooms=1&adults=1&kids=0&corp_id=G-OCT0",
+                "label": "Group Booking Link",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="title-main"
+>
               Airports
 </div>,
             <p>
-              The closest airport to the venue is 
               <Link
                             href="https://www.google.com/maps/dir/Norman+Y.+Mineta+San+Jose+International+Airport+(SJC),+1701+Airport+Blvd,+San+Jose,+CA+95110/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.298684,-121.9812996,12z/data=!4m8!4m7!1m2!1m1!1s0x808fcbc3fab3c59b:0xbcfa443f6df67e3e!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
                             label="San Jose Airport (SJC)"
               />
-              ,
               <br />
-              and 
+              San Jose is the closest airport to the hotel (~15-20 minutes) and to the venue. 
+              <br />
+              <br />
               <Link
                             href="https://www.google.com/maps/dir/San+Francisco+Airport+(SFO),+San+Francisco,+CA/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.4355891,-122.2161904,11z/data=!4m8!4m7!1m2!1m1!1s0x808f778c55555555:0xa4f25c571acded3f!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
                             label="San Fransisco Airport (SFO)"
               />
-               is the next closest.
+               
+              <br />
+              San Fransisco may have more flights or better prices, as it's the bigger airport, however it will be 30 - 45 minutes from the hotel (depending on traffic).
 </p>,
           ],
           "className": "section",
@@ -109,24 +248,25 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": Array [
-                "The closest airport to the venue is ",
                 <Link
                   href="https://www.google.com/maps/dir/Norman+Y.+Mineta+San+Jose+International+Airport+(SJC),+1701+Airport+Blvd,+San+Jose,+CA+95110/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.298684,-121.9812996,12z/data=!4m8!4m7!1m2!1m1!1s0x808fcbc3fab3c59b:0xbcfa443f6df67e3e!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
                   label="San Jose Airport (SJC)"
 />,
-                ",",
                 <br />,
-                "and ",
+                "San Jose is the closest airport to the hotel (~15-20 minutes) and to the venue. ",
+                <br />,
+                <br />,
                 <Link
                   href="https://www.google.com/maps/dir/San+Francisco+Airport+(SFO),+San+Francisco,+CA/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.4355891,-122.2161904,11z/data=!4m8!4m7!1m2!1m1!1s0x808f778c55555555:0xa4f25c571acded3f!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
                   label="San Fransisco Airport (SFO)"
 />,
-                " is the next closest.",
+                " ",
+                <br />,
+                "San Fransisco may have more flights or better prices, as it's the bigger airport, however it will be 30 - 45 minutes from the hotel (depending on traffic).",
               ],
             },
             "ref": null,
             "rendered": Array [
-              "The closest airport to the venue is ",
               Object {
                 "instance": null,
                 "key": undefined,
@@ -139,7 +279,6 @@ ShallowWrapper {
                 "rendered": null,
                 "type": [Function],
               },
-              ",",
               Object {
                 "instance": null,
                 "key": undefined,
@@ -149,7 +288,25 @@ ShallowWrapper {
                 "rendered": null,
                 "type": "br",
               },
-              "and ",
+              "San Jose is the closest airport to the hotel (~15-20 minutes) and to the venue. ",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
               Object {
                 "instance": null,
                 "key": undefined,
@@ -162,53 +319,18 @@ ShallowWrapper {
                 "rendered": null,
                 "type": [Function],
               },
-              " is the next closest.",
+              " ",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
+              "San Fransisco may have more flights or better prices, as it's the bigger airport, however it will be 30 - 45 minutes from the hotel (depending on traffic).",
             ],
-            "type": "p",
-          },
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <div
-              className="title-main"
->
-              Hotels
-</div>,
-            <p>
-              We will arrange a block of hotels rooms somewhere nearby. Check back soon for more details.
-</p>,
-          ],
-          "className": "section",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "Hotels",
-              "className": "title-main",
-            },
-            "ref": null,
-            "rendered": "Hotels",
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "We will arrange a block of hotels rooms somewhere nearby. Check back soon for more details.",
-            },
-            "ref": null,
-            "rendered": "We will arrange a block of hotels rooms somewhere nearby. Check back soon for more details.",
             "type": "p",
           },
         ],
@@ -230,22 +352,23 @@ ShallowWrapper {
             <div
                         className="title-main"
             >
-                        Airports
+                        Hotel
             </div>
             <p>
-                        The closest airport to the venue is 
-                        <Link
-                                    href="https://www.google.com/maps/dir/Norman+Y.+Mineta+San+Jose+International+Airport+(SJC),+1701+Airport+Blvd,+San+Jose,+CA+95110/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.298684,-121.9812996,12z/data=!4m8!4m7!1m2!1m1!1s0x808fcbc3fab3c59b:0xbcfa443f6df67e3e!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
-                                    label="San Jose Airport (SJC)"
-                        />
-                        ,
+                        We have a group block at Wild Palms Hotel. The group rate applies to Friday and Saturday nights.
+            </p>
+            <p>
+                        Wild Palms Hotel 
                         <br />
-                        and 
+                        910 E Fremont Ave 
+                        <br />
+                        Sunnyvale, CA 94087
+            </p>
+            <p>
                         <Link
-                                    href="https://www.google.com/maps/dir/San+Francisco+Airport+(SFO),+San+Francisco,+CA/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.4355891,-122.2161904,11z/data=!4m8!4m7!1m2!1m1!1s0x808f778c55555555:0xa4f25c571acded3f!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
-                                    label="San Fransisco Airport (SFO)"
+                                    href="https://www.hyatt.com/shop/sjcjw?location=Wild%20Palms%20Hotel&checkinDate=2020-10-09&checkoutDate=2020-10-11&rooms=1&adults=1&kids=0&corp_id=G-OCT0"
+                                    label="Group Booking Link"
                         />
-                         is the next closest.
             </p>
 </div>,
           <div
@@ -254,10 +377,24 @@ ShallowWrapper {
             <div
                         className="title-main"
             >
-                        Hotels
+                        Airports
             </div>
             <p>
-                        We will arrange a block of hotels rooms somewhere nearby. Check back soon for more details.
+                        <Link
+                                    href="https://www.google.com/maps/dir/Norman+Y.+Mineta+San+Jose+International+Airport+(SJC),+1701+Airport+Blvd,+San+Jose,+CA+95110/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.298684,-121.9812996,12z/data=!4m8!4m7!1m2!1m1!1s0x808fcbc3fab3c59b:0xbcfa443f6df67e3e!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
+                                    label="San Jose Airport (SJC)"
+                        />
+                        <br />
+                        San Jose is the closest airport to the hotel (~15-20 minutes) and to the venue. 
+                        <br />
+                        <br />
+                        <Link
+                                    href="https://www.google.com/maps/dir/San+Francisco+Airport+(SFO),+San+Francisco,+CA/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.4355891,-122.2161904,11z/data=!4m8!4m7!1m2!1m1!1s0x808f778c55555555:0xa4f25c571acded3f!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
+                                    label="San Fransisco Airport (SFO)"
+                        />
+                         
+                        <br />
+                        San Fransisco may have more flights or better prices, as it's the bigger airport, however it will be 30 - 45 minutes from the hotel (depending on traffic).
             </p>
 </div>,
         ],
@@ -274,22 +411,146 @@ ShallowWrapper {
               <div
                 className="title-main"
 >
+                Hotel
+</div>,
+              <p>
+                We have a group block at Wild Palms Hotel. The group rate applies to Friday and Saturday nights.
+</p>,
+              <p>
+                Wild Palms Hotel 
+                <br />
+                910 E Fremont Ave 
+                <br />
+                Sunnyvale, CA 94087
+</p>,
+              <p>
+                <Link
+                                href="https://www.hyatt.com/shop/sjcjw?location=Wild%20Palms%20Hotel&checkinDate=2020-10-09&checkoutDate=2020-10-11&rooms=1&adults=1&kids=0&corp_id=G-OCT0"
+                                label="Group Booking Link"
+                />
+</p>,
+            ],
+            "className": "section",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Hotel",
+                "className": "title-main",
+              },
+              "ref": null,
+              "rendered": "Hotel",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "We have a group block at Wild Palms Hotel. The group rate applies to Friday and Saturday nights.",
+              },
+              "ref": null,
+              "rendered": "We have a group block at Wild Palms Hotel. The group rate applies to Friday and Saturday nights.",
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Wild Palms Hotel ",
+                  <br />,
+                  "910 E Fremont Ave ",
+                  <br />,
+                  "Sunnyvale, CA 94087",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Wild Palms Hotel ",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                "910 E Fremont Ave ",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                "Sunnyvale, CA 94087",
+              ],
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Link
+                  href="https://www.hyatt.com/shop/sjcjw?location=Wild%20Palms%20Hotel&checkinDate=2020-10-09&checkoutDate=2020-10-11&rooms=1&adults=1&kids=0&corp_id=G-OCT0"
+                  label="Group Booking Link"
+/>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "href": "https://www.hyatt.com/shop/sjcjw?location=Wild%20Palms%20Hotel&checkinDate=2020-10-09&checkoutDate=2020-10-11&rooms=1&adults=1&kids=0&corp_id=G-OCT0",
+                  "label": "Group Booking Link",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="title-main"
+>
                 Airports
 </div>,
               <p>
-                The closest airport to the venue is 
                 <Link
                                 href="https://www.google.com/maps/dir/Norman+Y.+Mineta+San+Jose+International+Airport+(SJC),+1701+Airport+Blvd,+San+Jose,+CA+95110/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.298684,-121.9812996,12z/data=!4m8!4m7!1m2!1m1!1s0x808fcbc3fab3c59b:0xbcfa443f6df67e3e!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
                                 label="San Jose Airport (SJC)"
                 />
-                ,
                 <br />
-                and 
+                San Jose is the closest airport to the hotel (~15-20 minutes) and to the venue. 
+                <br />
+                <br />
                 <Link
                                 href="https://www.google.com/maps/dir/San+Francisco+Airport+(SFO),+San+Francisco,+CA/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.4355891,-122.2161904,11z/data=!4m8!4m7!1m2!1m1!1s0x808f778c55555555:0xa4f25c571acded3f!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
                                 label="San Fransisco Airport (SFO)"
                 />
-                 is the next closest.
+                 
+                <br />
+                San Fransisco may have more flights or better prices, as it's the bigger airport, however it will be 30 - 45 minutes from the hotel (depending on traffic).
 </p>,
             ],
             "className": "section",
@@ -314,24 +575,25 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": Array [
-                  "The closest airport to the venue is ",
                   <Link
                     href="https://www.google.com/maps/dir/Norman+Y.+Mineta+San+Jose+International+Airport+(SJC),+1701+Airport+Blvd,+San+Jose,+CA+95110/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.298684,-121.9812996,12z/data=!4m8!4m7!1m2!1m1!1s0x808fcbc3fab3c59b:0xbcfa443f6df67e3e!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
                     label="San Jose Airport (SJC)"
 />,
-                  ",",
                   <br />,
-                  "and ",
+                  "San Jose is the closest airport to the hotel (~15-20 minutes) and to the venue. ",
+                  <br />,
+                  <br />,
                   <Link
                     href="https://www.google.com/maps/dir/San+Francisco+Airport+(SFO),+San+Francisco,+CA/Saratoga+Springs+Events+%26+Weddings,+Big+Basin+Way,+Saratoga,+CA/@37.4355891,-122.2161904,11z/data=!4m8!4m7!1m2!1m1!1s0x808f778c55555555:0xa4f25c571acded3f!1m2!1m1!1s0x808e4b43b6696425:0x5eb7cbd719ad3eea!3e0"
                     label="San Fransisco Airport (SFO)"
 />,
-                  " is the next closest.",
+                  " ",
+                  <br />,
+                  "San Fransisco may have more flights or better prices, as it's the bigger airport, however it will be 30 - 45 minutes from the hotel (depending on traffic).",
                 ],
               },
               "ref": null,
               "rendered": Array [
-                "The closest airport to the venue is ",
                 Object {
                   "instance": null,
                   "key": undefined,
@@ -344,7 +606,6 @@ ShallowWrapper {
                   "rendered": null,
                   "type": [Function],
                 },
-                ",",
                 Object {
                   "instance": null,
                   "key": undefined,
@@ -354,7 +615,25 @@ ShallowWrapper {
                   "rendered": null,
                   "type": "br",
                 },
-                "and ",
+                "San Jose is the closest airport to the hotel (~15-20 minutes) and to the venue. ",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
                 Object {
                   "instance": null,
                   "key": undefined,
@@ -367,53 +646,18 @@ ShallowWrapper {
                   "rendered": null,
                   "type": [Function],
                 },
-                " is the next closest.",
+                " ",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                "San Fransisco may have more flights or better prices, as it's the bigger airport, however it will be 30 - 45 minutes from the hotel (depending on traffic).",
               ],
-              "type": "p",
-            },
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <div
-                className="title-main"
->
-                Hotels
-</div>,
-              <p>
-                We will arrange a block of hotels rooms somewhere nearby. Check back soon for more details.
-</p>,
-            ],
-            "className": "section",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "Hotels",
-                "className": "title-main",
-              },
-              "ref": null,
-              "rendered": "Hotels",
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "We will arrange a block of hotels rooms somewhere nearby. Check back soon for more details.",
-              },
-              "ref": null,
-              "rendered": "We will arrange a block of hotels rooms somewhere nearby. Check back soon for more details.",
               "type": "p",
             },
           ],
