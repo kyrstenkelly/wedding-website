@@ -8,7 +8,7 @@ import {
   TableRow
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import PropTypes from 'prop-types';
 
 import EnhancedTableHead from './enhanced-table-head';
@@ -92,14 +92,13 @@ class DataTable extends Component {
             </Table>
 
             <div className='footer'>
-              <Button
-                variant='fab'
+              <Fab
                 color='primary'
                 aria-label='Add'
                 onClick={() => this.props.openModal()}
                 className='add-button'>
                 <AddIcon />
-              </Button>
+              </Fab>
             </div>
           </Paper>
         }

@@ -5,6 +5,7 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 const theme = createMuiTheme({
   typography: {
     // Use the system font.
+    useNextVariants: true,
     fontFamily: [
       '-apple-system',
       'BlinkMacSystemFont',

@@ -43,12 +43,9 @@ export class InvitationModal extends Component {
 
   state = {
     invitation: {
-      event: '',
-      name: '',
-      email: '',
+      events: [],
       address: {},
-      guests: [],
-      plusOne: false
+      guests: []
     },
     eventsFetched: false
   }

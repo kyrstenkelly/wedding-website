@@ -1,12 +1,17 @@
+import DoneIcon from '@material-ui/icons/Done';
 import EventIcon from '@material-ui/icons/Event';
 import MailIcon from '@material-ui/icons/Mail';
 import PeopleIcon from '@material-ui/icons/People';
 
 export default {
   MENU_ITEMS: [{
+    key: 'guests',
+    label: 'Guests',
+    icon: PeopleIcon
+  },{
     key: 'invitations',
     label: 'Invitations',
-    icon: PeopleIcon
+    icon: MailIcon
   }, {
     key: 'events',
     label: 'Events',
@@ -14,9 +19,13 @@ export default {
   }, {
     key: 'rsvps',
     label: 'RSVPs',
-    icon: MailIcon
+    icon: DoneIcon
   }],
   TABLE_COLUMNS: {
+    guests: [{
+      label: 'Name',
+      key: 'name'
+    }],
     invitations: [{
       label: 'Guests',
       key: 'guests'

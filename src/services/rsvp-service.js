@@ -1,6 +1,5 @@
 import authService from './auth-service';
 import config from '../config';
-import rsvps from './mocks/rsvps';
 
 const UNAUTHORIZED = 401;
 
@@ -26,11 +25,94 @@ const request = (options) => {
 }
 
 export default {
+  getAddresses() {
+    return request({
+      path: '/addresses'
+    }).then(addresses => ({addresses}))
+    .catch(error => ({error}));
+  },
+
+  createAddress(address) {
+    return request({
+      path: '/addresses',
+      method: 'post',
+      body: JSON.stringify(address)
+    });
+  },
+
+  updateAddress(address) {
+    return request({
+      path: `/addresses/${address.id}`,
+      method: 'put',
+      body: JSON.stringify(address)
+    });
+  },
+
+  deleteAddress(id) {
+    return request({
+      path: `/addresses/${id}`,
+      method: 'delete'
+    });
+  },
+
+  getGuests() {
+    return request({
+      path: '/guests'
+    }).then(guests => ({guests}))
+    .catch(error => ({error}));
+  },
+
+  createGuest(guest) {
+    return request({
+      path: '/guests',
+      method: 'post',
+      body: JSON.stringify(guest)
+    });
+  },
+
+  updateGuest(guest) {
+    return request({
+      path: `/guests/${guest.id}`,
+      method: 'put',
+      body: JSON.stringify(guest)
+    });
+  },
+
+  deleteGuest(id) {
+    return request({
+      path: `/guests/${id}`,
+      method: 'delete'
+    });
+  },
+
   getEvents() {
     return request({
       path: '/events'
     }).then(events => ({events}))
     .catch(error => ({error}));
+  },
+
+  createEvent(event) {
+    return request({
+      path: '/events',
+      method: 'post',
+      body: JSON.stringify(event)
+    });
+  },
+
+  updateEvent(event) {
+    return request({
+      path: `/events/${event.id}`,
+      method: 'put',
+      body: JSON.stringify(event)
+    });
+  },
+
+  deleteEvent(id) {
+    return request({
+      path: `/events/${id}`,
+      method: 'delete'
+    });
   },
 
   getInvitations() {
@@ -49,14 +131,47 @@ export default {
   },
 
   updateInvitation(invitation) {
-    return Promise.resolve(invitation);
+    return request({
+      path: `/invitations/${invitation.id}`,
+      method: 'put',
+      body: JSON.stringify(invitation)
+    });
   },
 
-  deleteInvitation(invitation) {
-    return Promise.resolve();
+  deleteInvitation(id) {
+    return request({
+      path: `/invitations/${id}`,
+      method: 'delete'
+    });
   },
 
   getRSVPs() {
-    return Promise.resolve(rsvps);
+    return request({
+      path: '/rsvps'
+    }).then(rsvps => ({rsvps}))
+    .catch(error => ({error}));
+  },
+
+  createRSVP(rsvp) {
+    return request({
+      path: '/rsvps',
+      method: 'post',
+      body: JSON.stringify(rsvp)
+    });
+  },
+
+  updateRSVP(rsvp) {
+    return request({
+      path: `/rsvps/${rsvp.id}`,
+      method: 'put',
+      body: JSON.stringify(rsvp)
+    });
+  },
+
+  deleteRSVP(id) {
+    return request({
+      path: `/rsvps/${id}`,
+      method: 'delete'
+    });
   }
 }

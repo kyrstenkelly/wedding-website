@@ -5,6 +5,9 @@ export default {
   formatData(data) {
     return _.mapValues(data, (datum, key) => {
       // TODO: Figure out a better way to handle special column formatting cases
+      if (key === 'events') {
+        return datum.map(e => e.name).join(', ');
+      }
       if (key === 'event') {
         return datum.name;
       }

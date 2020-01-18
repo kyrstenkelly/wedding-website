@@ -11,6 +11,7 @@ const initialState = {
   rsvps: [],
   loading: {
     events: false,
+    guests: false,
     invitations: false,
     rsvps: false
   },
@@ -46,6 +47,33 @@ export default function rsvpsReducer(state = initialState, action) {
         },
         error: action.error
       };
+    case inProgressTypeName(types.GET_GUESTS):
+      return {
+        ...state,
+        loading: {
+          ...state.loading,
+          guests: true
+        }
+      };
+    case successTypeName(types.GET_GUESTS):
+      const {guests} = action;
+      return {
+        ...state,
+        loading: {
+          ...state.loading,
+          guests: false
+        },
+        guests
+      };
+    case errorTypeName(types.GET_GUESTS):
+      return {
+        ...state,
+        loading: {
+          ...state.loading,
+          guests: false
+        },
+        error: action.error
+      };
     case inProgressTypeName(types.GET_INVITATIONS):
       return {
         ...state,
@@ -62,7 +90,7 @@ export default function rsvpsReducer(state = initialState, action) {
           ...state.loading,
           invitations: false
         },
-        invitations: cleanInvitationData(invitations)
+        invitations
       };
     case errorTypeName(types.GET_INVITATIONS):
       return {
@@ -103,11 +131,4 @@ export default function rsvpsReducer(state = initialState, action) {
     default:
       return state;
   }
-}
-
-const cleanInvitationData = (invitations) => {
-  return invitations.map(invite => {
-    invite.events = invite.events.map(e => e.name);
-    return invite;
-  });
 }
