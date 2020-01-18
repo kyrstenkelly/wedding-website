@@ -62,7 +62,7 @@ export default function rsvpsReducer(state = initialState, action) {
           ...state.loading,
           invitations: false
         },
-        invitations
+        invitations: cleanInvitationData(invitations)
       };
     case errorTypeName(types.GET_INVITATIONS):
       return {
@@ -103,4 +103,11 @@ export default function rsvpsReducer(state = initialState, action) {
     default:
       return state;
   }
+}
+
+const cleanInvitationData = (invitations) => {
+  return invitations.map(invite => {
+    invite.events = invite.events.map(e => e.name);
+    return invite;
+  });
 }

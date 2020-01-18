@@ -18,23 +18,14 @@ export default {
   }],
   TABLE_COLUMNS: {
     invitations: [{
-      label: 'Event',
-      key: 'event'
-    },{
-      label: 'Name',
-      key: 'name'
-    }, {
-      label: 'Email',
-      key: 'email'
+      label: 'Guests',
+      key: 'guests'
     }, {
       label: 'Address',
       key: 'address'
     }, {
-      label: 'Guests',
-      key: 'guests'
-    }, {
-      label: 'Plus One',
-      key: 'plus_one'
+      label: 'Events',
+      key: 'events'
     }],
     events: [{
       label: 'Name',
@@ -58,9 +49,6 @@ export default {
     }, {
       label: 'Attending',
       key: 'attending'
-    }, {
-      label: 'Head Count',
-      key: 'head_count'
     }]
   }
 }
