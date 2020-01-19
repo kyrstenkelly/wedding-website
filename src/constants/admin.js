@@ -5,17 +5,17 @@ import PeopleIcon from '@material-ui/icons/People';
 
 export default {
   MENU_ITEMS: [{
-    key: 'guests',
-    label: 'Guests',
-    icon: PeopleIcon
-  },{
     key: 'invitations',
     label: 'Invitations',
     icon: MailIcon
-  }, {
+  },{
     key: 'events',
     label: 'Events',
     icon: EventIcon
+  }, {
+    key: 'guests',
+    label: 'Guests',
+    icon: PeopleIcon
   }, {
     key: 'rsvps',
     label: 'RSVPs',

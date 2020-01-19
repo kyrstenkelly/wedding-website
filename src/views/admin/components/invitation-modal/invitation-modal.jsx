@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   Button,
-  FormControl,
+  Checkbox,
   FormControlLabel,
-  FormLabel,
-  MenuItem,
+  FormGroup,
   Modal,
   Paper,
-  Radio,
-  RadioGroup,
   TextField
 } from '@material-ui/core';
 
@@ -51,17 +48,9 @@ export class InvitationModal extends Component {
   }
 
   componentDidUpdate() {
-    const { invitation } = this.state;
     if (this.props.open && !this.state.eventsFetched) {
       this.props.getEvents();
       this.setState({eventsFetched: true});
-    }
-    // By default set the event to the first in the list
-    if (this.props.events.length && invitation.event === '') {
-      this.setState({ invitation: {
-        ...invitation,
-        event: this.props.events[0].id
-      }});
     }
   }
 
@@ -93,6 +82,10 @@ export class InvitationModal extends Component {
     });
   }
 
+  updateEvents(val) {
+    console.log(val);
+  }
+
   render() {
     const { events } = this.props;
     const { invitation } = this.state;
@@ -108,69 +101,38 @@ export class InvitationModal extends Component {
           <div className='form'>
             <h1 className='form-title'>Create an Invitation</h1>
 
-            <TextField
-              select
-              label='Event'
-              className='text-field form-field'
-              value={invitation.event}
-              onChange={this.handleChange('event')}
-              SelectProps={{
-                MenuProps: { className: 'menu' }
-              }}
-              margin='normal'
-              variant='outlined'
-            >
-              {events.map(option => (
-                <MenuItem
-                  className='select-item'
-                  key={option.id}
-                  value={option.id}>
-                  {option.name}
-                </MenuItem>
-              ))}
-            </TextField>
+            <br/>
 
-            <TextField
-              label='Name'
-              className='text-field form-field'
-              margin='normal'
-              value={invitation.name}
-              onChange={this.handleChange('name')}
-            />
+            <h4>Guests</h4>
 
-            <TextField
-              label='Email'
-              className='text-field form-field'
-              margin='normal'
-              value={invitation.email}
-              onChange={this.handleChange('email')}
-            />
-
-            <TextField
-              label='Guests'
-              className='text-field form-field'
-              margin='normal'
-              multiline
-              rows='2'
-              rowsMax='6'
-              value={invitation.guests.join('\n')}
-              onChange={this.handleChange('guests')}
-            />
-
-            <FormControl margin='normal'>
-              <FormLabel>Plus One</FormLabel>
-              <RadioGroup
-                name='plusOne'
-                className='plus-one-radio-group'
-                value={String(invitation.plusOne)}
-                onChange={this.handleChange('plusOne')}
-              >
-                <FormControlLabel value='true' control={<Radio color='primary'/>} label='Yes' />
-                <FormControlLabel value='false' control={<Radio color='primary'/>} label='No' />
-              </RadioGroup>
-            </FormControl>
+            <FormGroup>
+              <TextField
+                className='text-field form-field'
+                margin='dense'
+                value={invitation.guests.join('\n')}
+                onChange={this.handleChange('guests')}
+              />
+            </FormGroup>
 
             <AddressForm onChange={this.handleAddressChange} />
+
+            <h4>Events</h4>
+
+            <FormGroup>
+              {events.map(event =>
+                <FormControlLabel
+                  key={event.id}
+                  control={
+                    <Checkbox
+                      checked={invitation.events.includes(event)}
+                      onChange={this.updateEvents}
+                      value={`${event.id}`}
+                    />
+                  }
+                  label={event.name}
+                />
+              )}
+            </FormGroup>
 
             <Button
               className='save-button'

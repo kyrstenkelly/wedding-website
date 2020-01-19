@@ -43,14 +43,14 @@ class AddressForm extends Component {
           <TextField
             label='Line 1'
             className='text-field form-field'
-            margin='normal'
+            margin='dense'
             value={this.state.line1}
             onChange={this.onChange('line1')}
           />
           <TextField
             label='Line 2'
             className='text-field form-field'
-            margin='normal'
+            margin='dense'
             value={this.state.line2}
             onChange={this.onChange('line2')}
           />
@@ -60,21 +60,21 @@ class AddressForm extends Component {
           <TextField
             label='City'
             className='text-field form-field'
-            margin='normal'
+            margin='dense'
             value={this.state.city}
             onChange={this.onChange('city')}
           />
           <TextField
             label='State'
             className='text-field form-field'
-            margin='normal'
+            margin='dense'
             value={this.state.state}
             onChange={this.onChange('state')}
           />
           <TextField
             label='Zip'
             className='text-field form-field'
-            margin='normal'
+            margin='dense'
             value={this.state.zip}
             onChange={this.onChange('zip')}
           />
