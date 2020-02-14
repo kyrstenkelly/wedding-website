@@ -5,7 +5,13 @@ class RSVP extends Component {
   render() {
     return (
       <div className='rsvp'>
-        RSVP
+        <div className='title-main center'>RSVP</div>
+
+        <div className='rsvp'>
+          <p>
+            Do the thing once I do the thing
+          </p>
+        </div>
       </div>
     );
   }

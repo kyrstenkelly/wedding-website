@@ -1,13 +1,14 @@
 import React from 'react';
 import moment from 'moment';
 import Details from 'views/home/components/details/details';
+// import Gifts from 'views/home/components/gifts/gifts';
+import RSVP from 'views/home/components/rsvp/rsvp';
 import Travel from 'views/home/components/travel/travel';
-// import RSVP from './components/rsvp/rsvp';
 
 import details from 'images/details.jpg';
 import detailsCompressed from 'images/details-compressed.jpg';
-// import rsvp from '../images/rsvp.jpg';
-// import rsvpCompressed from '../images/rsvp-compressed.jpg';
+import rsvp from '../images/rsvp.jpg';
+import rsvpCompressed from '../images/rsvp-compressed.jpg';
 // import story from '../images/story.jpg';
 // import storyCompressed from '../images/story-compressed.jpg';
 import travel from 'images/travel.jpg';
@@ -40,15 +41,17 @@ export default {
     backgroundImage: travel,
     backgroundImageCompressed: travelCompressed,
     component: <Travel />
-  // }, {
+  }, {
   //   title: 'Gifts',
   //   key: 'gifts',
   //   backgroundImage: travel,
-  //   backgroundImageCompressed: travelCompressed
+  //   backgroundImageCompressed: travelCompressed,
+  //   component: <Gifts />
   // }, {
-  //   title: 'RSVP',
-  //   key: 'rsvp',
-  //   backgroundImage: rsvp,
-  //   backgroundImageCompressed: rsvpCompressed
+    title: 'RSVP',
+    key: 'rsvp',
+    backgroundImage: rsvp,
+    backgroundImageCompressed: rsvpCompressed,
+    component: <RSVP />
   }]
 };
