@@ -46,6 +46,8 @@
       @include font-size(36);
       margin: 0 20px;
       text-decoration: none;
+      text-align: center;
+      white-space: nowrap;
       color: $white;
 
       &:hover {
@@ -73,6 +75,7 @@
     }
 
     &__list {
+      display: flex;
       list-style: none;
       padding-left: 0;
 
