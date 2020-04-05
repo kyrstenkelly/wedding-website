@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import {
   FormControl,
@@ -8,21 +9,43 @@ import {
 import PropTypes from 'prop-types';
 import './address-form.scss';
 
-const ADDRESS_FIELDS = ['line1', 'line2', 'city', 'state', 'zip'];
-const createAddressObject = (val) => {
-  const obj = {};
-  ADDRESS_FIELDS.forEach(k => obj[k] = val);
-  return obj;
-}
+export const ADDRESS_FIELDS = [
+  { key: 'line1', label: 'Line 1' },
+  { key: 'line2', label: 'Line 2' },
+  { key: 'city', label: 'City' },
+  { key: 'state', label: 'State' },
+  { key: 'zip', label: 'Zip' },
+];
+
+let defaultAddress = {};
+let errors = {};
+let addressPropTypes = {};
+ADDRESS_FIELDS.forEach(field => {
+  defaultAddress[field.key] = '';
+  errors[field.key] = null;
+  addressPropTypes[field.key] = PropTypes.string;
+});
 
 class AddressForm extends Component {
   static propTypes = {
+    address: PropTypes.shape(addressPropTypes),
     onChange: PropTypes.func.isRequired
   }
 
   state = {
-    address: createAddressObject(''),
-    errors: createAddressObject(null)
+    address: {
+      ...defaultAddress,
+      ...this.props.address
+    },
+    errors
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!_.isEqual(prevProps.address, this.props.address)) {
+      this.setState({
+        address: this.props.address
+      });
+    }
   }
 
   onChange = name => event => {
@@ -34,50 +57,30 @@ class AddressForm extends Component {
     }, () => this.props.onChange(this.state.address));
   }
 
+  renderField = field => {
+    return (
+      <TextField
+        key={field.key}
+        label={field.label}
+        className='text-field form-field'
+        margin='dense'
+        value={this.state.address[field.key]}
+        onChange={this.onChange(field.key)}
+      />
+    );
+  }
+
   render() {
     return (
       <FormControl component='fieldset' className='address-fields'>
         <h4 className='address-fields--title'>Address</h4>
 
         <FormGroup row>
-          <TextField
-            label='Line 1'
-            className='text-field form-field'
-            margin='dense'
-            value={this.state.line1}
-            onChange={this.onChange('line1')}
-          />
-          <TextField
-            label='Line 2'
-            className='text-field form-field'
-            margin='dense'
-            value={this.state.line2}
-            onChange={this.onChange('line2')}
-          />
+          {ADDRESS_FIELDS.slice(0, 2).map(field => this.renderField(field))}
         </FormGroup>
 
         <FormGroup row>
-          <TextField
-            label='City'
-            className='text-field form-field'
-            margin='dense'
-            value={this.state.city}
-            onChange={this.onChange('city')}
-          />
-          <TextField
-            label='State'
-            className='text-field form-field'
-            margin='dense'
-            value={this.state.state}
-            onChange={this.onChange('state')}
-          />
-          <TextField
-            label='Zip'
-            className='text-field form-field'
-            margin='dense'
-            value={this.state.zip}
-            onChange={this.onChange('zip')}
-          />
+          {ADDRESS_FIELDS.slice(2).map(field => this.renderField(field))}
         </FormGroup>
       </FormControl>
     )
