@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Link = (props) => {
-  const { href, label } = props;
-  const target = props.target || '_blank';
+const Link = ({ href, label, target }) => {
+  target = target || '_blank';
 
   return (
-    <a 
+    <a
       rel='noopener noreferrer'
       className='link'
       target={target}

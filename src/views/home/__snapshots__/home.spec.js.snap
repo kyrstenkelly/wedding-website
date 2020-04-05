@@ -3,7 +3,7 @@
 exports[`<Home /> matches the snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Home />,
+  Symbol(enzyme.__unrendered__): <Unknown />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],
@@ -361,9 +361,9 @@ ShallowWrapper {
           "getChildContext": Object {
             "calledByRenderer": false,
           },
-          "getDerivedStateFromError": false,
+          "getDerivedStateFromError": true,
           "getDerivedStateFromProps": Object {
-            "hasShouldComponentUpdateBug": true,
+            "hasShouldComponentUpdateBug": false,
           },
           "getSnapshotBeforeUpdate": true,
           "setState": Object {
@@ -372,8 +372,8 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
+    Symbol(enzyme.__providerValues__): undefined,
   },
+  Symbol(enzyme.__providerValues__): Map {},
 }
 `;

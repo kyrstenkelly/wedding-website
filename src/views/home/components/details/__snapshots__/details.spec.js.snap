@@ -389,9 +389,9 @@ ShallowWrapper {
           "getChildContext": Object {
             "calledByRenderer": false,
           },
-          "getDerivedStateFromError": false,
+          "getDerivedStateFromError": true,
           "getDerivedStateFromProps": Object {
-            "hasShouldComponentUpdateBug": true,
+            "hasShouldComponentUpdateBug": false,
           },
           "getSnapshotBeforeUpdate": true,
           "setState": Object {
@@ -400,8 +400,8 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
+    Symbol(enzyme.__providerValues__): undefined,
   },
+  Symbol(enzyme.__providerValues__): Map {},
 }
 `;

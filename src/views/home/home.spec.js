@@ -14,6 +14,10 @@ describe('<Home />', () => {
     wrapper = shallow(<Home />);
   });
 
+  it('should exist', () => {
+    expect(Home).toBeDefined();
+  });
+
   it('matches the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });

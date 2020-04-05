@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 
@@ -34,14 +34,12 @@ const theme = createMuiTheme({
   },
 });
 
-class Container extends Component {
-  render() {
-    return(
-      <MuiThemeProvider theme={theme}>
-        {this.props.children}
-      </MuiThemeProvider>
-    )
-  }
+const Container = ({ children }) => {
+  return(
+    <MuiThemeProvider theme={theme}>
+      {children}
+    </MuiThemeProvider>
+  );
 }
 
 export default Container;

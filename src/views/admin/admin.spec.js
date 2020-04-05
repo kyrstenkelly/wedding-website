@@ -6,15 +6,18 @@ import DataTable from './components/data-table/data-table';
 import Menu from './components/menu/menu';
 
 const getEvents = jest.fn();
+const getGuests = jest.fn();
 const getInvitations = jest.fn();
 const getRSVPs = jest.fn();
 
 const defaultProps = {
   getEvents,
+  getGuests,
   getInvitations,
   getRSVPs,
   loading: {
     events: false,
+    guests: false,
     invitations: false,
     rsvps: false
   }
