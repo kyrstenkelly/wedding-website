@@ -58,6 +58,7 @@ describe('<AddressForm />', () => {
     });
 
     it('calls the onChange property', () => {
+      jest.spyOn(React, 'useEffect').mockImplementation(f => f());
       const line1 = '123 Test';
       const line1Field = wrapper.find(TextField).first();
       const event = {target: {value: line1 }};

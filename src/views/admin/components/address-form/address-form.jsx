@@ -1,12 +1,11 @@
-import _ from 'lodash';
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   FormControl,
   FormGroup,
   TextField
 } from '@material-ui/core';
 
-import PropTypes from 'prop-types';
 import './address-form.scss';
 
 export const ADDRESS_FIELDS = [
@@ -26,65 +25,54 @@ ADDRESS_FIELDS.forEach(field => {
   addressPropTypes[field.key] = PropTypes.string;
 });
 
-class AddressForm extends Component {
-  static propTypes = {
-    address: PropTypes.shape(addressPropTypes),
-    onChange: PropTypes.func.isRequired
+const AddressForm = ({ address: initialAddress, onChange }) => {
+  const [address, setAddress] = useState({
+    ...defaultAddress,
+    ...initialAddress
+  });
+
+  useEffect(() => {
+    onChange(address);
+  }, [address]);
+
+  const updateAddressField = field => event => {
+    setAddress({
+      ...address,
+      [field]: event.target.value
+    });
   }
 
-  state = {
-    address: {
-      ...defaultAddress,
-      ...this.props.address
-    },
-    errors
-  }
-
-  componentDidUpdate(prevProps) {
-    if (!_.isEqual(prevProps.address, this.props.address)) {
-      this.setState({
-        address: this.props.address
-      });
-    }
-  }
-
-  onChange = name => event => {
-    this.setState({
-      address: {
-        ...this.state.address,
-        [name]: event.target.value
-      }
-    }, () => this.props.onChange(this.state.address));
-  }
-
-  renderField = field => {
+  const renderField = field => {
     return (
       <TextField
         key={field.key}
         label={field.label}
         className='text-field form-field'
         margin='dense'
-        value={this.state.address[field.key]}
-        onChange={this.onChange(field.key)}
+        value={address[field.key]}
+        onChange={updateAddressField(field.key)}
       />
     );
-  }
+  };
 
-  render() {
-    return (
-      <FormControl component='fieldset' className='address-fields'>
-        <h4 className='address-fields--title'>Address</h4>
+  return (
+    <FormControl component='fieldset' className='address-fields'>
+      <h4 className='address-fields--title'>Address</h4>
 
-        <FormGroup row>
-          {ADDRESS_FIELDS.slice(0, 2).map(field => this.renderField(field))}
-        </FormGroup>
+      <FormGroup row>
+        {ADDRESS_FIELDS.slice(0, 2).map(f => renderField(f))}
+      </FormGroup>
 
-        <FormGroup row>
-          {ADDRESS_FIELDS.slice(2).map(field => this.renderField(field))}
-        </FormGroup>
-      </FormControl>
-    )
-  }
-}
+      <FormGroup row>
+        {ADDRESS_FIELDS.slice(2).map(f => renderField(f))}
+      </FormGroup>
+    </FormControl>
+  );
+};
+
+AddressForm.propTypes = {
+  address: PropTypes.shape(addressPropTypes),
+  onChange: PropTypes.func.isRequired
+};
 
 export default AddressForm;
