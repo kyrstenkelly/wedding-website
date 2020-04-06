@@ -5,27 +5,22 @@ import { connect } from 'react-redux';
 import {
   Button,
   Checkbox,
-  Fab,
   FormControlLabel,
   FormGroup,
-  IconButton,
-  InputAdornment,
   Modal,
   Paper,
-  TextField
 } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import CloseIcon from '@material-ui/icons/Close';
 
 import rsvpService from 'services/rsvp-service';
 import AddressForm from '../address-form/address-form';
+import GuestsForm from '../guests-form/guests-form';
 import { actionsBinder } from 'helpers/actions';
 import './invitation-modal.scss';
 
 const defaultInvitation = {
   events: [],
   address: {},
-  guests: [{ name: '' }]
+  guests: []
 };
 
 const mapStateToProps = (state) => ({
@@ -59,8 +54,6 @@ export class InvitationModal extends Component {
 
   componentDidMount() {
     this.props.getEvents();
-
-    console.log(this.props.updateInvitation);
   }
 
   componentDidUpdate(prevProps) {
@@ -76,34 +69,6 @@ export class InvitationModal extends Component {
   invitationIncludes(property, name) {
     if (_.isEqual(this.state.invitation, defaultInvitation)) return false;
     return this.state.invitation[property].some(e => e.name === name);
-  }
-
-  handleGuestsChange = (event, index) => {
-    const { invitation } = this.state;
-    const { guests } = invitation;
-
-    this.setState({ invitation: {
-      ...invitation,
-      guests: guests.map((g, i) => {
-        if (i !== index) return g;
-        return {
-          ...g,
-          name: event.target.value
-        };
-      })
-    }});
-  }
-
-  handleRemoveGuest = indexToRemove => {
-    const { invitation } = this.state;
-    const { guests } = invitation;
-
-    this.setState({ invitation: {
-      ...this.state.invitation,
-      guests: guests.filter((g, i) => {
-        return i !== indexToRemove;
-      })
-    }})
   }
 
   handleEventsChange = event => {
@@ -128,6 +93,13 @@ export class InvitationModal extends Component {
     this.setState({invitation: {
       ...this.state.invitation,
       address
+    }});
+  }
+
+  handleGuestsChange = (guests) => {
+    this.setState({invitation: {
+      ...this.state.invitation,
+      guests
     }});
   }
 
@@ -163,46 +135,7 @@ export class InvitationModal extends Component {
 
             <br/>
 
-            <h4>Guests</h4>
-
-            <FormGroup>
-              {invitation.guests.map((guest, i) => (
-                <TextField
-                  key={i}
-                  className='text-field form-field'
-                  margin='dense'
-                  value={guest.name}
-                  onChange={(e) => this.handleGuestsChange(e, i)}
-                  InputProps={{
-                    endAdornment:
-                      <InputAdornment position='end'>
-                        <IconButton
-                          aria-label='Delete Guest'
-                          onClick={() => this.handleRemoveGuest(i)}
-                        >
-                          <CloseIcon />
-                        </IconButton>
-                      </InputAdornment>
-                  }}
-                />
-              ))}
-
-              <br/>
-
-              <Fab
-                color='primary'
-                aria-label='Add Guest'
-                onClick={() => this.setState({ invitation: {
-                  ...invitation,
-                  guests: invitation.guests.concat({ name: '' })
-                }})}
-                className='add-button'
-                size='small'
-              >
-                <AddIcon />
-              </Fab>
-
-            </FormGroup>
+            <GuestsForm guests={invitation.guests} onChange={this.handleGuestsChange} />
 
             <AddressForm address={invitation.address} onChange={this.handleAddressChange} />
 
