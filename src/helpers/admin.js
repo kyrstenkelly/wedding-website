@@ -1,9 +1,13 @@
 import _ from 'lodash';
+import React from 'react';
 import moment from 'moment';
+import Link from '@material-ui/core/Link';
+import CheckIcon from '@material-ui/icons/Check';
+import ClearIcon from '@material-ui/icons/Clear';
 
 export default {
-  formatData(data) {
-    return _.mapValues(data, (datum, key) => {
+  formatData(data, editMethod) {
+    const mappedData = _.mapValues(data, (datum, key) => {
       // TODO: Figure out a better way to handle special column formatting cases
       if (key === 'events') {
         return datum.map(e => e.name).join(', ');
@@ -13,6 +17,9 @@ export default {
       }
       if (key === 'guests') {
         return datum.map(g => g.name).join(', ');
+      }
+      if (key === 'attending') {
+        return datum ? <CheckIcon/> : <ClearIcon/>;
       }
       if (key === 'date') {
         return moment(datum).format('MM-DD-YYYY');
