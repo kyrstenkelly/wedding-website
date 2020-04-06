@@ -56,7 +56,7 @@ const Routes = (
         />
 
         <Route exact path="/" component={Home}/>
-        
+
         <Route path="/*" component={
           ({ location }) => {
             const path = location.pathname.replace('/', '');

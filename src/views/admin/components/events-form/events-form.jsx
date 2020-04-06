@@ -14,7 +14,7 @@ const EventsForm = ({ events: initialEvents, onChange }) => {
 
   useEffect(() => {
     rsvpService.getEvents()
-      .then(({ events: eventList }) => {
+      .then(eventList => {
         setEvents(eventList.map(event => ({
           ...event,
           checked: initialEvents.some(e => e.name === event.name)

@@ -28,8 +28,7 @@ export default {
   getAddresses() {
     return request({
       path: '/addresses'
-    }).then(addresses => ({addresses}))
-    .catch(error => ({error}));
+    }).catch(error => ({error}));
   },
 
   createAddress(address) {
@@ -58,8 +57,7 @@ export default {
   getGuests() {
     return request({
       path: '/guests'
-    }).then(guests => ({guests}))
-    .catch(error => ({error}));
+    }).catch(error => ({error}));
   },
 
   createGuest(guest) {
@@ -88,8 +86,7 @@ export default {
   getEvents() {
     return request({
       path: '/events'
-    }).then(events => ({events}))
-    .catch(error => ({error}));
+    }).catch(error => ({error}));
   },
 
   createEvent(event) {
@@ -118,8 +115,7 @@ export default {
   getInvitations() {
     return request({
       path: '/invitations'
-    }).then(invitations => ({invitations}))
-    .catch(error => ({error}));
+    }).catch(error => ({error}));
   },
 
   createInvitation(invitation) {
@@ -148,8 +144,7 @@ export default {
   getRSVPs() {
     return request({
       path: '/rsvps'
-    }).then(rsvps => ({rsvps}))
-    .catch(error => ({error}));
+    }).catch(error => ({error}));
   },
 
   createRSVP(rsvp) {
