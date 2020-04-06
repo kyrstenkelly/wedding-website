@@ -78,9 +78,7 @@ class DataTable extends Component {
                     return (
                       <TableRow key={d.id}>
                         {columns.map(column =>
-                          <TableCell
-                            key={column.key}
-                            padding='dense'>
+                          <TableCell key={column.key}>
                             {d[column.key]}
                           </TableCell>
                         )}
