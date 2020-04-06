@@ -53,7 +53,9 @@ class DataTable extends Component {
   render() {
     const {loading, tableData: {columns, data}} = this.props;
     const {order, orderBy} = this.state;
-    const formattedData = data.map(d => adminHelper.formatData(d));
+    const formattedData = data.map(d => adminHelper.formatData(d, () => {
+      this.props.openModal(d);
+    }));
     const sortedData = sortHelper.stableSort(
       formattedData,
       sortHelper.getSorting(order, orderBy)
@@ -93,7 +95,7 @@ class DataTable extends Component {
               <Fab
                 color='primary'
                 aria-label='Add'
-                onClick={() => this.props.openModal()}
+                onClick={() => this.props.openModal({})}
                 className='add-button'>
                 <AddIcon />
               </Fab>

@@ -49,6 +49,7 @@ export class Admin extends Component {
 
   state = {
     isModalOpen: false,
+    modalData: {},
     selectedMenuItem: _.get(menuItems, ['0', 'key'])
   }
 
@@ -87,26 +88,15 @@ export class Admin extends Component {
     }
   }
 
-  openModal() {
-    this.setState({isModalOpen: true});
+  openModal(data) {
+    this.setState({
+      isModalOpen: true,
+      modalData: data
+    });
   }
 
   closeModal() {
     this.setState({isModalOpen: false});
-  }
-
-  renderModal() {
-    switch (this.state.selectedMenuItem) {
-      case 'invitations':
-        return (
-          <InvitationModal
-            open={this.state.isModalOpen}
-            onClose={() => this.closeModal()}
-          />
-        );
-      default:
-        return;
-    }
   }
 
   render() {
@@ -132,13 +122,19 @@ export class Admin extends Component {
                 <DataTable
                   tableData={tableData}
                   loading={dataLoading}
-                  openModal={() => this.openModal()}
+                  openModal={(data) => this.openModal(data)}
                 />
               }
             </div>
           </div>
 
-          {this.renderModal()}
+          {this.state.selectedMenuItem === 'invitations' &&
+            <InvitationModal
+              invitation={this.state.modalData}
+              open={this.state.isModalOpen}
+              onClose={() => this.closeModal()}
+            />
+          }
         </div>
       </Container>
     );

@@ -4,6 +4,7 @@ import moment from 'moment';
 import Link from '@material-ui/core/Link';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
+import EditIcon from '@material-ui/icons/Edit';
 
 export default {
   formatData(data, editMethod) {
@@ -30,5 +31,14 @@ export default {
       }
       return datum;
     });
+    mappedData.edit = (
+      <Link
+        component='button'
+        onClick={editMethod}
+      >
+        <EditIcon/>
+      </Link>
+    );
+    return mappedData;
   }
 }

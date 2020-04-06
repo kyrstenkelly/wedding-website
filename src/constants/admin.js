@@ -35,6 +35,9 @@ export default {
     }, {
       label: 'Events',
       key: 'events'
+    }, {
+      label: 'Edit',
+      key: 'edit'
     }],
     events: [{
       label: 'Name',
