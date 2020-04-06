@@ -20,7 +20,7 @@ const Menu = ({menuItems, selectedMenuItem, selectMenuItem}) => {
               <ListItemIcon className='menu-icon'>
                 <item.icon/>
               </ListItemIcon>
-              <ListItemText classes={{ primary: 'primary' }} inset primary={item.label} />
+              <ListItemText classes={{ primary: 'primary' }} primary={item.label} />
             </MenuItem>
           );
         })}

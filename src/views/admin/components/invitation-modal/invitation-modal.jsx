@@ -1,20 +1,12 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import {
-  Button,
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
-  Modal,
-  Paper,
-} from '@material-ui/core';
+import { Button, Modal, Paper } from '@material-ui/core';
 
 import rsvpService from 'services/rsvp-service';
 import AddressForm from '../address-form/address-form';
+import EventsForm from '../events-form/events-form';
 import GuestsForm from '../guests-form/guests-form';
-import { actionsBinder } from 'helpers/actions';
 import './invitation-modal.scss';
 
 const defaultInvitation = {
@@ -23,25 +15,11 @@ const defaultInvitation = {
   guests: []
 };
 
-const mapStateToProps = (state) => ({
-  eventList: state.rsvps.events,
-  loading: state.rsvps.loading.events
-});
-
-const mapDispatchToProps = actionsBinder('getEvents');
-
 export class InvitationModal extends Component {
   static propTypes = {
-    loading: PropTypes.bool.isRequired,
     open: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
-    eventList: PropTypes.array,
     invitation: PropTypes.object
-  }
-
-  static defaultProps = {
-    eventList: [],
-    loading: false
   }
 
   state = {
@@ -50,10 +28,6 @@ export class InvitationModal extends Component {
       ...this.props.invitation,
     },
     update: !_.isEmpty(this.props.invitation),
-  }
-
-  componentDidMount() {
-    this.props.getEvents();
   }
 
   componentDidUpdate(prevProps) {
@@ -71,35 +45,10 @@ export class InvitationModal extends Component {
     return this.state.invitation[property].some(e => e.name === name);
   }
 
-  handleEventsChange = event => {
-    const { invitation } = this.state;
-    const value = event.target.value;
-    const checked = event.target.checked;
-    let events = invitation.events;
-
-    if (checked && !this.invitationIncludes('events', value)) {
-      events.push({ name: value });
-    } else {
-      events = events.filter(e => e.name !== value);
-    }
-
+  handleChange = key => value => {
     this.setState({ invitation: {
-      ...invitation,
-      events
-    }});
-  }
-
-  handleAddressChange = address => {
-    this.setState({invitation: {
       ...this.state.invitation,
-      address
-    }});
-  }
-
-  handleGuestsChange = (guests) => {
-    this.setState({invitation: {
-      ...this.state.invitation,
-      guests
+      [key]: value
     }});
   }
 
@@ -118,7 +67,6 @@ export class InvitationModal extends Component {
   }
 
   render() {
-    const { eventList } = this.props;
     const { invitation } = this.state;
     const title = `${!_.isEqual(invitation, defaultInvitation) ? 'Update' : 'Create an'} Invitation`;
 
@@ -135,33 +83,11 @@ export class InvitationModal extends Component {
 
             <br/>
 
-            <GuestsForm guests={invitation.guests} onChange={this.handleGuestsChange} />
+            <GuestsForm guests={invitation.guests} onChange={this.handleChange('guests')} />
 
-            <AddressForm address={invitation.address} onChange={this.handleAddressChange} />
+            <AddressForm address={invitation.address} onChange={this.handleChange('address')} />
 
-            <h4>Events</h4>
-
-            <FormGroup>
-              {eventList
-                .map(event => ({
-                  ...event,
-                  checked: this.invitationIncludes('events', event.name)
-                }))
-                .map(event =>
-                  <FormControlLabel
-                    key={event.id}
-                    control={
-                      <Checkbox
-                        checked={event.checked}
-                        onChange={this.handleEventsChange}
-                        value={event.name}
-                      />
-                    }
-                    label={event.name}
-                  />
-                )
-              }
-            </FormGroup>
+            <EventsForm events={invitation.events} onChange={this.handleChange('events')} />
 
             <Button
               className='save-button'
@@ -179,7 +105,4 @@ export class InvitationModal extends Component {
 }
 
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(InvitationModal);
+export default InvitationModal;
