@@ -1,6 +1,13 @@
 import authService from './auth-service';
 import config from '../config';
 
+export const RESOURCES = {
+  events: 'events',
+  guests: 'guests',
+  invitations: 'invitations',
+  rsvps: 'rsvps'
+};
+
 const UNAUTHORIZED = 401;
 
 const request = (options) => {
@@ -27,148 +34,40 @@ const request = (options) => {
     });
 }
 
+const checkResourceType = (type) => {
+  if (!Object.values(RESOURCES).includes(type)) {
+    throw Error(`${type} is not a known resource`);
+  }
+};
+
 export default {
-  getAddresses() {
+  get(type) {
+    checkResourceType(type);
     return request({
-      path: '/addresses'
+      path: `/${type}`
     });
   },
 
-  createAddress(address) {
+  create(type, data) {
+    checkResourceType(type);
     return request({
-      path: '/addresses',
+      path: `/${type}`,
       method: 'post',
-      body: JSON.stringify(address)
+      body: JSON.stringify(data)
     });
   },
 
-  updateAddress(address) {
+  update(type, data) {
     return request({
-      path: `/addresses/${address.id}`,
+      path: `/${type}/${data.id}`,
       method: 'put',
-      body: JSON.stringify(address)
+      body: JSON.stringify(data)
     });
   },
 
-  deleteAddress(id) {
+  delete(type, id) {
     return request({
-      path: `/addresses/${id}`,
-      method: 'delete'
-    });
-  },
-
-  getGuests() {
-    return request({
-      path: '/guests'
-    });
-  },
-
-  createGuest(guest) {
-    return request({
-      path: '/guests',
-      method: 'post',
-      body: JSON.stringify(guest)
-    });
-  },
-
-  updateGuest(guest) {
-    return request({
-      path: `/guests/${guest.id}`,
-      method: 'put',
-      body: JSON.stringify(guest)
-    });
-  },
-
-  deleteGuest(id) {
-    return request({
-      path: `/guests/${id}`,
-      method: 'delete'
-    });
-  },
-
-  getEvents() {
-    return request({
-      path: '/events'
-    });
-  },
-
-  createEvent(event) {
-    return request({
-      path: '/events',
-      method: 'post',
-      body: JSON.stringify(event)
-    });
-  },
-
-  updateEvent(event) {
-    return request({
-      path: `/events/${event.id}`,
-      method: 'put',
-      body: JSON.stringify(event)
-    });
-  },
-
-  deleteEvent(id) {
-    return request({
-      path: `/events/${id}`,
-      method: 'delete'
-    });
-  },
-
-  getInvitations() {
-    return request({
-      path: '/invitations'
-    });
-  },
-
-  createInvitation(invitation) {
-    return request({
-      path: '/invitations',
-      method: 'post',
-      body: JSON.stringify(invitation)
-    });
-  },
-
-  updateInvitation(invitation) {
-    return request({
-      path: `/invitations/${invitation.id}`,
-      method: 'put',
-      body: JSON.stringify(invitation)
-    });
-  },
-
-  deleteInvitation(id) {
-    return request({
-      path: `/invitations/${id}`,
-      method: 'delete'
-    });
-  },
-
-  getRSVPs() {
-    return request({
-      path: '/rsvps'
-    });
-  },
-
-  createRSVP(rsvp) {
-    return request({
-      path: '/rsvps',
-      method: 'post',
-      body: JSON.stringify(rsvp)
-    });
-  },
-
-  updateRSVP(rsvp) {
-    return request({
-      path: `/rsvps/${rsvp.id}`,
-      method: 'put',
-      body: JSON.stringify(rsvp)
-    });
-  },
-
-  deleteRSVP(id) {
-    return request({
-      path: `/rsvps/${id}`,
+      path: `/${type}/${id}`,
       method: 'delete'
     });
   }

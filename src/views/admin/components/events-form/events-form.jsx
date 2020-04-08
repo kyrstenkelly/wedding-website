@@ -6,14 +6,14 @@ import {
   FormGroup,
   FormControlLabel,
 } from '@material-ui/core';
-import rsvpService from 'services/rsvp-service';
+import rsvpService, { RESOURCES } from 'services/rsvp-service';
 
-const EventsForm = ({ events: initialEvents, onChange }) => {
+const EventsForm = ({ events: initialEvents = [], onChange }) => {
   const [loading, setLoading] = useState(true);
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    rsvpService.getEvents()
+    rsvpService.get(RESOURCES.events)
       .then(eventList => {
         setEvents(eventList.map(event => ({
           ...event,

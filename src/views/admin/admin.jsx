@@ -5,7 +5,7 @@ import DataTable from './components/data-table/data-table';
 import InvitationModal from './components/invitation-modal/invitation-modal';
 import Menu from './components/menu/menu';
 import constants from 'constants/admin';
-import rsvpService from 'services/rsvp-service';
+import rsvpService, { RESOURCES } from 'services/rsvp-service';
 import './admin.scss';
 
 const menuItems = constants.MENU_ITEMS;
@@ -27,25 +27,7 @@ const Admin = () => {
     setLoading(true);
     setSelectedMenuItem(key);
 
-    let getData;
-    switch (key) {
-      case 'events':
-        getData = rsvpService.getEvents();
-        break;
-      case 'guests':
-        getData = rsvpService.getGuests();
-        break;
-      case 'invitations':
-        getData = rsvpService.getInvitations();
-        break;
-      case 'rsvps':
-        getData = rsvpService.getRSVPs();
-        break;
-      default:
-        throw new Error(`Unknown data type ${key}`);
-    }
-
-    getData.then(newData => {
+    rsvpService.get(RESOURCES[key]).then(newData => {
       setData({
         ...data,
         [key]: newData

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal, Paper } from '@material-ui/core';
 
-import rsvpService from 'services/rsvp-service';
+import rsvpService, { RESOURCES } from 'services/rsvp-service';
 import AddressForm from '../address-form/address-form';
 import EventsForm from '../events-form/events-form';
 import GuestsForm from '../guests-form/guests-form';
@@ -56,11 +56,11 @@ export class InvitationModal extends Component {
     const { invitation, update } = this.state;
 
     if (update) {
-      rsvpService.updateInvitation(invitation).then(() => {
+      rsvpService.update(RESOURCES.invitations, invitation).then(() => {
         this.props.onClose();
       });
     } else {
-      rsvpService.createInvitation(invitation).then(() => {
+      rsvpService.create(RESOURCES.invitations, invitation).then(() => {
         this.props.onClose();
       });
     }
