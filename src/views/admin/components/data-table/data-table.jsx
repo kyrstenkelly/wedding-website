@@ -1,14 +1,20 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import {
+  CircularProgress,
+  Fab,
+  Link,
   Paper,
   Table,
   TableBody,
   TableCell,
   TableRow
 } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
+import {
+  Add as AddIcon,
+  Delete as DeleteIcon,
+  Edit as EditIcon
+} from '@material-ui/icons';
 import PropTypes from 'prop-types';
 
 import EnhancedTableHead from './enhanced-table-head';
@@ -24,13 +30,15 @@ const getFirstTableColumn = (props) => {
 class DataTable extends Component {
   static propTypes = {
     loading: PropTypes.bool.isRequired,
-    openModal: PropTypes.func.isRequired,
     tableData: PropTypes.shape({
       columns: PropTypes.arrayOf(PropTypes.shape({
         key: PropTypes.string.isRequired,
         label: PropTypes.string.isRequired
       })).isRequired,
-      data: PropTypes.shape.isRequired
+      data: PropTypes.shape.isRequired,
+      addMethod: PropTypes.func,
+      editMethod: PropTypes.func,
+      deleteMethod: PropTypes.func
     })
   }
 
@@ -39,7 +47,7 @@ class DataTable extends Component {
     orderBy: getFirstTableColumn(this.props)
   }
 
-  handleRequestSort = (event, property) => {
+  sort = (property) => {
     const orderBy = property;
     let order = 'desc';
 
@@ -51,11 +59,34 @@ class DataTable extends Component {
   }
 
   render() {
-    const {loading, tableData: {columns, data}} = this.props;
+    const {
+      addMethod,
+      deleteMethod,
+      editMethod,
+      loading,
+      tableData: {columns, data}
+    } = this.props;
     const {order, orderBy} = this.state;
-    const formattedData = data.map(d => adminHelper.formatData(d, () => {
-      this.props.openModal(d);
-    }));
+
+    const formattedData = data.map(d => {
+      const fd = adminHelper.formatData(d);
+      if (editMethod) {
+        fd.edit = (
+          <Link component='button' onClick={() => editMethod(d)}>
+            <EditIcon />
+          </Link>
+        );
+      }
+      if (deleteMethod) {
+        fd.delete = (
+          <Link component='button' onClick={() => deleteMethod(d)}>
+            <DeleteIcon />
+          </Link>
+        )
+      }
+      return fd;
+    });
+
     const sortedData = sortHelper.stableSort(
       formattedData,
       sortHelper.getSorting(order, orderBy)
@@ -64,7 +95,7 @@ class DataTable extends Component {
     return (
       <div className='data-table-container'>
         {loading ?
-          <div className='loading'>Loading...</div>
+          <CircularProgress/>
           :
           <Paper>
             <Table className='data-table'>
@@ -72,7 +103,7 @@ class DataTable extends Component {
                 order={order}
                 orderBy={orderBy}
                 columns={columns}
-                onRequestSort={this.handleRequestSort}
+                onSort={this.sort}
               />
 
               <TableBody>
@@ -95,7 +126,7 @@ class DataTable extends Component {
               <Fab
                 color='primary'
                 aria-label='Add'
-                onClick={() => this.props.openModal({})}
+                onClick={addMethod}
                 className='add-button'>
                 <AddIcon />
               </Fab>

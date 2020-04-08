@@ -89,7 +89,8 @@ const Admin = () => {
               <DataTable
                 tableData={getTableData()}
                 loading={loading}
-                openModal={(data) => openModal(data)}
+                addMethod={openModal}
+                editMethod={openModal}
               />
             }
           </div>

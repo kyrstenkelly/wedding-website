@@ -16,11 +16,8 @@ class EnhancedTableHead extends Component {
     columns: PropTypes.arrayOf(PropTypes.shape({
       key: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired
-    })).isRequired
-  }
-
-  createSortHandler = property => event => {
-    this.props.onRequestSort(event, property);
+    })).isRequired,
+    onSort: PropTypes.func.isRequired
   }
 
   render() {
@@ -43,7 +40,7 @@ class EnhancedTableHead extends Component {
                   <TableSortLabel
                     active={orderBy === column.key}
                     direction={order}
-                    onClick={this.createSortHandler(column.key)}
+                    onClick={() => this.props.onSort(column.key)}
                   >
                     {column.label}
                   </TableSortLabel>
