@@ -20,6 +20,9 @@ const request = (options) => {
         authService.logout();
         return;
       }
+      if (!resp.ok) {
+        throw Error(resp.statusText);
+      }
       return resp.json();
     });
 }
@@ -28,7 +31,7 @@ export default {
   getAddresses() {
     return request({
       path: '/addresses'
-    }).catch(error => ({error}));
+    });
   },
 
   createAddress(address) {
@@ -57,7 +60,7 @@ export default {
   getGuests() {
     return request({
       path: '/guests'
-    }).catch(error => ({error}));
+    });
   },
 
   createGuest(guest) {
@@ -86,7 +89,7 @@ export default {
   getEvents() {
     return request({
       path: '/events'
-    }).catch(error => ({error}));
+    });
   },
 
   createEvent(event) {
@@ -115,7 +118,7 @@ export default {
   getInvitations() {
     return request({
       path: '/invitations'
-    }).catch(error => ({error}));
+    });
   },
 
   createInvitation(invitation) {
@@ -144,7 +147,7 @@ export default {
   getRSVPs() {
     return request({
       path: '/rsvps'
-    }).catch(error => ({error}));
+    });
   },
 
   createRSVP(rsvp) {
