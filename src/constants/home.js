@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import Austin from 'views/home/components/austin/austin';
 import Details from 'views/home/components/details/details';
 import Gifts from 'views/home/components/gifts/gifts';
 import Travel from 'views/home/components/travel/travel';
@@ -53,5 +54,11 @@ export default {
     backgroundImage: rsvp,
     backgroundImageCompressed: rsvpCompressed,
     component: <RSVP />
+  }, {
+    title: 'Austin',
+    key: 'austin',
+    backgroundImage: rsvp,
+    backgroundImageCompressed: rsvpCompressed,
+    component: <Austin />
   }]
 };

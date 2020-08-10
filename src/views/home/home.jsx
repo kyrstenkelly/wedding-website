@@ -27,7 +27,7 @@ export const Home = () => {
           </div>
         </div> */}
 
-        <Header links={constants.PAGES} />
+        <Header links={constants.PAGES.filter(p => p.key !== 'austin')} />
 
         <div className='hero__content'>
           <Countdown date={constants.WEDDING_DATE} />

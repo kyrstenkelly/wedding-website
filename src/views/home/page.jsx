@@ -34,12 +34,12 @@ export class Page extends Component {
 
     return (
       <div className='page'>
-        <BackgroundImage 
+        <BackgroundImage
           className='hero'
           url={currentSection.backgroundImage}
           placeholderUrl={currentSection.backgroundImageCompressed}
         >
-          <Header links={PAGES} />
+          <Header links={PAGES.filter(p => p.key !== 'austin')} />
 
           <div className='hero__content'>
             <Countdown date={constants.WEDDING_DATE} />
