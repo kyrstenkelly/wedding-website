@@ -67,7 +67,7 @@ const Menu: React.FC<MenuProps> = ({
   const rightMenuItems = renderMenuItems(links.slice(middleIndex, links.length));
 
   return (
-    <header ref={menuRef} className={classNames(styles.header, color)}>
+    <header ref={menuRef} className={classNames(styles.header, styles[color])}>
       <div className={styles.contain}>
         <div className={classNames(styles.menu, styles.show_xs_sm, styles.show_flex)}>
           {!!links.length ?
@@ -89,7 +89,7 @@ const Menu: React.FC<MenuProps> = ({
           */}
           <div></div>
 
-          <div className={classNames(styles.mobile_menu, mobileMenuClass)}>
+          <div className={classNames(styles.mobile_menu, styles[mobileMenuClass])}>
             {/* TODO: Get a real close icon */}
             <span
               className={styles.mobile_menu__close}
