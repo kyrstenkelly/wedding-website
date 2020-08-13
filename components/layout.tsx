@@ -50,11 +50,13 @@ const Layout: React.FC<LayoutProps> = ({
       <div>
         <Head>
           <title>{pageTitle}</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="description"
             content="James &amp; Kyrsten's Wedding Website"
           />
+          <link href='https://fonts.googleapis.com/css?family=Lobster|Lobster+Two|Open+Sans:300,400|Rochester|Poiret+One' rel='stylesheet' />
         </Head>
 
         <main className={styles.layout}>
