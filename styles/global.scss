@@ -1,0 +1,65 @@
+@import './common';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  background-color: $darker-blue;
+  color: $white;
+}
+
+@include media($screen-sm) {
+  body {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@include media($screen-lg) {
+  body {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+p {
+  @extend .paragraph_font;
+  @include font-size(18);
+  line-height: rem(24);
+}
+
+a {
+  color: $white;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+
+h1 {
+  @include font-size(56);
+  line-height: rem(72);
+  margin: 0;
+}
+
+h2 {
+  @include font-size(34);
+  line-height: rem(40);
+  margin: 0;
+}
+
+h3 {
+  @include font-size(28);
+  line-height: rem(36);
+}
+
+h4 {
+  @include font-size(20);
+  line-height: rem(30);
+}

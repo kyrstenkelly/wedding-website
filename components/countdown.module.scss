@@ -1,0 +1,42 @@
+@import '../styles/common';
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  .unit {
+    display: flex;
+    flex-direction: column;
+    margin: rem(10) rem(15) rem(5);
+
+    &__value {
+      @extend .print_font;
+      @include font-size(48);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: rgba(255, 255, 255, 0.4);
+      color: $white;
+      font-weight: 500;
+      border-radius: $border-radius;
+      height: rem(85);
+      width: rem(80);
+    }
+
+    &__label {
+      @extend .cursive_font;
+      @include font-size(36);
+      color: $yellow;
+    }
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
