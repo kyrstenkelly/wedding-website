@@ -31,10 +31,16 @@ const Faq: React.FC = (): React.ReactElement => {
         </p>
 
         <p>
-          Our hope is that by October, with a small and cautious group of people, sitting outdoors, we may be able to spend the{' '}
-          evening without masks. We're getting enough tables and chairs that people can separate into their "germ pods" 6 ft apart.{' '}
-          We may ask people to wear masks when &lt; 6 ft apart (like when dancing), so please do bring a mask.<br/><br/>
-          However, we'll assess what we need to do about safety closer to, and will send out more details about that.
+          There will only be ~20 people at the wedding, and it will be outdoors. We’re hoping to be able to relax and not wear masks, if possible.{' '}
+          We’re asking people to be extra cautious with their social interactions in the two weeks leading up to the wedding.{' '}
+          If you’re unable to do so for whatever reason, we will ask that you wear a mask and/or keep 6 feet away from other guests for everyone’s safety.
+          <br/><br/>
+          However, in the event that cases spike again in Austin, we will likely ask everyone to wear a mask during most of the wedding, except when eating.
+          <br/><br/>
+          The only vendors there will be a waiter to help serve food (wearing a mask and gloves), and a photographer (wearing a mask).{' '}
+          There will be hand sanitizer readily available. We have enough space that we can space everyone's "germ pods" 6 feet apart during the ceremony and dinner.{' '}
+          <br/><br/>
+          If you have any other questions or concerns about safety, please reach out to James &amp; Kyrsten.
         </p>
       </section>
     </AustinLayout>

@@ -37,7 +37,8 @@ const Austin: React.FC = (): React.ReactElement => {
           Due to COVID-19, we have postponed our destination wedding in Saratoga, CA. However, we still really wanted to get married,{' '}
           so we are having a small ceremony in the Kellys' backyard on our original wedding date.
           <br/><br/>
-          We are inviting very few people (~20), so that we can still practice social distancing to keep everyone safe and healthy.{' '}
+          For more COVID related details, please see the <Link href='/austin/faq'><a>FAQ Page</a></Link>.
+          <br/><br/>
           If you were originally invited to the California wedding but we{' '}
           did not invite you to the backyard wedding, please know it was just for everyone's safety and we are still so, so excited about the{' '}
           <Link href='/california'><a>California wedding</a></Link> next fall!
