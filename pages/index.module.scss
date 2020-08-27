@@ -47,10 +47,12 @@
 
 .content {
   margin: rem(20);
-  max-width: $max-content-width;
-  min-width: rem(320);
+  max-width: 100%;
+  min-width: 0;
 
   @include media($screen-md) {
+    max-width: $max-content-width;
+    min-width: rem(320);
     margin: rem(30);
   }
 
