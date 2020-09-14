@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 // Austin related constants
-export const AUSTIN_WEDDING_DATE = moment('2020-10-10T06');
+export const AUSTIN_WEDDING_DATE = moment('2020-10-10T17:30:00-05');
 export const AUSTIN_URL_BASE = '/austin';
 export const AUSTIN_MENU_LINKS = [{
   title: 'Gifts',
@@ -12,7 +12,7 @@ export const AUSTIN_MENU_LINKS = [{
 }];
 
 // California related constants
-export const CALI_WEDDING_DATE = moment('2021-10-09T06');
+export const CALI_WEDDING_DATE = moment('2021-10-09T17:00:00-07');
 export const CALI_URL_BASE = '/california';
 export const CALI_MENU_LINKS = [{
   title: 'Gifts',
